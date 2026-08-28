@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate - English Marathon</title>
+  
+  <!-- مكتبة html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
+  <!-- ملف التنسيق -->
+  <link rel="stylesheet" href="certificate.css">
+</head>
+<body>
+
+<div class="certificate-wrapper" id="certificateWrapper">
+  
+  <!-- بطاقة الشهادة -->
+  <div class="certificate" id="certificateCard">
+    
+    <!-- رأس الشهادة -->
+    <div class="certificate-header">
+      <img src="" alt="Logo" class="platform-logo" id="certLogo" style="display: none;">
+      <h1 class="certificate-title">🏆 ENGLISH MARATHON 🏆</h1>
+      <div class="certificate-subtitle">Certificate of Completion</div>
+    </div>
+    
+    <!-- جسم الشهادة -->
+    <div class="certificate-body">
+      
+      <!-- نص التقديم -->
+      <p class="certify-text">This certificate is proudly presented to</p>
+      
+      <!-- اسم الطالب -->
+      <div class="student-name" id="certName">[Student Name]</div>
+      
+      <!-- اسم النشاط -->
+      <div class="activity-name">
+        for successfully completing the activity
+        <strong id="certActivity">[Activity Name]</strong>
+          <span id="certPath" style="display: block; font-size: 1.1rem; color: #ffd700; margin-top: 8px; font-weight: bold; letter-spacing: 1px; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);"></span>
+
+      </div>
+      
+      <!-- شارة التقدير -->
+      <div class="grade-badge" id="certGradeBadge"> Excellent</div>
+      
+      <!-- النتائج -->
+      <div class="score-section">
+        <div class="score-item">
+          <div class="score-label">Score</div>
+          <div class="score-value" id="certScore">0 / 0</div>
+        </div>
+        <div class="score-item">
+          <div class="score-label">Percentage</div>
+          <div class="score-value" id="certPercentage">0%</div>
+        </div>
+      </div>
+      
+      <!-- معلومات المسار الدراسي -->
+      <div class="path-info">
+        <div class="path-item" id="certLevel">Primary</div>
+        <div class="path-item" id="certGrade">Grade 4</div>
+        <div class="path-item" id="certCurriculum">AL</div>
+        <div class="path-item" id="certUnit">Unit 1</div>
+      </div>
+      
+      <!-- رقم الشهادة -->
+      <div class="certificate-id">
+        Certificate ID: <strong id="certId">EM-2026-000001</strong>
+      </div>
+      
+      <!-- النصيحة التحفيزية (بالعربية فقط) -->
+      <div class="motivation-text" id="certMotivation">
+        إنجاز رائع! تفانيك في تعلم اللغة الإنجليزية ملهم حقاً. استمر في التألق وواصل هذه الرحلة المميزة نحو التميز!
+      </div>
+      
+    </div>
+    
+    <!-- تذييل الشهادة -->
+    <div class="certificate-footer">
+      
+      <!-- التوقيع -->
+      <div class="signature-block">
+        <div class="sig-name">Mr Mohamed Karim</div>
+        <div class="sig-line">Instructor</div>
+      </div>
+      
+      <!-- الختم -->
+      <div class="seal">
+        ENGLISH<br>MARATHON<br>✓<br><span id="certYear">2026</span>
+      </div>
+      
+      <!-- التاريخ -->
+      <div class="signature-block">
+        <div class="sig-name" id="certDate">--</div>
+        <div class="sig-line">Date</div>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  <!-- أزرار الإجراءات -->
+  <div class="certificate-actions">
+    <button class="action-btn save-img-btn" onclick="downloadCertificate()" id="downloadBtn">
+      📥 Download
+    </button>
+    <button class="action-btn whatsapp-btn" onclick="sendToWhatsApp()" id="whatsappBtn">
+      📱 WhatsApp
+    </button>
+    <button class="action-btn retake-btn" onclick="retakeActivity()" id="retakeBtn">
+      🔄 Retake
+    </button>
+    <button class="action-btn share-btn" onclick="shareCertificate()" id="shareBtn">
+      🔗 Share
+    </button>
+  </div>
+  
+</div>
+
+<!-- شاشة التحميل -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div id="loadingText">Preparing certificate...</div>
+</div>
+
+<!-- ملف JavaScript -->
+<script src="certificate.js"></script>
+
+</body>
+</html>

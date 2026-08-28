@@ -1,0 +1,4990 @@
+{
+  "activityDatabase": {
+    "explanation": [],
+    "exam": [],
+    "complete": [
+      {
+        "passage": "I have a {blank1} cat. Its name is {blank2}. It likes to eat {blank3} and {blank4}. Sometimes it sleeps on my {blank5}.",
+        "options": [
+          "small",
+          "Mimi",
+          "fish",
+          "milk",
+          "bed"
+        ],
+        "correctAnswer": [
+          "small",
+          "Mimi",
+          "fish",
+          "milk",
+          "bed"
+        ],
+        "reason": "Complete the description of the cat with the correct words.",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "1"
+      },
+      {
+        "passage": "My name is Ahmed. I live in {blank1}. I am {blank2} years old. I study at {blank3} school. My favorite subject is {blank4}. I like to play {blank5}.",
+        "options": [
+          "Cairo",
+          "12",
+          "Al-Nasr",
+          "Math",
+          "football"
+        ],
+        "correctAnswer": [
+          "Cairo",
+          "12",
+          "Al-Nasr",
+          "Math",
+          "football"
+        ],
+        "reason": "Complete the passage with the correct words in order.",
+        "id": 2,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "passage": "Yesterday was a {blank1} day. The {blank2} was shining. I went to the {blank3} with my {blank4}. We bought some {blank5}.",
+        "options": [
+          "beautiful",
+          "sun",
+          "market",
+          "friend",
+          "fruits"
+        ],
+        "correctAnswer": [
+          "beautiful",
+          "sun",
+          "market",
+          "friend",
+          "fruits"
+        ],
+        "reason": "Choose the appropriate words to complete the story.",
+        "id": 3,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "passage": "Every day, I wake up at {blank1}. Then I wash my face and brush my {blank2}. I help my mom make {blank3} and eat it with my {blank4}. After that, I go to the club and meet my {blank5}. I sometimes help my mum do {blank6}. In the evening, I read a {blank7} and watch {blank8}. I text my {blank9}. Finally, I go to bed at {blank10} every day.",
+        "options": [
+          "10 o'clock",
+          "teeth",
+          "breakfast",
+          "family",
+          "friends",
+          "housework",
+          "book",
+          "TV",
+          "friends",
+          "10 o'clock"
+        ],
+        "correctAnswer": [
+          "10 o'clock",
+          "teeth",
+          "breakfast",
+          "family",
+          "friends",
+          "housework",
+          "book",
+          "TV",
+          "friends",
+          "10 o'clock"
+        ],
+        "reason": "Complete the passage with the correct words in order.",
+        "id": 4,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      }
+    ],
+    "correct": [
+      {
+        "sentence": "She go to school every day.",
+        "errorWord": "go",
+        "correctWord": "goes",
+        "arabicReason": "نستخدم 'goes' مع الضمائر المفردة في زمن المضارع البسيط.",
+        "englishReason": "We use 'goes' with singular pronouns in simple present tense.",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "1"
+      },
+      {
+        "sentence": "She doesn't likes chocolate.",
+        "errorWord": "likes",
+        "correctWord": "like",
+        "arabicReason": "بعد 'doesn't' نستخدم المصدر بدون 's'.",
+        "englishReason": "After 'doesn't' we use the base form of the verb without 's'.",
+        "id": 2,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They goes to school every day.",
+        "errorWord": "goes",
+        "correctWord": "go",
+        "arabicReason": "نستخدم الفعل في مصدره 'go' مع الفاعل الجمع 'they' ولا نضيف s أو es.",
+        "englishReason": "We use the base form 'go' with plural subjects like 'they' and do not add s or es.",
+        "id": 3,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "He eat an apple every morning.",
+        "errorWord": "eat",
+        "correctWord": "eats",
+        "arabicReason": "نضيف 's' للفعل 'eat' لأن الفاعل 'He' مفرد غائب في زمن المضارع.",
+        "englishReason": "We add 's' to the verb 'eat' because the subject 'He' is singular third-person in the present tense.",
+        "id": 4,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We drinks milk after lunch.",
+        "errorWord": "drinks",
+        "correctWord": "drink",
+        "arabicReason": "نستخدم الفعل في مصدره 'drink' مع الفاعل الجمع 'we' ولا نضيف s.",
+        "englishReason": "We use the base form 'drink' with plural subjects like 'we' and do not add s.",
+        "id": 5,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The girl read a book in the library.",
+        "errorWord": "read",
+        "correctWord": "reads",
+        "arabicReason": "نضيف 's' للفعل 'read' لأن الفاعل 'The girl' مفرد غائب.",
+        "englishReason": "We add 's' to the verb 'read' because 'The girl' is a singular third-person subject.",
+        "id": 6,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The students writes a letter to their teacher.",
+        "errorWord": "writes",
+        "correctWord": "write",
+        "arabicReason": "نستخدم الفعل في مصدره 'write' مع الفاعل الجمع 'The students'.",
+        "englishReason": "We use the base form 'write' with plural subjects like 'The students'.",
+        "id": 7,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "She wake up early every day.",
+        "errorWord": "wake",
+        "correctWord": "wakes",
+        "arabicReason": "نضيف 's' للفعل 'wake' لأن الفاعل 'She' مفرد غائب.",
+        "englishReason": "We add 's' to the verb 'wake' because the subject 'She' is singular third-person.",
+        "id": 8,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The children sits down when the bell rings.",
+        "errorWord": "sits",
+        "correctWord": "sit",
+        "arabicReason": "نستخدم الفعل في مصدره 'sit' مع الفاعل الجمع 'The children'.",
+        "englishReason": "We use the base form 'sit' with plural subjects like 'The children'.",
+        "id": 9,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The teacher close the window because it is cold.",
+        "errorWord": "close",
+        "correctWord": "closes",
+        "arabicReason": "نضيف 's' للفعل 'close' لأن الفاعل 'The teacher' مفرد غائب.",
+        "englishReason": "We add 's' to the verb 'close' because 'The teacher' is a singular third-person subject.",
+        "id": 10,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The boys opens the door for the teacher.",
+        "errorWord": "opens",
+        "correctWord": "open",
+        "arabicReason": "نستخدم الفعل في مصدره 'open' مع الفاعل الجمع 'The boys'.",
+        "englishReason": "We use the base form 'open' with plural subjects like 'The boys'.",
+        "id": 11,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "He wash his hands before eating.",
+        "errorWord": "wash",
+        "correctWord": "washes",
+        "arabicReason": "نضيف 'es' للفعل 'wash' لأنه ينتهي بـ 'sh' والفاعل 'He' مفرد.",
+        "englishReason": "We add 'es' to the verb 'wash' because it ends in 'sh' and the subject 'He' is singular.",
+        "id": 12,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "My mother watch TV in the evening.",
+        "errorWord": "watch",
+        "correctWord": "watches",
+        "arabicReason": "نضيف 'es' للفعل 'watch' لأنه ينتهي بـ 'ch' والفاعل 'My mother' مفرد.",
+        "englishReason": "We add 'es' to the verb 'watch' because it ends in 'ch' and the subject 'My mother' is singular.",
+        "id": 13,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The boy study English on Fridays.",
+        "errorWord": "study",
+        "correctWord": "studies",
+        "arabicReason": "نحذف حرف 'y' ونضيف 'ies' لأن الفاعل 'The boy' مفرد والفعل ينتهي بحرف ساكن + y.",
+        "englishReason": "We change 'y' to 'i' and add 'es' because 'The boy' is singular and the verb ends in a consonant + y.",
+        "id": 14,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The cats sleeps on the soft bed.",
+        "errorWord": "sleeps",
+        "correctWord": "sleep",
+        "arabicReason": "نستخدم الفعل في مصدره 'sleep' مع الفاعل الجمع 'The cats'.",
+        "englishReason": "We use the base form 'sleep' with plural subjects like 'The cats'.",
+        "id": 15,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "You wants a new pen for the exam.",
+        "errorWord": "wants",
+        "correctWord": "want",
+        "arabicReason": "نستخدم الفعل في مصدره 'want' مع الفاعل 'You' ولا نضيف s.",
+        "englishReason": "We use the base form 'want' with the subject 'You' and do not add s.",
+        "id": 16,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "My friend come to school at 8 AM.",
+        "errorWord": "come",
+        "correctWord": "comes",
+        "arabicReason": "نضيف 's' للفعل 'come' لأن الفاعل 'My friend' مفرد (يعامل معاملة he/she).",
+        "englishReason": "We add 's' to the verb 'come' because 'My friend' is a singular third-person subject.",
+        "id": 17,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "I have a apple.",
+        "errorWord": "a",
+        "correctWord": "an",
+        "arabicReason": "لأن كلمة apple تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'apple' begins with a vowel sound, we use 'an'.",
+        "id": 18,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "Mona ate a egg for breakfast.",
+        "errorWord": "a",
+        "correctWord": "an",
+        "arabicReason": "لأن كلمة egg تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'egg' begins with a vowel sound, we use 'an'.",
+        "id": 19,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "I have an pen in my bag.",
+        "errorWord": "an",
+        "correctWord": "a",
+        "arabicReason": "لأن كلمة pen تبدأ بحرف ساكن، لذلك نستخدم a.",
+        "englishReason": "Because 'pen' begins with a consonant sound, we use 'a'.",
+        "id": 20,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "Sara wants to be a engineer.",
+        "errorWord": "a",
+        "correctWord": "an",
+        "arabicReason": "لأن كلمة engineer تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'engineer' begins with a vowel sound, we use 'an'.",
+        "id": 21,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "My father drives an car.",
+        "errorWord": "an",
+        "correctWord": "a",
+        "arabicReason": "لأن كلمة car تبدأ بحرف ساكن، لذلك نستخدم a.",
+        "englishReason": "Because 'car' begins with a consonant sound, we use 'a'.",
+        "id": 22,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "We saw a elephant at the zoo.",
+        "errorWord": "a",
+        "correctWord": "an",
+        "arabicReason": "لأن كلمة elephant تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'elephant' begins with a vowel sound, we use 'an'.",
+        "id": 23,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "Ali has a umbrella.",
+        "errorWord": "a",
+        "correctWord": "an",
+        "arabicReason": "لأن كلمة umbrella تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'umbrella' begins with a vowel sound, we use 'an'.",
+        "id": 24,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "This is an book.",
+        "errorWord": "an",
+        "correctWord": "a",
+        "arabicReason": "لأن كلمة book تبدأ بحرف ساكن، لذلك نستخدم a.",
+        "englishReason": "Because 'book' begins with a consonant sound, we use 'a'.",
+        "id": 25,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "He is eating a orange.",
+        "errorWord": "a",
+        "correctWord": "an",
+        "arabicReason": "لأن كلمة orange تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'orange' begins with a vowel sound, we use 'an'.",
+        "id": 26,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "sentence": "Where is your favourite hobby?",
+        "errorWord": "Where",
+        "correctWord": "What",
+        "arabicReason": "نستخدم (What) للسؤال عن الأشياء أو الهوايات، وليس (Where).",
+        "englishReason": "We use 'What' to ask about things or hobbies, not 'Where'.",
+        "id": 27,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "When is the president of Egypt?",
+        "errorWord": "When",
+        "correctWord": "Who",
+        "arabicReason": "نستخدم (Who) للسؤال عن الأشخاص، وليس (When).",
+        "englishReason": "We use 'Who' to ask about people, not 'When'.",
+        "id": 28,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Where does the meeting start?",
+        "errorWord": "Where",
+        "correctWord": "When",
+        "arabicReason": "نستخدم (When) للسؤال عن الوقت، وليس (Where).",
+        "englishReason": "We use 'When' to ask about time, not 'Where'.",
+        "id": 29,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Who is your favourite food?",
+        "errorWord": "Who",
+        "correctWord": "What",
+        "arabicReason": "نستخدم (What) للسؤال عن الأشياء، وليس (Who).",
+        "englishReason": "We use 'What' to ask about things, not 'Who'.",
+        "id": 30,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "When is the school?",
+        "errorWord": "When",
+        "correctWord": "Where",
+        "arabicReason": "نستخدم (Where) للسؤال عن المكان، وليس (When).",
+        "englishReason": "We use 'Where' to ask about places, not 'When'.",
+        "id": 31,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "What is your teacher?",
+        "errorWord": "What",
+        "correctWord": "Who",
+        "arabicReason": "نستخدم (Who) للسؤال عن الأشخاص، وليس (What).",
+        "englishReason": "We use 'Who' to ask about people, not 'What'.",
+        "id": 32,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Where is your birthday?",
+        "errorWord": "Where",
+        "correctWord": "When",
+        "arabicReason": "نستخدم (When) للسؤال عن التاريخ أو الوقت، وليس (Where).",
+        "englishReason": "We use 'When' to ask about dates or time, not 'Where'.",
+        "id": 33,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Who do you sleep?",
+        "errorWord": "Who",
+        "correctWord": "When",
+        "arabicReason": "نستخدم (When) للسؤال عن الوقت، وليس (Who).",
+        "englishReason": "We use 'When' to ask about time, not 'Who'.",
+        "id": 34,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "What do you live?",
+        "errorWord": "What",
+        "correctWord": "Where",
+        "arabicReason": "نستخدم (Where) للسؤال عن المكان، وليس (What).",
+        "englishReason": "We use 'Where' to ask about places, not 'What'.",
+        "id": 35,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Where is your hero?",
+        "errorWord": "Where",
+        "correctWord": "Who",
+        "arabicReason": "نستخدم (Who) للسؤال عن الأشخاص، وليس (Where).",
+        "englishReason": "We use 'Who' to ask about people, not 'Where'.",
+        "id": 36,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      }
+    ],
+    "find_the_vowel": [
+      {
+        "word": "boat",
+        "vowels": [
+          "o",
+          "a"
+        ],
+        "reason": "The vowels in 'boat' are 'o' and 'a'.",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "1"
+      }
+    ],
+    "grammer": [
+      {
+        "question": "Both my sister and my brother ........ engineers.",
+        "correctAnswer": "are",
+        "arabicReason": "مع 'both' نستخدم الفعل الجمع دائمًا لأنها تشير إلى شخصين.",
+        "englishReason": "With 'both' we always use plural verb because it refers to two people.",
+        "options": [
+          "am",
+          "is",
+          "are",
+          "was"
+        ],
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "3"
+      },
+      {
+        "question": "Fatima and Amal are clever.",
+        "correctAnswer": "both",
+        "arabicReason": "لأن الجملة تضم 'and'، و'both' تُستخدم مع 'and'.",
+        "englishReason": "Because the sentence has 'and', and 'both' is used with 'and'.",
+        "options": [
+          "both",
+          "every",
+          "either",
+          "neither"
+        ],
+        "id": 2,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "3"
+      },
+      {
+        "question": "Mona ate ........ egg for breakfast.",
+        "correctAnswer": "an",
+        "arabicReason": "لأن كلمة egg تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'egg' begins with a vowel sound, we use 'an'.",
+        "options": [
+          "a",
+          "the",
+          "an",
+          "no article"
+        ],
+        "id": 3,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "I have ........ pen in my bag.",
+        "correctAnswer": "a",
+        "arabicReason": "لأن كلمة pen تبدأ بحرف ساكن، لذلك نستخدم a.",
+        "englishReason": "Because 'pen' begins with a consonant sound, we use 'a'.",
+        "options": [
+          "an",
+          "a",
+          "the",
+          "no article"
+        ],
+        "id": 4,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "Sara wants to be ........ engineer.",
+        "correctAnswer": "an",
+        "arabicReason": "لأن كلمة engineer تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'engineer' begins with a vowel sound, we use 'an'.",
+        "options": [
+          "a",
+          "the",
+          "an",
+          "no article"
+        ],
+        "id": 5,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "My father drives ........ car.",
+        "correctAnswer": "a",
+        "arabicReason": "لأن كلمة car تبدأ بحرف ساكن، لذلك نستخدم a.",
+        "englishReason": "Because 'car' begins with a consonant sound, we use 'a'.",
+        "options": [
+          "an",
+          "the",
+          "a",
+          "no article"
+        ],
+        "id": 6,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "We saw ........ elephant at the zoo.",
+        "correctAnswer": "an",
+        "arabicReason": "لأن كلمة elephant تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'elephant' begins with a vowel sound, we use 'an'.",
+        "options": [
+          "a",
+          "the",
+          "an",
+          "no article"
+        ],
+        "id": 7,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "Ali has ........ umbrella.",
+        "correctAnswer": "an",
+        "arabicReason": "لأن كلمة umbrella تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'umbrella' begins with a vowel sound, we use 'an'.",
+        "options": [
+          "a",
+          "an",
+          "the",
+          "no article"
+        ],
+        "id": 8,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "This is ........ book.",
+        "correctAnswer": "a",
+        "arabicReason": "لأن كلمة book تبدأ بحرف ساكن، لذلك نستخدم a.",
+        "englishReason": "Because 'book' begins with a consonant sound, we use 'a'.",
+        "options": [
+          "an",
+          "a",
+          "the",
+          "no article"
+        ],
+        "id": 9,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "He is eating ........ orange.",
+        "correctAnswer": "an",
+        "arabicReason": "لأن كلمة orange تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'orange' begins with a vowel sound, we use 'an'.",
+        "options": [
+          "a",
+          "the",
+          "an",
+          "no article"
+        ],
+        "id": 10,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "She has ........ cat.",
+        "correctAnswer": "a",
+        "arabicReason": "لأن كلمة cat تبدأ بحرف ساكن، لذلك نستخدم a.",
+        "englishReason": "Because 'cat' begins with a consonant sound, we use 'a'.",
+        "options": [
+          "an",
+          "a",
+          "the",
+          "no article"
+        ],
+        "id": 11,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "I have ........ apple.",
+        "correctAnswer": "an",
+        "arabicReason": "لأن كلمة apple تبدأ بحرف متحرك، لذلك نستخدم an.",
+        "englishReason": "Because 'apple' begins with a vowel sound, we use 'an'.",
+        "options": [
+          "a",
+          "an",
+          "the",
+          "no article"
+        ],
+        "id": 12,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      }
+    ],
+    "justtalk": [
+      {
+        "sentences": [
+          {
+            "text": "She goes to school every day.",
+            "target": "She goes to school every day."
+          },
+          {
+            "text": "He likes apples.",
+            "target": "He likes apples."
+          },
+          {
+            "text": "They are playing football now.",
+            "target": "They are playing football now."
+          }
+        ],
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "1"
+      },
+      {
+        "sentences": [
+          {
+            "text": "I wake up at 10 o'clock every day.",
+            "target": "I wake up at 10 o'clock every day."
+          },
+          {
+            "text": "I wash my face and brush my teeth.",
+            "target": "I wash my face and brush my teeth."
+          },
+          {
+            "text": "I help my mom make breakfast and eat it with my family.",
+            "target": "I help my mom make breakfast and eat it with my family."
+          },
+          {
+            "text": "I go to the club and meet my friends.",
+            "target": "I go to the club and meet my friends."
+          },
+          {
+            "text": "I sometimes help my mum do housework.",
+            "target": "I sometimes help my mum do housework."
+          },
+          {
+            "text": "In the evening, I read a book and watch TV.",
+            "target": "In the evening, I read a book and watch TV."
+          },
+          {
+            "text": "I text my friends.",
+            "target": "I text my friends."
+          },
+          {
+            "text": "I go to bed at 10 o'clock every day.",
+            "target": "I go to bed at 10 o'clock every day."
+          }
+        ],
+        "id": 2,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "my typical day"
+      }
+    ],
+    "Matching": [
+      {
+        "pairs": [
+          {
+            "definition": "السبت",
+            "word": "Saturday"
+          },
+          {
+            "definition": "الأحد",
+            "word": "Sunday"
+          },
+          {
+            "definition": "الاثنين",
+            "word": "Monday"
+          },
+          {
+            "definition": "الثلاثاء",
+            "word": "Tuesday"
+          },
+          {
+            "definition": "الأربعاء",
+            "word": "Wednesday"
+          },
+          {
+            "definition": "الخميس",
+            "word": "Thursday"
+          },
+          {
+            "definition": "الجمعة",
+            "word": "Friday"
+          }
+        ],
+        "id": 1,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      }
+    ],
+    "re_arrange": [
+      {
+        "sentence": "she is eating fruits",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل + المفعول به.",
+        "englishReason": "The correct order is subject + verb + object.",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "2"
+      },
+      {
+        "sentence": "What's your name?",
+        "arabicReason": "الترتيب الصحيح للسؤال هو أداة الاستفهام + الفعل المساعد + الفاعل + التكملة.",
+        "englishReason": "The correct order for the question is question word + auxiliary verb + subject + complement.",
+        "id": 9,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "My name is Karim.",
+        "arabicReason": "الترتيب الصحيح للجملة هو المبتدأ + فعل الكينونة + الخبر (الاسم العلم).",
+        "englishReason": "The correct order is subject + verb (to be) + complement (proper noun).",
+        "id": 10,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Nice to meet you.",
+        "arabicReason": "هذه عبارة ثابتة تستخدم للترحيب وتتكون من صفة + مصدر + مفعول به.",
+        "englishReason": "This is a fixed greeting phrase consisting of an adjective + infinitive + object.",
+        "id": 11,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Let's shake hands.",
+        "arabicReason": "الترتيب الصحيح للجملة الاقتراحية هو let's + الفعل في المصدر + المفعول به.",
+        "englishReason": "The correct order for the suggestion is let's + base verb + object.",
+        "id": 12,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We are friends.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + فعل الكينونة (are) + الخبر (اسم جمع).",
+        "englishReason": "The correct order is subject + verb (are) + complement (plural noun).",
+        "id": 13,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "How are you today?",
+        "arabicReason": "الترتيب الصحيح للسؤال هو أداة الاستفهام + فعل الكينونة + الفاعل + ظرف الزمان.",
+        "englishReason": "The correct order for the question is question word + verb (to be) + subject + time adverb.",
+        "id": 14,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "I am fine, thank you.",
+        "arabicReason": "الترتيب الصحيح هو الفاعل + فعل الكينونة + الصفة، وتليها عبارة شكر ثابتة.",
+        "englishReason": "The correct order is subject + verb (to be) + adjective, followed by a fixed phrase of thanks.",
+        "id": 15,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "What is your hobby?",
+        "arabicReason": "الترتيب الصحيح للسؤال هو أداة الاستفهام + فعل الكينونة + الصفة الملكية + الاسم.",
+        "englishReason": "The correct order for the question is question word + verb (to be) + possessive adjective + noun.",
+        "id": 16,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "My hobby is reading.",
+        "arabicReason": "الترتيب الصحيح للجملة هو المبتدأ + فعل الكينونة (is) + اسم الفعل (المصدر المؤول).",
+        "englishReason": "The correct order is subject + verb (is) + gerund (verb acting as a noun).",
+        "id": 17,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "See you tomorrow.",
+        "arabicReason": "عبارة وداع ثابتة تبدأ بالفعل (والفاعل ضمير محذوف تقديره I)، يليه المفعول به ثم ظرف الزمان.",
+        "englishReason": "A fixed farewell phrase starting with the base verb (subject 'I' is implied), followed by the object and time adverb.",
+        "id": 18,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They go to school every day.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل في المصدر + المفعول به + ظرف الزمان.",
+        "englishReason": "The correct order is subject + base verb + object + time adverb.",
+        "id": 19,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "He eats an apple every morning.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل مضافاً إليه s + المفعول به + ظرف الزمان.",
+        "englishReason": "The correct order is subject + verb with s + object + time adverb.",
+        "id": 20,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We drink milk after lunch.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل في المصدر + المفعول به + ظرف الزمان.",
+        "englishReason": "The correct order is subject + base verb + object + time adverb.",
+        "id": 21,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The girl reads a book in the library.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل مضافاً إليه s + المفعول به + المكان.",
+        "englishReason": "The correct order is subject + verb with s + object + place.",
+        "id": 22,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The students write a letter to their teacher.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل في المصدر + المفعول به + حرف الجر + المفعول به الثاني.",
+        "englishReason": "The correct order is subject + base verb + object + preposition + second object.",
+        "id": 23,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "She wakes up early every day.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل مضافاً إليه s + ظرف الزمان.",
+        "englishReason": "The correct order is subject + verb with s + time adverb.",
+        "id": 24,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The cats sleep on the soft bed.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل في المصدر + حرف الجر + المفعول به.",
+        "englishReason": "The correct order is subject + base verb + preposition + object.",
+        "id": 25,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "My friend comes to school at 8 AM.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل مضافاً إليه es + المكان + الوقت.",
+        "englishReason": "The correct order is subject + verb with es + place + time.",
+        "id": 26,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "You want a new pen for the exam.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل في المصدر + المفعول به + حرف الجر + الغرض.",
+        "englishReason": "The correct order is subject + base verb + object + preposition + purpose.",
+        "id": 27,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The boy studies English on Fridays.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل مضافاً إليه ies + المفعول به + ظرف الزمان.",
+        "englishReason": "The correct order is subject + verb with ies + object + time adverb.",
+        "id": 28,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "My mother watches TV in the evening.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل مضافاً إليه es + المفعول به + ظرف الزمان.",
+        "englishReason": "The correct order is subject + verb with es + object + time adverb.",
+        "id": 29,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "He washes his hands before eating.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل مضافاً إليه es + المفعول به + ظرف الزمان.",
+        "englishReason": "The correct order is subject + verb with es + object + time adverb.",
+        "id": 30,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The boys open the door for the teacher.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل في المصدر + المفعول به + حرف الجر + المفعول به الثاني.",
+        "englishReason": "The correct order is subject + base verb + object + preposition + second object.",
+        "id": 31,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The teacher closes the window because it is cold.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل مضافاً إليه s + المفعول به + حرف العلة + الجملة الفرعية.",
+        "englishReason": "The correct order is subject + verb with s + object + conjunction + subordinate clause.",
+        "id": 32,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The children sit down when the bell rings.",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل في المصدر + ظرف المكان + حرف العلة + الجملة الفرعية.",
+        "englishReason": "The correct order is subject + base verb + adverb + conjunction + subordinate clause.",
+        "id": 33,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "you study English",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل + المفعول به.",
+        "englishReason": "The correct order is subject + verb + object.",
+        "id": 2,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "it drinks milk",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل + المفعول به.",
+        "englishReason": "The correct order is subject + verb + object.",
+        "id": 3,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "I eat dinner",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل + المفعول به.",
+        "englishReason": "The correct order is subject + verb + object.",
+        "id": 4,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "He reads a book",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل + المفعول به.",
+        "englishReason": "The correct order is subject + verb + object.",
+        "id": 5,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "she goes to the garden",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل + المفعول به.",
+        "englishReason": "The correct order is subject + verb + object.",
+        "id": 6,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "they write a letter",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل + المفعول به.",
+        "englishReason": "The correct order is subject + verb + object.",
+        "id": 7,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "we play a game",
+        "arabicReason": "الترتيب الصحيح للجملة هو الفاعل + الفعل + المفعول به.",
+        "englishReason": "The correct order is subject + verb + object.",
+        "id": 8,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "What is your favourite hobby?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + الفعل المساعد (أو فعل to be) + الفاعل + باقي الجملة.",
+        "englishReason": "The correct order is: question word + auxiliary verb (or verb to be) + subject + the rest of the sentence.",
+        "id": 34,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Who is the president of Egypt?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + فعل to be + الفاعل + المكمل.",
+        "englishReason": "The correct order is: question word + verb to be + subject + complement.",
+        "id": 35,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "When does the meeting start?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + الفعل المساعد (does) + الفاعل + الفعل الأساسي في صورته الأصلية.",
+        "englishReason": "The correct order is: question word + auxiliary verb (does) + subject + base form of the main verb.",
+        "id": 36,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "What is your favourite food?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + فعل to be + الفاعل + المكمل.",
+        "englishReason": "The correct order is: question word + verb to be + subject + complement.",
+        "id": 37,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Where is the school?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + فعل to be + الفاعل.",
+        "englishReason": "The correct order is: question word + verb to be + subject.",
+        "id": 38,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Who is your teacher?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + فعل to be + الفاعل + المكمل.",
+        "englishReason": "The correct order is: question word + verb to be + subject + complement.",
+        "id": 39,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "When is your birthday?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + فعل to be + الفاعل + المكمل.",
+        "englishReason": "The correct order is: question word + verb to be + subject + complement.",
+        "id": 40,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "When do you sleep?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + الفعل المساعد (do) + الفاعل + الفعل الأساسي.",
+        "englishReason": "The correct order is: question word + auxiliary verb (do) + subject + main verb.",
+        "id": 41,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Where do you live?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + الفعل المساعد (do) + الفاعل + الفعل الأساسي.",
+        "englishReason": "The correct order is: question word + auxiliary verb (do) + subject + main verb.",
+        "id": 42,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      },
+      {
+        "sentence": "Who is your hero?",
+        "arabicReason": "ترتيب السؤال الصحيح هو: أداة الاستفهام + فعل to be + الفاعل + المكمل.",
+        "englishReason": "The correct order is: question word + verb to be + subject + complement.",
+        "id": 43,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "ادوات الاستفهام"
+      }
+    ],
+    "rewrite": [
+      {
+        "sentence": "They don't understand the lesson.",
+        "targetWord": "yesterday",
+        "correctAnswer": "They didn't understand the lesson yesterday",
+        "arabicReason": "الكلمة 'yesterday' تدل على الماضي، لذلك نستخدم 'didn't' للنفي بدلاً من 'don't'.",
+        "englishReason": "We use 'didn't understand' for negation in the past tense with 'yesterday' indicating past time.",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "2"
+      },
+      {
+        "sentence": "The president of Egypt is Abdel Fattah El-Sisi.",
+        "targetWord": "who",
+        "correctAnswer": "Who is the president of Egypt?",
+        "arabicReason": "نستخدم (Who) للسؤال عن هوية الأشخاص.",
+        "englishReason": "We use 'Who' to ask about a person's identity.",
+        "id": 2,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "The president of Egypt is Abdel Fattah El-Sisi.",
+        "targetWord": "who",
+        "correctAnswer": "Who is the president of Egypt?",
+        "arabicReason": "نستخدم (Who) للسؤال عن هوية الأشخاص.",
+        "englishReason": "We use 'Who' to ask about a person's identity.",
+        "id": 2,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "The meeting starts at 8:00 a.m.",
+        "targetWord": "when",
+        "correctAnswer": "When does the meeting start?",
+        "arabicReason": "نستخدم (When) للسؤال عن الوقت، ومع الفاعل المفرد نستخدم (does).",
+        "englishReason": "We use 'When' to ask about time, and with a singular subject we use 'does'.",
+        "id": 3,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "My favourite hobby is painting.",
+        "targetWord": "what",
+        "correctAnswer": "What is your favourite hobby?",
+        "arabicReason": "نستخدم (What) للسؤال عن الأشياء أو الهوايات.",
+        "englishReason": "We use 'What' to ask about things or hobbies.",
+        "id": 4,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "My favourite food is pizza.",
+        "targetWord": "what",
+        "correctAnswer": "What is your favourite food?",
+        "arabicReason": "نستخدم (What) للسؤال عن الأشياء مثل الطعام المفضل.",
+        "englishReason": "We use 'What' to ask about things such as favourite food.",
+        "id": 5,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "The school is near my house.",
+        "targetWord": "where",
+        "correctAnswer": "Where is the school?",
+        "arabicReason": "نستخدم (Where) للسؤال عن المكان.",
+        "englishReason": "We use 'Where' to ask about places.",
+        "id": 6,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "My teacher is Mr. Ali.",
+        "targetWord": "who",
+        "correctAnswer": "Who is your teacher?",
+        "arabicReason": "نستخدم (Who) للسؤال عن الأشخاص.",
+        "englishReason": "We use 'Who' to ask about people.",
+        "id": 7,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "My birthday is in July.",
+        "targetWord": "when",
+        "correctAnswer": "When is your birthday?",
+        "arabicReason": "نستخدم (When) للسؤال عن التاريخ أو الوقت.",
+        "englishReason": "We use 'When' to ask about dates or time.",
+        "id": 8,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "I sleep at 10 o'clock.",
+        "targetWord": "when",
+        "correctAnswer": "When do you sleep?",
+        "arabicReason": "نستخدم (When) للسؤال عن الوقت.",
+        "englishReason": "We use 'When' to ask about time.",
+        "id": 9,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "I live in Cairo.",
+        "targetWord": "where",
+        "correctAnswer": "Where do you live?",
+        "arabicReason": "نستخدم (Where) للسؤال عن المكان.",
+        "englishReason": "We use 'Where' to ask about places.",
+        "id": 10,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      },
+      {
+        "sentence": "My dad is my hero.",
+        "targetWord": "who",
+        "correctAnswer": "Who is your hero?",
+        "arabicReason": "نستخدم (Who) للسؤال عن الأشخاص.",
+        "englishReason": "We use 'Who' to ask about people.",
+        "id": 11,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "hادوات الاستفهام"
+      }
+    ],
+    "Scramble": [
+      {
+        "word": "shoes",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "1"
+      },
+      {
+        "word": "book",
+        "id": 2,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "cat",
+        "id": 3,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "win",
+        "id": 4,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "horse",
+        "id": 5,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "get",
+        "id": 6,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "you",
+        "id": 7,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "yet",
+        "id": 8,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "go",
+        "id": 9,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "dog",
+        "id": 10,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "food",
+        "id": 11,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "hello",
+        "id": 12,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "shake hands",
+        "id": 13,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "good bye",
+        "id": 14,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "friend",
+        "id": 15,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "play",
+        "id": 16,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "meet",
+        "id": 17,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "name",
+        "id": 18,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "want",
+        "id": 19,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "nice to meet you",
+        "id": 20,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "hi",
+        "id": 21,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "Monday",
+        "id": 22,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Sunday",
+        "id": 23,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Saturday",
+        "id": 24,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Friday",
+        "id": 25,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Thursday",
+        "id": 26,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Wednesday",
+        "id": 27,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Tuesday",
+        "id": 28,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "come",
+        "id": 29,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "wake up",
+        "id": 30,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "look at",
+        "id": 31,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "wash",
+        "id": 32,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "watch",
+        "id": 33,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "read",
+        "id": 34,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "sleep",
+        "id": 35,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "close",
+        "id": 36,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "open",
+        "id": 37,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "stand up",
+        "id": 38,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      }
+    ],
+    "sequence": [
+      {
+        "question": "My birthday party is today. My friends come to my house. They play and sing. They give me gifts.",
+        "options": [
+          "My birthday party is today",
+          "My friends come to my house",
+          "They play and sing",
+          "They give me gifts"
+        ],
+        "correctOrder": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "reason": "ترتيب الأحداث في حفلة الميلاد",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "3"
+      }
+    ],
+    "situations": [
+      {
+        "question": "your friend asks you about reading .. what would you say",
+        "options": [
+          "that's time to eat",
+          "it's my cup of tea",
+          "what about reading"
+        ],
+        "correctAnswer": "it's my cup of tea",
+        "reason": "'It's my cup of tea' is an idiom meaning something you enjoy",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "3"
+      }
+    ],
+    "sorting": [
+      {
+        "title": "Sort verbs by tense",
+        "categories": [
+          {
+            "id": "category1",
+            "name": "Present"
+          },
+          {
+            "id": "category2",
+            "name": "Past"
+          },
+          {
+            "id": "category3",
+            "name": "Future"
+          },
+          {
+            "id": "category4",
+            "name": "Continuous"
+          }
+        ],
+        "wordList": [
+          "go",
+          "went",
+          "will go",
+          "going",
+          "eat",
+          "ate",
+          "will eat",
+          "eating"
+        ],
+        "answerKey": {
+          "go": "category1",
+          "went": "category2",
+          "will go": "category3",
+          "going": "category4",
+          "eat": "category1",
+          "ate": "category2",
+          "will eat": "category3",
+          "eating": "category4"
+        },
+        "id": 2,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "6"
+      },
+      {
+        "title": "Sort the words: Animals or Fruits?",
+        "categories": [
+          {
+            "id": "animals",
+            "name": "🐾 Animals"
+          },
+          {
+            "id": "fruits",
+            "name": "🍎 Fruits"
+          }
+        ],
+        "wordList": [
+          "cat",
+          "apple",
+          "dog",
+          "banana"
+        ],
+        "answerKey": {
+          "cat": "animals",
+          "dog": "animals",
+          "apple": "fruits",
+          "banana": "fruits"
+        },
+        "id": 4,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "1"
+      }
+    ],
+    "spilling": [
+      {
+        "word": "cat",
+        "audioFile": null,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "4",
+        "id": 1
+      },
+      {
+        "word": "win",
+        "id": 2,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "book",
+        "id": 3,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "go",
+        "id": 4,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "get",
+        "id": 5,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "yet",
+        "id": 6,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "you",
+        "id": 7,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "dog",
+        "id": 8,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "food",
+        "id": 9,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "win",
+        "id": 10,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "horse",
+        "id": 11,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "word": "hello",
+        "id": 12,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "shake hands",
+        "id": 13,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "good bye",
+        "id": 14,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "friend",
+        "id": 15,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "play",
+        "id": 16,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "meet",
+        "id": 17,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "name",
+        "id": 18,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "want",
+        "id": 19,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "nice to meet you",
+        "id": 20,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "hi",
+        "id": 21,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "Sunday",
+        "id": 22,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Saturday",
+        "id": 23,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Friday",
+        "id": 24,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Thursday",
+        "id": 25,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Wednesday",
+        "id": 26,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Tuesday",
+        "id": 27,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Monday",
+        "id": 28,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "come",
+        "id": 29,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "wake up",
+        "id": 30,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "look at",
+        "id": 31,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "wash",
+        "id": 32,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "watch",
+        "id": 33,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "read",
+        "id": 34,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "sleep",
+        "id": 35,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "close",
+        "id": 36,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "open",
+        "id": 37,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "stand up",
+        "id": 38,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      }
+    ],
+    "Underline": [
+      {
+        "sentence": "The big cat is sleeping on the soft mat.",
+        "instruction": "Underline the adjectives:",
+        "correctWords": [
+          "big",
+          "soft"
+        ],
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "2"
+      },
+      {
+        "sentence": "my big cat is sleeping on the soft mat.",
+        "instruction": "Underline the the words with e:",
+        "correctWords": [
+          "sleeping",
+          "the"
+        ],
+        "id": 1,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "the cat is in the garden",
+        "instruction": "Underline the the words with a:",
+        "correctWords": [
+          "cat",
+          "garden"
+        ],
+        "id": 2,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "I love banana and orange",
+        "instruction": "Underline the the words with n:",
+        "correctWords": [
+          "banana",
+          "orange"
+        ],
+        "id": 3,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "you are a friend",
+        "instruction": "Underline the the words with y:",
+        "correctWords": [
+          "you"
+        ],
+        "id": 4,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "he is old",
+        "instruction": "Underline the the words with d:",
+        "correctWords": [
+          "old"
+        ],
+        "id": 5,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "it is a dog",
+        "instruction": "Underline the the words with g:",
+        "correctWords": [
+          "dog"
+        ],
+        "id": 6,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "we are a family",
+        "instruction": "Underline the the words with w:",
+        "correctWords": [
+          "we"
+        ],
+        "id": 7,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "you eat fruits",
+        "instruction": "Underline the the words with u:",
+        "correctWords": [
+          "you",
+          "fruits"
+        ],
+        "id": 8,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "I go to school.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "go"
+        ],
+        "id": 10,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They eat an apple.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "eat"
+        ],
+        "id": 11,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We drink milk.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "drink"
+        ],
+        "id": 12,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They read a book.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "read"
+        ],
+        "id": 13,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We write a letter.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "write"
+        ],
+        "id": 14,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "I wake up early.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "wake up"
+        ],
+        "id": 15,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We sleep at night.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "sleep"
+        ],
+        "id": 16,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They come to school.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "come"
+        ],
+        "id": 17,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "I want a pen.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "want"
+        ],
+        "id": 18,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We study English.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "study"
+        ],
+        "id": 19,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They watch TV.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "watch"
+        ],
+        "id": 20,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "You wash your hands.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "wash"
+        ],
+        "id": 21,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Please open the door.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "open"
+        ],
+        "id": 22,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Please close the window.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "close"
+        ],
+        "id": 23,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Please sit down.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "sit down"
+        ],
+        "id": 24,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Please stand up.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "stand up"
+        ],
+        "id": 25,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Look at the picture.",
+        "instruction": "Underline the verbs:",
+        "correctWords": [
+          "look"
+        ],
+        "id": 26,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      }
+    ],
+    "vocab_listening_quiz": [
+      {
+        "word": "complaint",
+        "meaning": "شكوى",
+        "options": [
+          "شكوى",
+          "طلب",
+          "رفض",
+          "مديح"
+        ],
+        "arabicReason": "الكلمة تعني 'شكوى' وهي تُستخدم للتعبير عن عدم الرضا.",
+        "englishReason": "The word means 'complaint' used to express dissatisfaction.",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "5"
+      },
+      {
+        "word": "hello",
+        "meaning": "مرحبا",
+        "options": [
+          "مرحبا",
+          "يريد",
+          "مع السلامة",
+          "صباح الخير"
+        ],
+        "arabicReason": "الكلمة تعني 'أهلا' أو 'مرحبا' وهي تحية ودية وغير رسمية.",
+        "englishReason": "The word means 'hi' - a friendly and informal greeting.",
+        "id": 2,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "nice to meet you",
+        "meaning": "تشرفت بلقائك",
+        "options": [
+          "اريد رؤيتك",
+          "سعيد بلقائك",
+          "أهلاً بك",
+          "السلام عليكم"
+        ],
+        "arabicReason": "العبارة تعني 'تشرفت بلقائك' وتقال عند التعارف بشخص لأول مرة.",
+        "englishReason": "The phrase means 'nice to meet you' - said when being introduced to someone.",
+        "id": 3,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "want",
+        "meaning": "يريد",
+        "options": [
+          "يريد",
+          "يري",
+          "يعمل",
+          "ينام"
+        ],
+        "arabicReason": "الكلمة تعني 'يريد' وهي التعبير عن الرغبة في الحصول على شيء.",
+        "englishReason": "The word means 'want' - expressing a desire to have something.",
+        "id": 4,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "name",
+        "meaning": "اسم",
+        "options": [
+          "اسم",
+          "عمل",
+          "مدرسة",
+          "نادة"
+        ],
+        "arabicReason": "الكلمة تعني 'اسم' وهو ما ننادي به الشخص للتعرف عليه.",
+        "englishReason": "The word means 'name' - what we call a person to identify them.",
+        "id": 5,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "meet",
+        "meaning": "يلتقي",
+        "options": [
+          "يري",
+          "يتكلم",
+          "يتقابل",
+          "يصاحب"
+        ],
+        "arabicReason": "الكلمة تعني 'يلتقي' أو 'يقابل' شخصاً ما في مكان ما.",
+        "englishReason": "The word means 'meet' - to come together with someone.",
+        "id": 6,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "play",
+        "meaning": "يلعب",
+        "options": [
+          "يلعب",
+          "يركض",
+          "يقفز",
+          "يسبح"
+        ],
+        "arabicReason": "الكلمة تعني 'يلعب' وهي فعل نقوم به للاستمتاع والحركة.",
+        "englishReason": "The word means 'play' - an action we do for fun and movement.",
+        "id": 7,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "friend",
+        "meaning": "صديق",
+        "options": [
+          "صديق",
+          "اخت",
+          "جار",
+          "أخ"
+        ],
+        "arabicReason": "الكلمة تعني 'صديق' وهو الشخص الذي تحبه وتلعب معه.",
+        "englishReason": "The word means 'friend' - a person you like and play with.",
+        "id": 8,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "good bye",
+        "meaning": "مع السلامة",
+        "options": [
+          "مع السلامة",
+          "مرحبا",
+          "تعالي",
+          "تصبح على خير"
+        ],
+        "arabicReason": "العبارة تعني 'مع السلامة' وتستخدم عند المغادرة أو الوداع.",
+        "englishReason": "The phrase means 'goodbye' - used when leaving or saying farewell.",
+        "id": 9,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "shake hands",
+        "meaning": "يصافح",
+        "options": [
+          "يصافح",
+          "يعانق",
+          "يقبّل",
+          "يلوح"
+        ],
+        "arabicReason": "العبارة تعني 'يصافح' وهي طريقة للترحيب بالآخرين بالمصافحة.",
+        "englishReason": "The phrase means 'shake hands' - a way to greet others by holding hands.",
+        "id": 10,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "hi",
+        "meaning": "أهلا",
+        "options": [
+          "أهلا",
+          "من",
+          "الي",
+          "علي"
+        ],
+        "arabicReason": "الكلمة تعني 'مرحبا' وتستخدم للتحية عند مقابلة شخص.",
+        "englishReason": "The word means 'hello' - used as a greeting when meeting someone.",
+        "id": 11,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "go",
+        "meaning": "يذهب",
+        "options": [
+          "يذهب",
+          "يجيء",
+          "يركض",
+          "يقفز"
+        ],
+        "arabicReason": "الكلمة تعني 'يذهب' وتستخدم للتعبير عن الحركة من مكان إلى آخر.",
+        "englishReason": "The word means 'go' - used to express movement from one place to another.",
+        "id": 12,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "eat",
+        "meaning": "يأكل",
+        "options": [
+          "يأكل",
+          "يشرب",
+          "يطبخ",
+          "يمضغ"
+        ],
+        "arabicReason": "الكلمة تعني 'يأكل' وهي فعل تناول الطعام.",
+        "englishReason": "The word means 'eat' - the action of consuming food.",
+        "id": 13,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "drink",
+        "meaning": "يشرب",
+        "options": [
+          "يشرب",
+          "يأكل",
+          "يسكب",
+          "يبلع"
+        ],
+        "arabicReason": "الكلمة تعني 'يشرب' وهي فعل تناول السوائل.",
+        "englishReason": "The word means 'drink' - the action of consuming liquids.",
+        "id": 14,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "read",
+        "meaning": "يقرأ",
+        "options": [
+          "يقرأ",
+          "يكتب",
+          "يرسم",
+          "يغني"
+        ],
+        "arabicReason": "الكلمة تعني 'يقرأ' وتعني النظر إلى الكلمات وفهمها.",
+        "englishReason": "The word means 'read' - looking at and understanding written words.",
+        "id": 15,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "write",
+        "meaning": "يكتب",
+        "options": [
+          "يكتب",
+          "يقرأ",
+          "يمسح",
+          "يرسم"
+        ],
+        "arabicReason": "الكلمة تعني 'يكتب' وهي عملية تكوين الحروف والكلمات على الورق.",
+        "englishReason": "The word means 'write' - the process of forming letters and words on paper.",
+        "id": 16,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "wakeup",
+        "meaning": "يستيقظ",
+        "options": [
+          "يستيقظ",
+          "ينام",
+          "يتمدد",
+          "يتثاءب"
+        ],
+        "arabicReason": "الكلمة تعني 'يستيقظ' وهي التوقف عن النوم وبداية اليوم.",
+        "englishReason": "The word means 'wake up' - stopping sleep and starting the day.",
+        "id": 17,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "sleep",
+        "meaning": "ينام",
+        "options": [
+          "ينام",
+          "يستيقظ",
+          "يحلم",
+          "يغفو"
+        ],
+        "arabicReason": "الكلمة تعني 'ينام' وهي حالة الراحة التي يغلق فيها الإنسان عينيه.",
+        "englishReason": "The word means 'sleep' - a state of rest where a person closes their eyes.",
+        "id": 18,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "come",
+        "meaning": "يأتي",
+        "options": [
+          "يأتي",
+          "يذهب",
+          "يرجع",
+          "يغادر"
+        ],
+        "arabicReason": "الكلمة تعني 'يأتي' وتستخدم للتعبير عن الحركة نحو المتحدث.",
+        "englishReason": "The word means 'come' - used to express movement towards the speaker.",
+        "id": 19,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "want",
+        "meaning": "يريد",
+        "options": [
+          "يريد",
+          "يحتاج",
+          "يحب",
+          "يكره"
+        ],
+        "arabicReason": "الكلمة تعني 'يريد' وتعني الرغبة في الحصول على شيء ما.",
+        "englishReason": "The word means 'want' - expressing a desire to have something.",
+        "id": 20,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "study",
+        "meaning": "يدرس",
+        "options": [
+          "يدرس",
+          "يلعب",
+          "يعمل",
+          "يرتاح"
+        ],
+        "arabicReason": "الكلمة تعني 'يدرس' وتعني تعلم المعلومات واكتساب المعرفة.",
+        "englishReason": "The word means 'study' - learning information and acquiring knowledge.",
+        "id": 21,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "watch",
+        "meaning": "يشاهد",
+        "options": [
+          "يشاهد",
+          "ينظر",
+          "يستمع",
+          "يلمس"
+        ],
+        "arabicReason": "الكلمة تعني 'يشاهد' وتعني النظر إلى شيء متحرك أو حدث لفترة من الوقت.",
+        "englishReason": "The word means 'watch' - looking at something moving or an event for a period of time.",
+        "id": 22,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "wash",
+        "meaning": "يغسل",
+        "options": [
+          "يغسل",
+          "ينشف",
+          "يمسح",
+          "ينظف"
+        ],
+        "arabicReason": "الكلمة تعني 'يغسل' وتعني تنظيف شيء بالماء والصابون.",
+        "englishReason": "The word means 'wash' - cleaning something with water and soap.",
+        "id": 23,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "open",
+        "meaning": "يفتح",
+        "options": [
+          "يفتح",
+          "يغلق",
+          "يكسر",
+          "يدق"
+        ],
+        "arabicReason": "الكلمة تعني 'يفتح' وتعني جعل الشيء غير مغلق أو متاحاً.",
+        "englishReason": "The word means 'open' - making something not closed or accessible.",
+        "id": 24,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "close",
+        "meaning": "يغلق",
+        "options": [
+          "يغلق",
+          "يفتح",
+          "يكسر",
+          "يرمي"
+        ],
+        "arabicReason": "الكلمة تعني 'يغلق' وتعني جعل الشيء مغلقاً أو غير مفتوح.",
+        "englishReason": "The word means 'close' - making something shut or not open.",
+        "id": 25,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "sit down",
+        "meaning": "يجلس",
+        "options": [
+          "يجلس",
+          "يقف",
+          "يمشي",
+          "يركض"
+        ],
+        "arabicReason": "العبارة تعني 'يجلس' وهي وضع الجسم على كرسي أو الأرض.",
+        "englishReason": "The phrase means 'sit down' - resting the body on a chair or the floor.",
+        "id": 26,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "stand up",
+        "meaning": "يقف",
+        "options": [
+          "يقف",
+          "يجلس",
+          "ينحني",
+          "يسقط"
+        ],
+        "arabicReason": "العبارة تعني 'يقف' وهي رفع الجسم من وضع الجلوس إلى وضع الاعتدال.",
+        "englishReason": "The phrase means 'stand up' - raising the body from a sitting to an upright position.",
+        "id": 27,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "look",
+        "meaning": "ينظر",
+        "options": [
+          "ينظر",
+          "يستمع",
+          "يشم",
+          "يتذوق"
+        ],
+        "arabicReason": "الكلمة تعني 'ينظر' وتعني توجيه العينين نحو شيء معين.",
+        "englishReason": "The word means 'look' - directing one's eyes towards something specific.",
+        "id": 28,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "Sunday",
+        "meaning": "الأحد",
+        "options": [
+          "الثلاثاء",
+          "الأحد",
+          "الجمعة",
+          "الاثنين"
+        ],
+        "arabicReason": "Sunday تعني يوم الأحد، وهو اليوم الذي يأتي بعد السبت.",
+        "englishReason": "Sunday means the day that comes after Saturday.",
+        "id": 29,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Saturday",
+        "meaning": "السبت",
+        "options": [
+          "السبت",
+          "الخميس",
+          "الاثنين",
+          "الأربعاء"
+        ],
+        "arabicReason": "Saturday تعني يوم السبت، وهو اليوم الذي يأتي بعد الجمعة.",
+        "englishReason": "Saturday means the day that comes after Friday.",
+        "id": 30,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Friday",
+        "meaning": "الجمعة",
+        "options": [
+          "الأحد",
+          "الثلاثاء",
+          "الجمعة",
+          "الأربعاء"
+        ],
+        "arabicReason": "Friday تعني يوم الجمعة، وهو اليوم الذي يأتي بعد الخميس.",
+        "englishReason": "Friday means the day that comes after Thursday.",
+        "id": 31,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Thursday",
+        "meaning": "الخميس",
+        "options": [
+          "الجمعة",
+          "الخميس",
+          "الاثنين",
+          "السبت"
+        ],
+        "arabicReason": "Thursday تعني يوم الخميس، وهو اليوم الذي يأتي بعد الأربعاء.",
+        "englishReason": "Thursday means the day that comes after Wednesday.",
+        "id": 32,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Wednesday",
+        "meaning": "الأربعاء",
+        "options": [
+          "الثلاثاء",
+          "الأربعاء",
+          "الجمعة",
+          "الأحد"
+        ],
+        "arabicReason": "Wednesday تعني يوم الأربعاء، وهو اليوم الذي يأتي بعد الثلاثاء.",
+        "englishReason": "Wednesday means the day that comes after Tuesday.",
+        "id": 33,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Tuesday",
+        "meaning": "الثلاثاء",
+        "options": [
+          "الخميس",
+          "الثلاثاء",
+          "السبت",
+          "الأحد"
+        ],
+        "arabicReason": "Tuesday تعني يوم الثلاثاء، وهو اليوم الذي يأتي بعد الاثنين.",
+        "englishReason": "Tuesday means the day that comes after Monday.",
+        "id": 34,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Monday",
+        "meaning": "الاثنين",
+        "options": [
+          "الاثنين",
+          "الثلاثاء",
+          "الأحد",
+          "الجمعة"
+        ],
+        "arabicReason": "Monday تعني يوم الاثنين، وهو أول يوم عمل في معظم الدول.",
+        "englishReason": "Monday means the first working day of the week in many countries.",
+        "id": 35,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "wake up",
+        "meaning": "يستيقظ",
+        "options": [
+          "يستيقظ",
+          "ينام",
+          "يجلس",
+          "يأتي"
+        ],
+        "arabicReason": "الفعل (wake up) يعني يستيقظ من النوم.",
+        "englishReason": "The verb 'wake up' means to stop sleeping.",
+        "id": 36,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "look at",
+        "meaning": "ينظر إلى",
+        "options": [
+          "ينظر إلى",
+          "يشاهد",
+          "يقرأ",
+          "يقف"
+        ],
+        "arabicReason": "الفعل (look at) يعني ينظر إلى شيء أو شخص.",
+        "englishReason": "The verb 'look at' means to direct your eyes toward something.",
+        "id": 37,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "wash",
+        "meaning": "يغسل",
+        "options": [
+          "يغسل",
+          "ينظف",
+          "يفتح",
+          "ينام"
+        ],
+        "arabicReason": "الفعل (wash) يعني يغسل بالماء.",
+        "englishReason": "The verb 'wash' means to clean something with water.",
+        "id": 38,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "watch",
+        "meaning": "يشاهد",
+        "options": [
+          "يشاهد",
+          "يسمع",
+          "ينظر إلى",
+          "يغلق"
+        ],
+        "arabicReason": "الفعل (watch) يعني يشاهد شيئًا باهتمام.",
+        "englishReason": "The verb 'watch' means to look at something carefully.",
+        "id": 39,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "read",
+        "meaning": "يقرأ",
+        "options": [
+          "يقرأ",
+          "يكتب",
+          "يشاهد",
+          "يفتح"
+        ],
+        "arabicReason": "الفعل (read) يعني يقرأ كتابًا أو قصة.",
+        "englishReason": "The verb 'read' means to look at and understand written words.",
+        "id": 40,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "sleep",
+        "meaning": "ينام",
+        "options": [
+          "ينام",
+          "يستيقظ",
+          "يقرأ",
+          "يقف"
+        ],
+        "arabicReason": "الفعل (sleep) يعني ينام للراحة.",
+        "englishReason": "The verb 'sleep' means to rest with your eyes closed.",
+        "id": 41,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "close",
+        "meaning": "يغلق",
+        "options": [
+          "يغلق",
+          "يفتح",
+          "يشاهد",
+          "يغسل"
+        ],
+        "arabicReason": "الفعل (close) يعني يغلق شيئًا مثل الباب أو النافذة.",
+        "englishReason": "The verb 'close' means to shut something.",
+        "id": 42,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "open",
+        "meaning": "يفتح",
+        "options": [
+          "يفتح",
+          "يغلق",
+          "يقرأ",
+          "ينظر إلى"
+        ],
+        "arabicReason": "الفعل (open) يعني يفتح شيئًا مثل الباب أو الكتاب.",
+        "englishReason": "The verb 'open' means to make something not closed.",
+        "id": 43,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "stand up",
+        "meaning": "يقف",
+        "options": [
+          "يقف",
+          "يجلس",
+          "ينام",
+          "يجري"
+        ],
+        "arabicReason": "الفعل (stand up) يعني يقف بعد الجلوس.",
+        "englishReason": "The verb 'stand up' means to rise to a standing position.",
+        "id": 44,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "come",
+        "meaning": "يأتي",
+        "options": [
+          "يأتي",
+          "يذهب",
+          "يجري",
+          "يقف"
+        ],
+        "arabicReason": "الفعل (come) يعني يأتي أو يحضر إلى مكان.",
+        "englishReason": "The verb 'come' means to move toward a place or a person.",
+        "id": 45,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      }
+    ],
+    "vocab_quiz": [
+      {
+        "word": "apple",
+        "meaning": "تفاحة",
+        "options": [
+          "تفاحة",
+          "موزة",
+          "برتقالة",
+          "خوخ"
+        ],
+        "arabicReason": "الكلمة تعني 'تفاحة' وهي فاكهة حمراء وحلوة.",
+        "englishReason": "The word means 'apple' - a red and sweet fruit.",
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "3"
+      },
+      {
+        "word": "hello",
+        "meaning": "مرحبا",
+        "options": [
+          "مرحبا",
+          "يريد",
+          "مع السلامة",
+          "صباح الخير"
+        ],
+        "arabicReason": "الكلمة تعني 'مرحبا' وتستخدم للتحية عند مقابلة شخص.",
+        "englishReason": "The word means 'hello' - used as a greeting when meeting someone.",
+        "id": 2,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "shake hands",
+        "meaning": "يصافح",
+        "options": [
+          "يصافح",
+          "يعانق",
+          "يقبّل",
+          "يلوح"
+        ],
+        "arabicReason": "العبارة تعني 'يصافح' وهي طريقة للترحيب بالآخرين بالمصافحة.",
+        "englishReason": "The phrase means 'shake hands' - a way to greet others by holding hands.",
+        "id": 4,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "good bye",
+        "meaning": "مع السلامة",
+        "options": [
+          "مع السلامة",
+          "مرحبا",
+          "تعالي",
+          "تصبح على خير"
+        ],
+        "arabicReason": "العبارة تعني 'مع السلامة' وتستخدم عند المغادرة أو الوداع.",
+        "englishReason": "The phrase means 'goodbye' - used when leaving or saying farewell.",
+        "id": 5,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "friend",
+        "meaning": "صديق",
+        "options": [
+          "صديق",
+          "اخت",
+          "جار",
+          "أخ"
+        ],
+        "arabicReason": "الكلمة تعني 'صديق' وهو الشخص الذي تحبه وتلعب معه.",
+        "englishReason": "The word means 'friend' - a person you like and play with.",
+        "id": 6,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "play",
+        "meaning": "يلعب",
+        "options": [
+          "يلعب",
+          "يركض",
+          "يقفز",
+          "يسبح"
+        ],
+        "arabicReason": "الكلمة تعني 'يلعب' وهي فعل نقوم به للاستمتاع والحركة.",
+        "englishReason": "The word means 'play' - an action we do for fun and movement.",
+        "id": 7,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "meet",
+        "meaning": "يلتقي",
+        "options": [
+          "يري",
+          "يتكلم",
+          "يتقابل",
+          "يصاحب"
+        ],
+        "arabicReason": "الكلمة تعني 'يلتقي' أو 'يقابل' شخصاً ما في مكان ما.",
+        "englishReason": "The word means 'meet' - to come together with someone.",
+        "id": 8,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "name",
+        "meaning": "اسم",
+        "options": [
+          "اسم",
+          "عمل",
+          "مدرسة",
+          "نادة"
+        ],
+        "arabicReason": "الكلمة تعني 'اسم' وهو ما ننادي به الشخص للتعرف عليه.",
+        "englishReason": "The word means 'name' - what we call a person to identify them.",
+        "id": 9,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "want",
+        "meaning": "يريد",
+        "options": [
+          "يريد",
+          "يري",
+          "يعمل",
+          "ينام"
+        ],
+        "arabicReason": "الكلمة تعني 'يريد' وهي التعبير عن الرغبة في الحصول على شيء.",
+        "englishReason": "The word means 'want' - expressing a desire to have something.",
+        "id": 10,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "nice to meet you",
+        "meaning": "تشرفت بلقائك",
+        "options": [
+          "اريد رؤيتك",
+          "سعيد بلقائك",
+          "أهلاً بك",
+          "السلام عليكم"
+        ],
+        "arabicReason": "العبارة تعني 'تشرفت بلقائك' وتقال عند التعارف بشخص لأول مرة.",
+        "englishReason": "The phrase means 'nice to meet you' - said when being introduced to someone.",
+        "id": 11,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "hi",
+        "meaning": "أهلا",
+        "options": [
+          "أهلا",
+          "من",
+          "الي",
+          "علي"
+        ],
+        "arabicReason": "الكلمة تعني 'أهلا' أو 'مرحبا' وهي تحية ودية وغير رسمية.",
+        "englishReason": "The word means 'hi' - a friendly and informal greeting.",
+        "id": 12,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "go",
+        "meaning": "يذهب",
+        "options": [
+          "يذهب",
+          "يجيء",
+          "يركض",
+          "يقفز"
+        ],
+        "arabicReason": "الكلمة تعني 'يذهب' وتستخدم للتعبير عن الحركة من مكان إلى آخر.",
+        "englishReason": "The word means 'go' - used to express movement from one place to another.",
+        "id": 12,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "eat",
+        "meaning": "يأكل",
+        "options": [
+          "يأكل",
+          "يشرب",
+          "يطبخ",
+          "يمضغ"
+        ],
+        "arabicReason": "الكلمة تعني 'يأكل' وهي فعل تناول الطعام.",
+        "englishReason": "The word means 'eat' - the action of consuming food.",
+        "id": 13,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "drink",
+        "meaning": "يشرب",
+        "options": [
+          "يشرب",
+          "يأكل",
+          "يسكب",
+          "يبلع"
+        ],
+        "arabicReason": "الكلمة تعني 'يشرب' وهي فعل تناول السوائل.",
+        "englishReason": "The word means 'drink' - the action of consuming liquids.",
+        "id": 14,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "read",
+        "meaning": "يقرأ",
+        "options": [
+          "يقرأ",
+          "يكتب",
+          "يرسم",
+          "يغني"
+        ],
+        "arabicReason": "الكلمة تعني 'يقرأ' وتعني النظر إلى الكلمات وفهمها.",
+        "englishReason": "The word means 'read' - looking at and understanding written words.",
+        "id": 15,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "write",
+        "meaning": "يكتب",
+        "options": [
+          "يكتب",
+          "يقرأ",
+          "يمسح",
+          "يرسم"
+        ],
+        "arabicReason": "الكلمة تعني 'يكتب' وهي عملية تكوين الحروف والكلمات على الورق.",
+        "englishReason": "The word means 'write' - the process of forming letters and words on paper.",
+        "id": 16,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "wakeup",
+        "meaning": "يستيقظ",
+        "options": [
+          "يستيقظ",
+          "ينام",
+          "يتمدد",
+          "يتثاءب"
+        ],
+        "arabicReason": "الكلمة تعني 'يستيقظ' وهي التوقف عن النوم وبداية اليوم.",
+        "englishReason": "The word means 'wake up' - stopping sleep and starting the day.",
+        "id": 17,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "sleep",
+        "meaning": "ينام",
+        "options": [
+          "ينام",
+          "يستيقظ",
+          "يحلم",
+          "يغفو"
+        ],
+        "arabicReason": "الكلمة تعني 'ينام' وهي حالة الراحة التي يغلق فيها الإنسان عينيه.",
+        "englishReason": "The word means 'sleep' - a state of rest where a person closes their eyes.",
+        "id": 18,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "come",
+        "meaning": "يأتي",
+        "options": [
+          "يأتي",
+          "يذهب",
+          "يرجع",
+          "يغادر"
+        ],
+        "arabicReason": "الكلمة تعني 'يأتي' وتستخدم للتعبير عن الحركة نحو المتحدث.",
+        "englishReason": "The word means 'come' - used to express movement towards the speaker.",
+        "id": 19,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "want",
+        "meaning": "يريد",
+        "options": [
+          "يريد",
+          "يحتاج",
+          "يحب",
+          "يكره"
+        ],
+        "arabicReason": "الكلمة تعني 'يريد' وتعني الرغبة في الحصول على شيء ما.",
+        "englishReason": "The word means 'want' - expressing a desire to have something.",
+        "id": 20,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "study",
+        "meaning": "يدرس",
+        "options": [
+          "يدرس",
+          "يلعب",
+          "يعمل",
+          "يرتاح"
+        ],
+        "arabicReason": "الكلمة تعني 'يدرس' وتعني تعلم المعلومات واكتساب المعرفة.",
+        "englishReason": "The word means 'study' - learning information and acquiring knowledge.",
+        "id": 21,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "watch",
+        "meaning": "يشاهد",
+        "options": [
+          "يشاهد",
+          "ينظر",
+          "يستمع",
+          "يلمس"
+        ],
+        "arabicReason": "الكلمة تعني 'يشاهد' وتعني النظر إلى شيء متحرك أو حدث لفترة من الوقت.",
+        "englishReason": "The word means 'watch' - looking at something moving or an event for a period of time.",
+        "id": 22,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "wash",
+        "meaning": "يغسل",
+        "options": [
+          "يغسل",
+          "ينشف",
+          "يمسح",
+          "ينظف"
+        ],
+        "arabicReason": "الكلمة تعني 'يغسل' وتعني تنظيف شيء بالماء والصابون.",
+        "englishReason": "The word means 'wash' - cleaning something with water and soap.",
+        "id": 23,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "open",
+        "meaning": "يفتح",
+        "options": [
+          "يفتح",
+          "يغلق",
+          "يكسر",
+          "يدق"
+        ],
+        "arabicReason": "الكلمة تعني 'يفتح' وتعني جعل الشيء غير مغلق أو متاحاً.",
+        "englishReason": "The word means 'open' - making something not closed or accessible.",
+        "id": 24,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "close",
+        "meaning": "يغلق",
+        "options": [
+          "يغلق",
+          "يفتح",
+          "يكسر",
+          "يرمي"
+        ],
+        "arabicReason": "الكلمة تعني 'يغلق' وتعني جعل الشيء مغلقاً أو غير مفتوح.",
+        "englishReason": "The word means 'close' - making something shut or not open.",
+        "id": 25,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "sit down",
+        "meaning": "يجلس",
+        "options": [
+          "يجلس",
+          "يقف",
+          "يمشي",
+          "يركض"
+        ],
+        "arabicReason": "العبارة تعني 'يجلس' وهي وضع الجسم على كرسي أو الأرض.",
+        "englishReason": "The phrase means 'sit down' - resting the body on a chair or the floor.",
+        "id": 26,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "stand up",
+        "meaning": "يقف",
+        "options": [
+          "يقف",
+          "يجلس",
+          "ينحني",
+          "يسقط"
+        ],
+        "arabicReason": "العبارة تعني 'يقف' وهي رفع الجسم من وضع الجلوس إلى وضع الاعتدال.",
+        "englishReason": "The phrase means 'stand up' - raising the body from a sitting to an upright position.",
+        "id": 27,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "look",
+        "meaning": "ينظر",
+        "options": [
+          "ينظر",
+          "يستمع",
+          "يشم",
+          "يتذوق"
+        ],
+        "arabicReason": "الكلمة تعني 'ينظر' وتعني توجيه العينين نحو شيء معين.",
+        "englishReason": "The word means 'look' - directing one's eyes towards something specific.",
+        "id": 28,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "word": "Sunday",
+        "meaning": "الأحد",
+        "options": [
+          "الثلاثاء",
+          "الأحد",
+          "الجمعة",
+          "الاثنين"
+        ],
+        "arabicReason": "Sunday تعني يوم الأحد، وهو اليوم الذي يأتي بعد السبت.",
+        "englishReason": "Sunday means the day that comes after Saturday.",
+        "id": 29,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Saturday",
+        "meaning": "السبت",
+        "options": [
+          "السبت",
+          "الخميس",
+          "الاثنين",
+          "الأربعاء"
+        ],
+        "arabicReason": "Saturday تعني يوم السبت، وهو اليوم الذي يأتي بعد الجمعة.",
+        "englishReason": "Saturday means the day that comes after Friday.",
+        "id": 30,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Friday",
+        "meaning": "الجمعة",
+        "options": [
+          "الأحد",
+          "الثلاثاء",
+          "الجمعة",
+          "الأربعاء"
+        ],
+        "arabicReason": "Friday تعني يوم الجمعة، وهو اليوم الذي يأتي بعد الخميس.",
+        "englishReason": "Friday means the day that comes after Thursday.",
+        "id": 31,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Thursday",
+        "meaning": "الخميس",
+        "options": [
+          "الجمعة",
+          "الخميس",
+          "الاثنين",
+          "السبت"
+        ],
+        "arabicReason": "Thursday تعني يوم الخميس، وهو اليوم الذي يأتي بعد الأربعاء.",
+        "englishReason": "Thursday means the day that comes after Wednesday.",
+        "id": 32,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Wednesday",
+        "meaning": "الأربعاء",
+        "options": [
+          "الثلاثاء",
+          "الأربعاء",
+          "الجمعة",
+          "الأحد"
+        ],
+        "arabicReason": "Wednesday تعني يوم الأربعاء، وهو اليوم الذي يأتي بعد الثلاثاء.",
+        "englishReason": "Wednesday means the day that comes after Tuesday.",
+        "id": 33,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Tuesday",
+        "meaning": "الثلاثاء",
+        "options": [
+          "الخميس",
+          "الثلاثاء",
+          "السبت",
+          "الأحد"
+        ],
+        "arabicReason": "Tuesday تعني يوم الثلاثاء، وهو اليوم الذي يأتي بعد الاثنين.",
+        "englishReason": "Tuesday means the day that comes after Monday.",
+        "id": 34,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "Monday",
+        "meaning": "الاثنين",
+        "options": [
+          "الاثنين",
+          "الثلاثاء",
+          "الأحد",
+          "الجمعة"
+        ],
+        "arabicReason": "Monday تعني يوم الاثنين، وهو أول يوم عمل في معظم الدول.",
+        "englishReason": "Monday means the first working day of the week in many countries.",
+        "id": 35,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "wake up",
+        "meaning": "يستيقظ",
+        "options": [
+          "يستيقظ",
+          "ينام",
+          "يجلس",
+          "يأتي"
+        ],
+        "arabicReason": "الفعل (wake up) يعني يستيقظ من النوم.",
+        "englishReason": "The verb 'wake up' means to stop sleeping.",
+        "id": 36,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "look at",
+        "meaning": "ينظر إلى",
+        "options": [
+          "ينظر إلى",
+          "يشاهد",
+          "يقرأ",
+          "يقف"
+        ],
+        "arabicReason": "الفعل (look at) يعني ينظر إلى شيء أو شخص.",
+        "englishReason": "The verb 'look at' means to direct your eyes toward something.",
+        "id": 37,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "wash",
+        "meaning": "يغسل",
+        "options": [
+          "يغسل",
+          "ينظف",
+          "يفتح",
+          "ينام"
+        ],
+        "arabicReason": "الفعل (wash) يعني يغسل بالماء.",
+        "englishReason": "The verb 'wash' means to clean something with water.",
+        "id": 38,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "watch",
+        "meaning": "يشاهد",
+        "options": [
+          "يشاهد",
+          "يسمع",
+          "ينظر إلى",
+          "يغلق"
+        ],
+        "arabicReason": "الفعل (watch) يعني يشاهد شيئًا باهتمام.",
+        "englishReason": "The verb 'watch' means to look at something carefully.",
+        "id": 39,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "read",
+        "meaning": "يقرأ",
+        "options": [
+          "يقرأ",
+          "يكتب",
+          "يشاهد",
+          "يفتح"
+        ],
+        "arabicReason": "الفعل (read) يعني يقرأ كتابًا أو قصة.",
+        "englishReason": "The verb 'read' means to look at and understand written words.",
+        "id": 40,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "sleep",
+        "meaning": "ينام",
+        "options": [
+          "ينام",
+          "يستيقظ",
+          "يقرأ",
+          "يقف"
+        ],
+        "arabicReason": "الفعل (sleep) يعني ينام للراحة.",
+        "englishReason": "The verb 'sleep' means to rest with your eyes closed.",
+        "id": 41,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "close",
+        "meaning": "يغلق",
+        "options": [
+          "يغلق",
+          "يفتح",
+          "يشاهد",
+          "يغسل"
+        ],
+        "arabicReason": "الفعل (close) يعني يغلق شيئًا مثل الباب أو النافذة.",
+        "englishReason": "The verb 'close' means to shut something.",
+        "id": 42,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "open",
+        "meaning": "يفتح",
+        "options": [
+          "يفتح",
+          "يغلق",
+          "يقرأ",
+          "ينظر إلى"
+        ],
+        "arabicReason": "الفعل (open) يعني يفتح شيئًا مثل الباب أو الكتاب.",
+        "englishReason": "The verb 'open' means to make something not closed.",
+        "id": 43,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "stand up",
+        "meaning": "يقف",
+        "options": [
+          "يقف",
+          "يجلس",
+          "ينام",
+          "يجري"
+        ],
+        "arabicReason": "الفعل (stand up) يعني يقف بعد الجلوس.",
+        "englishReason": "The verb 'stand up' means to rise to a standing position.",
+        "id": 44,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "word": "come",
+        "meaning": "يأتي",
+        "options": [
+          "يأتي",
+          "يذهب",
+          "يجري",
+          "يقف"
+        ],
+        "arabicReason": "الفعل (come) يعني يأتي أو يحضر إلى مكان.",
+        "englishReason": "The verb 'come' means to move toward a place or a person.",
+        "id": 45,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "3"
+      }
+    ],
+    "what_do_you_hear": [
+      {
+        "sentence": "I like to read books in my free time.",
+        "options": [
+          "I like to read books in my free time.",
+          "I like to watch TV in my free time.",
+          "I like to play games in my free time.",
+          "I like to listen to music in my free time."
+        ],
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "5"
+      },
+      {
+        "sentence": "win",
+        "options": [
+          "win",
+          "war",
+          "will",
+          "week"
+        ],
+        "id": 2,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "book ",
+        "options": [
+          "bar",
+          "bear",
+          "cook",
+          "book"
+        ],
+        "id": 3,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "horse",
+        "options": [
+          "course",
+          "north",
+          "worth",
+          "horse"
+        ],
+        "id": 4,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "go",
+        "options": [
+          "get",
+          "so",
+          "go",
+          "we"
+        ],
+        "id": 5,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "yet",
+        "options": [
+          "yet",
+          "year",
+          "you",
+          "yes"
+        ],
+        "id": 6,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "we",
+        "options": [
+          "when",
+          "we",
+          "you",
+          "yet"
+        ],
+        "id": 7,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "worth",
+        "options": [
+          "worth",
+          "war",
+          "will",
+          "week"
+        ],
+        "id": 8,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "dog",
+        "options": [
+          "door",
+          "old",
+          "big",
+          "dog"
+        ],
+        "id": 9,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "me",
+        "options": [
+          "we",
+          "he",
+          "me",
+          "she"
+        ],
+        "id": 10,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "get",
+        "options": [
+          "let",
+          "met",
+          "get",
+          "set"
+        ],
+        "id": 11,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "1"
+      },
+      {
+        "sentence": "What's your name?",
+        "options": [
+          "What's your name?",
+          "What's your age?",
+          "What's your hobby?",
+          "What's your school?"
+        ],
+        "id": 12,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "My name is Karim.",
+        "options": [
+          "My name is Karim.",
+          "My name is Ahmed.",
+          "My name is Ali.",
+          "My name is Omar."
+        ],
+        "id": 13,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Nice to meet you.",
+        "options": [
+          "Nice to meet you.",
+          "Nice to see you.",
+          "Nice to know you.",
+          "Nice to help you."
+        ],
+        "id": 14,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "Let's shake hands.",
+        "options": [
+          "Let's shake hands.",
+          "Let's hug each other.",
+          "Let's wave goodbye.",
+          "Let's say hello."
+        ],
+        "id": 15,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We are friends.",
+        "options": [
+          "We are friends.",
+          "We are brothers.",
+          "We are classmates.",
+          "We are family."
+        ],
+        "id": 16,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "How are you today?",
+        "options": [
+          "How are you today?",
+          "How old are you today?",
+          "How is your family today?",
+          "How is your school today?"
+        ],
+        "id": 17,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "I am fine, thank you.",
+        "options": [
+          "I am fine, thank you.",
+          "I am good, thank you.",
+          "I am great, thank you.",
+          "I am happy, thank you."
+        ],
+        "id": 18,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "What is your hobby?",
+        "options": [
+          "What is your hobby?",
+          "What is your name?",
+          "What is your age?",
+          "What is your job?"
+        ],
+        "id": 19,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "My hobby is reading.",
+        "options": [
+          "My hobby is reading.",
+          "My hobby is playing.",
+          "My hobby is drawing.",
+          "My hobby is singing."
+        ],
+        "id": 20,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "See you tomorrow.",
+        "options": [
+          "See you tomorrow.",
+          "See you later.",
+          "See you soon.",
+          "See you next week."
+        ],
+        "id": 21,
+        "level": "primary",
+        "grade": "1",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "I go to school.",
+        "options": [
+          "I go to school.",
+          "I come to school.",
+          "I sleep at school.",
+          "I read at school."
+        ],
+        "id": 22,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "He eats an apple.",
+        "options": [
+          "He eats an apple.",
+          "He drinks an apple.",
+          "He washes an apple.",
+          "He reads an apple."
+        ],
+        "id": 23,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "She drinks milk.",
+        "options": [
+          "She drinks milk.",
+          "She eats milk.",
+          "She washes milk.",
+          "She writes milk."
+        ],
+        "id": 24,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They read a book.",
+        "options": [
+          "They read a book.",
+          "They write a book.",
+          "They watch a book.",
+          "They wash a book."
+        ],
+        "id": 25,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We write a letter.",
+        "options": [
+          "We write a letter.",
+          "We read a letter.",
+          "We watch a letter.",
+          "We wash a letter."
+        ],
+        "id": 26,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We write a letter.",
+        "options": [
+          "We write a letter.",
+          "We read a letter.",
+          "We watch a letter.",
+          "We wash a letter."
+        ],
+        "id": 27,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "You wake up early.",
+        "options": [
+          "You wake up early.",
+          "You sleep early.",
+          "You eat early.",
+          "You go early."
+        ],
+        "id": 28,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "It sleeps on the bed.",
+        "options": [
+          "It sleeps on the bed.",
+          "It eats on the bed.",
+          "It reads on the bed.",
+          "It writes on the bed."
+        ],
+        "id": 29,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "He comes to school.",
+        "options": [
+          "He comes to school.",
+          "He goes to school.",
+          "He sleeps at school.",
+          "He reads at school."
+        ],
+        "id": 30,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "She wants a pen.",
+        "options": [
+          "She wants a pen.",
+          "She wants a book.",
+          "She wants a bag.",
+          "She wants an apple."
+        ],
+        "id": 31,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They study English.",
+        "options": [
+          "They study English.",
+          "They study math.",
+          "They study science.",
+          "They study art."
+        ],
+        "id": 32,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We watch TV.",
+        "options": [
+          "We watch TV.",
+          "We watch a movie.",
+          "We watch a game.",
+          "We watch a match."
+        ],
+        "id": 33,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "You wash your hands.",
+        "options": [
+          "You wash your hands.",
+          "You wash your face.",
+          "You wash your feet.",
+          "You wash your hair."
+        ],
+        "id": 34,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "He opens the door.",
+        "options": [
+          "He opens the door.",
+          "He opens the window.",
+          "He opens the book.",
+          "He opens the box."
+        ],
+        "id": 35,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "She closes the door.",
+        "options": [
+          "She closes the door.",
+          "She closes the window.",
+          "She closes the book.",
+          "She closes the box."
+        ],
+        "id": 36,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "They sit down.",
+        "options": [
+          "They sit down.",
+          "They stand up.",
+          "They come in.",
+          "They go out."
+        ],
+        "id": 37,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "We stand up.",
+        "options": [
+          "We stand up.",
+          "We sit down.",
+          "We look up.",
+          "We look down."
+        ],
+        "id": 38,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "You look at the picture.",
+        "options": [
+          "You look at the picture.",
+          "You look at the book.",
+          "You look at the teacher.",
+          "You look at the window."
+        ],
+        "id": 39,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "2"
+      },
+      {
+        "sentence": "I go to bed at 10 o'clock every day.",
+        "options": [
+          "I go to bed at 10 o'clock every day.",
+          "I go to bed at 9 o'clock every day.",
+          "I wake up at 10 o'clock every day.",
+          "I go to bed at 10 o'clock on Sunday."
+        ],
+        "id": 40,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      },
+      {
+        "sentence": "I text my friends.",
+        "options": [
+          "I text my friends.",
+          "I call my friends.",
+          "I visit my friends.",
+          "I meet my friends."
+        ],
+        "id": 41,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      },
+      {
+        "sentence": "In the evening, I read a book and watch TV.",
+        "options": [
+          "In the evening, I read a book and watch TV.",
+          "In the evening, I read a book and play games.",
+          "In the morning, I read a book and watch TV.",
+          "In the evening, I watch TV and go to bed."
+        ],
+        "id": 42,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      },
+      {
+        "sentence": "I sometimes help my mum do housework.",
+        "options": [
+          "I sometimes help my mum do housework.",
+          "I always help my mum do housework.",
+          "I sometimes help my dad do housework.",
+          "I sometimes help my mum cook dinner."
+        ],
+        "id": 43,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      },
+      {
+        "sentence": "I go to the club and meet my friends.",
+        "options": [
+          "I go to the club and meet my friends.",
+          "I go to the park and meet my friends.",
+          "I go to the club and play football.",
+          "I go to the club with my family."
+        ],
+        "id": 44,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      },
+      {
+        "sentence": "I help my mom make breakfast and eat it with my family.",
+        "options": [
+          "I help my mom make breakfast and eat it with my family.",
+          "I help my dad make breakfast and eat it with my family.",
+          "I help my mom make dinner and eat it with my family.",
+          "I help my mom make breakfast and eat it with my friends."
+        ],
+        "id": 45,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      },
+      {
+        "sentence": "I wash my face and brush my teeth.",
+        "options": [
+          "I wash my face and brush my teeth.",
+          "I wash my hands and brush my teeth.",
+          "I wash my face and comb my hair.",
+          "I brush my teeth and wash my face."
+        ],
+        "id": 46,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      },
+      {
+        "sentence": "I wake up at 10 o'clock every day.",
+        "options": [
+          "I wake up at 10 o'clock every day.",
+          "I wake up at 7 o'clock every day.",
+          "I go to bed at 10 o'clock every day.",
+          "I wake up at 10 o'clock on Friday."
+        ],
+        "id": 47,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3",
+        "lessonTitle": "My typical day"
+      }
+    ],
+    "vocab_choose": [
+      {
+        "question": "The word 'happy' means:",
+        "correctAnswer": "glad",
+        "arabicReason": "كلمة 'happy' تعني 'سعيد' أو 'مبسوط'.",
+        "englishReason": "The word 'happy' means 'glad' or 'joyful'.",
+        "options": [
+          "sad",
+          "glad",
+          "angry",
+          "tired"
+        ],
+        "id": 1,
+        "level": "primary",
+        "grade": "3",
+        "curriculum": "AL",
+        "unit": "2"
+      },
+      {
+        "question": "The day after Monday is ................",
+        "correctAnswer": "Tuesday",
+        "arabicReason": "لأن يوم الثلاثاء يأتي بعد يوم الاثنين.",
+        "englishReason": "Because Tuesday comes after Monday.",
+        "options": [
+          "Sunday",
+          "Tuesday",
+          "Friday",
+          "Saturday"
+        ],
+        "id": 2,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day before Monday is ................",
+        "correctAnswer": "Sunday",
+        "arabicReason": "لأن يوم الأحد يأتي قبل يوم الاثنين.",
+        "englishReason": "Because Sunday comes before Monday.",
+        "options": [
+          "Friday",
+          "Tuesday",
+          "Sunday",
+          "Wednesday"
+        ],
+        "id": 3,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day after Sunday is ................",
+        "correctAnswer": "Monday",
+        "arabicReason": "لأن يوم الاثنين يأتي بعد يوم الأحد.",
+        "englishReason": "Because Monday comes after Sunday.",
+        "options": [
+          "Thursday",
+          "Monday",
+          "Saturday",
+          "Tuesday"
+        ],
+        "id": 4,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day before Sunday is ................",
+        "correctAnswer": "Saturday",
+        "arabicReason": "لأن يوم السبت يأتي قبل يوم الأحد.",
+        "englishReason": "Because Saturday comes before Sunday.",
+        "options": [
+          "Monday",
+          "Wednesday",
+          "Saturday",
+          "Friday"
+        ],
+        "id": 5,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day after Saturday is ................",
+        "correctAnswer": "Sunday",
+        "arabicReason": "لأن يوم الأحد يأتي بعد يوم السبت.",
+        "englishReason": "Because Sunday comes after Saturday.",
+        "options": [
+          "Tuesday",
+          "Sunday",
+          "Friday",
+          "Thursday"
+        ],
+        "id": 6,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day before Saturday is ................",
+        "correctAnswer": "Friday",
+        "arabicReason": "لأن يوم الجمعة يأتي قبل يوم السبت.",
+        "englishReason": "Because Friday comes before Saturday.",
+        "options": [
+          "Monday",
+          "Friday",
+          "Wednesday",
+          "Sunday"
+        ],
+        "id": 7,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day after Friday is ................",
+        "correctAnswer": "Saturday",
+        "arabicReason": "لأن يوم السبت يأتي بعد يوم الجمعة.",
+        "englishReason": "Because Saturday comes after Friday.",
+        "options": [
+          "Saturday",
+          "Tuesday",
+          "Thursday",
+          "Sunday"
+        ],
+        "id": 8,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day before Friday is ................",
+        "correctAnswer": "Thursday",
+        "arabicReason": "لأن يوم الخميس يأتي قبل يوم الجمعة.",
+        "englishReason": "Because Thursday comes before Friday.",
+        "options": [
+          "Wednesday",
+          "Saturday",
+          "Thursday",
+          "Monday"
+        ],
+        "id": 9,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day after Thursday is ................",
+        "correctAnswer": "Friday",
+        "arabicReason": "لأن يوم الجمعة يأتي بعد يوم الخميس.",
+        "englishReason": "Because Friday comes after Thursday.",
+        "options": [
+          "Sunday",
+          "Friday",
+          "Tuesday",
+          "Monday"
+        ],
+        "id": 10,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day before Thursday is ................",
+        "correctAnswer": "Wednesday",
+        "arabicReason": "لأن يوم الأربعاء يأتي قبل يوم الخميس.",
+        "englishReason": "Because Wednesday comes before Thursday.",
+        "options": [
+          "Tuesday",
+          "Wednesday",
+          "Saturday",
+          "Sunday"
+        ],
+        "id": 11,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day before Tuesday is ................",
+        "correctAnswer": "Monday",
+        "arabicReason": "لأن يوم الاثنين يأتي قبل يوم الثلاثاء.",
+        "englishReason": "Because Monday comes before Tuesday.",
+        "options": [
+          "Wednesday",
+          "Monday",
+          "Friday",
+          "Sunday"
+        ],
+        "id": 12,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day after Wednesday is ................",
+        "correctAnswer": "Thursday",
+        "arabicReason": "لأن يوم الخميس يأتي بعد يوم الأربعاء.",
+        "englishReason": "Because Thursday comes after Wednesday.",
+        "options": [
+          "Friday",
+          "Monday",
+          "Thursday",
+          "Sunday"
+        ],
+        "id": 13,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day before Wednesday is ................",
+        "correctAnswer": "Tuesday",
+        "arabicReason": "لأن يوم الثلاثاء يأتي قبل يوم الأربعاء.",
+        "englishReason": "Because Tuesday comes before Wednesday.",
+        "options": [
+          "Thursday",
+          "Tuesday",
+          "Sunday",
+          "Saturday"
+        ],
+        "id": 14,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      },
+      {
+        "question": "The day after Tuesday is ................",
+        "correctAnswer": "Wednesday",
+        "arabicReason": "لأن يوم الأربعاء يأتي بعد يوم الثلاثاء.",
+        "englishReason": "Because Wednesday comes after Tuesday.",
+        "options": [
+          "Monday",
+          "Friday",
+          "Wednesday",
+          "Sunday"
+        ],
+        "id": 15,
+        "level": "primary",
+        "grade": "2",
+        "curriculum": "OL",
+        "unit": "3"
+      }
+    ],
+    "sentence": [],
+    "correcr": []
+  }
+}

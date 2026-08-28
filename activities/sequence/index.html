@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1a1a1a">
+  <title>sequence</title>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
+  <!-- ✅ خطوط الشهادة العصرية -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cairo:wght@400;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ravie', 'Geneva', 'Verdana', sans-serif;
+      text-align: center;
+      margin: 0;
+      background: linear-gradient(to right top, #1a1a1a, #2c2c2c);
+      color: hsl(64, 97%, 50%);
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+    }
+    h1, h2, p { margin: 5px 0; }
+    
+    .learning-path-bar {
+      background: #001524;
+      color: #00ffe0;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 255, 224, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 61%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 8px;
+      animation: glowPath 2s infinite alternate;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 2px solid #00ffe0;
+    }
+    .learning-path-bar h1 { font-size: 1.8rem; margin: 0 0 5px 0; color: #000; text-shadow: 0 0 10px #00ffe0; }
+    .learning-path-bar h2 { font-size: 1.3rem; margin: 0; color: #00ffe0; text-shadow: 0 0 5px #00ffe0; }
+    @keyframes glowPath {
+      from { box-shadow: 0 4px 15px rgba(0, 255, 224, 0.3); }
+      to { box-shadow: 0 4px 25px rgba(0, 255, 224, 0.5); }
+    }
+    
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
+      min-height: calc(100vh - 200px);
+    }
+    .quiz-box {
+      background-color: hsl(206, 96%, 10%);
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(116, 134, 233, 0.2);
+      padding: 25px;
+      width: 90%;
+      max-width: 600px;
+      transition: transform 0.2s;
+      position: relative;
+      margin-top: 0;
+    }
+    .quiz-box:hover { transform: translateY(-5px); }
+    
+    .score-board {
+      display: flex; justify-content: space-around; align-items: center;
+      background: linear-gradient(to right, #001524, #002a3f);
+      border: 2px solid #00ffe0; border-radius: 10px;
+      padding: 12px 15px; margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(0, 255, 224, 0.4);
+      font-weight: bold; flex-wrap: wrap; gap: 10px;
+    }
+    .score-item { display: flex; flex-direction: column; align-items: center; color: #00ffe0; font-size: 0.9rem; flex: 1; min-width: 80px; }
+    .score-item .label { font-size: 0.75rem; color: #888; margin-bottom: 3px; text-transform: uppercase; }
+    .score-item .value { font-size: 1.4rem; color: #00ffe0; text-shadow: 0 0 8px #00ffe0; }
+    .score-item.correct .value { color: #4caf50; text-shadow: 0 0 8px #4caf50; }
+    .score-item.wrong .value { color: #ff5252; text-shadow: 0 0 8px #ff5252; }
+    .score-item.progress .value { color: #ffd700; text-shadow: 0 0 8px #ffd700; }
+
+    .progress-bar-container { width: 100%; height: 8px; background: #2a2a2a; border-radius: 4px; overflow: hidden; margin-bottom: 15px; border: 1px solid #00ffe0; }
+    .progress-bar { height: 100%; background: linear-gradient(to right, #00ffe0, #4caf50); width: 0%; transition: width 0.4s ease; box-shadow: 0 0 10px #00ffe0; }
+    
+    #homeBtnContainer { position: absolute; top: 15px; left: 15px; z-index: 20; }
+    #homeBtn {
+      width: 45px; height: 45px; border-radius: 50%;
+      background: linear-gradient(to right, #ff5722, #e64a19);
+      color: white; border: 2px solid #ffccbc;
+      font-size: 20px; cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 87, 34, 0.7);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center; font-weight: bold;
+    }
+    #homeBtn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 87, 34, 0.9); }
+    #homeBtn:active { transform: scale(0.95); }
+    
+    #howItWorksBtnContainer { position: absolute; top: 15px; right: 15px; z-index: 20; }
+    #howItWorksBtn {
+      width: 45px; height: 45px; border-radius: 50%;
+      background: linear-gradient(to right, #9c27b0, #673ab7);
+      color: white; border: 2px solid #e1bee7;
+      font-size: 20px; cursor: pointer;
+      box-shadow: 0 0 12px rgba(156, 39, 176, 0.7);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center; font-weight: bold;
+    }
+    #howItWorksBtn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(156, 39, 176, 0.9); }
+    #howItWorksBtn:active { transform: scale(0.95); }
+    
+    #speedControlContainer { position: absolute; top: 70px; right: 15px; z-index: 20; }
+    #speedBtn {
+      width: 45px; height: 45px; border-radius: 50%;
+      background: linear-gradient(to right, #ff9800, #ff5722);
+      color: white; border: 2px solid #ffd700;
+      font-size: 20px; cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 152, 0, 0.7);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center; font-weight: bold;
+    }
+    #speedBtn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 152, 0, 0.9); }
+    #speedBtn:active { transform: scale(0.95); }
+    
+    #listenBtnContainer { position: absolute; top: 70px; left: 15px; z-index: 20; }
+    #listenBtn {
+      width: 45px; height: 45px; border-radius: 50%;
+      background: linear-gradient(to right, #2196F3, #1976D2);
+      color: white; border: 2px solid #00BCD4;
+      font-size: 20px; cursor: pointer;
+      box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center; font-weight: bold;
+    }
+    #listenBtn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(33, 150, 243, 0.9); }
+    #listenBtn:active { transform: scale(0.95); }
+    #listenBtn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+    
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0;
+      margin-top: 80px;
+    }
+    .option-container {
+      background-color: #3d3d3d;
+      color: #00ffe0;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 0 15px #00ffe0;
+      cursor: grab;
+      transition: all 0.3s ease;
+      position: relative;
+      border: 1px solid rgba(0, 255, 224, 0.3);
+    }
+    .option-container:active { cursor: grabbing; }
+    .option-container:hover { transform: scale(1.03); box-shadow: 0 0 20px rgba(0, 255, 224, 0.6); }
+    .option-container.selected { background-color: #5a5a5a !important; box-shadow: 0 0 20px #00ffff !important; }
+    .option-button {
+      background: none; border: none; color: inherit;
+      font-size: 19px; font-weight: bold; cursor: pointer;
+      width: 100%; text-align: center; padding: 8px;
+      transition: background-color 0.2s;
+    }
+    .option-button:hover { background-color: rgba(0, 255, 224, 0.1); }
+    .option-number {
+      position: absolute; top: -8px; left: -8px;
+      width: 30px; height: 30px;
+      background-color: #ff9800; color: #000;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 16px;
+      border: 2px solid white;
+      box-shadow: 0 0 8px rgba(255, 152, 0, 0.8);
+    }
+    
+    #actionBtn {
+      margin: 25px auto 15px auto;
+      padding: 15px 40px; font-size: 20px; cursor: pointer;
+      background: linear-gradient(to right, #8a2be2, #4b0082);
+      color: white; border: none; border-radius: 25px;
+      box-shadow: 0 0 25px #8a2be2;
+      transition: all 0.3s ease;
+      display: block; width: fit-content; font-weight: bold;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    #actionBtn:hover { transform: scale(1.05); box-shadow: 0 0 35px #8a2be2; }
+    #actionBtn:active { transform: scale(0.95); }
+    #actionBtn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    
+    .success-message {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(76, 175, 80, 0.95); color: white;
+      padding: 30px 40px; border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+      z-index: 10002; display: none;
+      font-size: 1.8rem; font-weight: bold; text-align: center;
+      animation: bounce 0.5s;
+      border: 3px solid white;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, -50%) scale(0.8); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+    
+    .popup-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 10000; display: none;
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+    }
+    .correct-answer-popup {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(30, 30, 30, 0.95);
+      padding: 25px; border-radius: 15px;
+      box-shadow: 0 0 30px #ff0000;
+      z-index: 10001; display: none;
+      flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      border: 2px solid #ff0000;
+      max-width: 90%; width: 500px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .correct-answer-popup h3 { color: #ff0000; margin-top: 0; font-size: 1.6rem; }
+    .correct-answer-list { list-style-type: none; padding: 0; margin: 15px 0; width: 100%; }
+    .correct-answer-list li {
+      background-color: #444; margin: 8px 0;
+      padding: 12px; border-radius: 8px;
+      text-align: center; font-size: 1.2rem;
+      color: #00ffe0; box-shadow: 0 0 8px #00ffe0;
+      direction: ltr;
+    }
+    #correctAnswerReason {
+      color: #00ffe0; font-size: 1.1rem;
+      margin-top: 15px; text-align: center;
+      line-height: 1.6; padding: 10px;
+      background-color: #2a2a2a; border-radius: 8px;
+      width: 100%; min-height: 60px;
+    }
+    .popup-buttons { display: flex; gap: 10px; margin-top: 15px; width: 100%; justify-content: center; flex-wrap: wrap; }
+    .popup-buttons button {
+      margin: 5px; padding: 10px 15px; font-size: 14px; cursor: pointer;
+      border: none; border-radius: 6px;
+      box-shadow: 0 0 12px #00ffe0;
+      transition: all 0.3s; flex: 1; min-width: 100px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .popup-buttons button:hover { transform: scale(1.03); }
+    #readBtn { background-color: #ff9800; color: #000; }
+    #gotItBtn { background-color: #00ffe0; color: #000; flex: 1.5; min-width: 120px; }
+    
+    #footer { margin-top: 20px; font-size: 0.9rem; color: #666; text-align: center; padding: 10px; border-top: 1px solid rgba(0, 255, 224, 0.3); }
+    #footer .powered-by { font-size: 1rem; font-weight: bold; color: #00ffe0; margin-bottom: 3px; display: block; }
+    #footer .developer { font-size: 0.85rem; color: #999; display: block; }
+
+    .no-questions-message { background: linear-gradient(135deg, #1a1a1a, #2c2c2c); border: 2px solid #ff5722; border-radius: 15px; padding: 40px 20px; margin: 20px 0; box-shadow: 0 0 30px rgba(255, 87, 34, 0.5); text-align: center; }
+    .no-questions-message .icon { font-size: 4rem; margin-bottom: 15px; }
+    .no-questions-message h2 { color: #ff5722; font-size: 1.5rem; margin-bottom: 10px; }
+    .no-questions-message p { color: #00ffe0; font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
+
+    /* ============================================ */
+    /* 🎯 شاشة الشهادة العائمة العصرية */
+    /* ============================================ */
+    .certificate-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .certificate-overlay.show {
+      display: flex;
+    }
+
+    .certificate-modal {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      max-height: 95vh;
+      overflow-y: auto;
+      background: linear-gradient(135deg, #001524 0%, #000d17 100%);
+      border: 3px solid #00ffe0;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 50px rgba(0, 255, 224, 0.4), 0 0 100px rgba(0, 255, 224, 0.2);
+      animation: modalSlideIn 0.5s ease;
+    }
+
+    @keyframes modalSlideIn {
+      from { opacity: 0; transform: scale(0.9) translateY(-30px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .cert-close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    }
+
+    .cert-close-btn:hover {
+      transform: scale(1.1) rotate(90deg);
+      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+    }
+
+    /* محتوى الشهادة العصرية */
+    .cert-content {
+      background: linear-gradient(135deg, #001524 0%, #000d17 100%);
+      border: 3px solid #00ffe0;
+      border-radius: 20px;
+      padding: 40px;
+      color: #ffffff;
+      font-family: 'Poppins', 'Cairo', sans-serif;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 224, 0.5), 0 0 60px rgba(0, 255, 224, 0.2);
+    }
+
+    .cert-content::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 255, 224, 0.1) 0%, transparent 70%);
+      animation: rotateGlow 10s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .cert-header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cert-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: #ffd700;
+      margin: 0 0 10px 0;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+      font-weight: 900;
+    }
+
+    .cert-header .subtitle {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffe0;
+      font-size: 1rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(0, 255, 224, 0.5);
+    }
+
+    .cert-body {
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cert-body .certify-text {
+      font-size: 1.2rem;
+      color: #00ffe0;
+      margin-bottom: 15px;
+      font-style: italic;
+      text-shadow: 0 0 10px rgba(0, 255, 224, 0.5);
+    }
+
+    .cert-body .student-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: #ffd700;
+      margin: 15px 0;
+      padding: 12px 30px;
+      border: 2px solid #00ffe0;
+      border-radius: 15px;
+      display: inline-block;
+      background: rgba(0, 255, 224, 0.05);
+      box-shadow: 0 0 20px rgba(0, 255, 224, 0.5);
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      animation: glowName 2s ease-in-out infinite;
+    }
+
+    @keyframes glowName {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 224, 0.5); }
+      50% { box-shadow: 0 0 30px rgba(0, 255, 224, 0.5), 0 0 40px rgba(255, 215, 0, 0.3); }
+    }
+
+    .cert-body .activity-name {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin: 15px 0;
+    }
+
+    .cert-body .activity-name strong {
+      color: #00ffe0;
+      font-size: 1.5rem;
+      display: block;
+      margin-top: 8px;
+      text-shadow: 0 0 10px rgba(0, 255, 224, 0.5);
+    }
+
+    .grade-badge {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #ffd700, #d4af37);
+      color: #001524;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-radius: 25px;
+      margin: 15px 0;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+      letter-spacing: 3px;
+      font-family: 'Orbitron', sans-serif;
+      animation: bounceIn 0.8s ease;
+    }
+
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.3); }
+      50% { opacity: 1; transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+
+    .score-section {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .score-item-cert {
+      text-align: center;
+      padding: 15px 25px;
+      background: rgba(0, 255, 224, 0.05);
+      border-radius: 15px;
+      border: 2px solid #00ffe0;
+      box-shadow: 0 0 20px rgba(0, 255, 224, 0.5);
+      min-width: 120px;
+    }
+
+    .score-label {
+      font-size: 0.9rem;
+      color: #00ffe0;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    .score-value {
+      font-size: 1.8rem;
+      color: #ffd700;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .motivation-text {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.1rem;
+      color: #ffffff;
+      line-height: 1.8;
+      margin: 25px auto;
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(0, 255, 224, 0.05);
+      border-radius: 15px;
+      border-right: 4px solid #ffd700;
+      border-left: 4px solid #ffd700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      position: relative;
+    }
+
+    .motivation-text::before {
+      content: "💫";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.8rem;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    .cert-footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 2px solid #00ffe0;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .signature-block {
+      text-align: center;
+      min-width: 150px;
+    }
+
+    .signature-block .sig-name {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.8rem;
+      color: #ffd700;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .signature-block .sig-line {
+      border-top: 2px solid #00ffe0;
+      padding-top: 6px;
+      font-size: 0.9rem;
+      color: #00ffe0;
+      margin-top: 6px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .seal {
+      width: 100px;
+      height: 100px;
+      border: 4px solid #ffd700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, #ffd700, #d4af37);
+      color: #001524;
+      font-weight: bold;
+      font-size: 0.8rem;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      transform: rotate(-15deg);
+      line-height: 1.3;
+      padding: 8px;
+      font-family: 'Orbitron', sans-serif;
+      animation: rotateSeal 1s ease-out;
+      position: relative;
+    }
+
+    @keyframes rotateSeal {
+      from { transform: rotate(-360deg) scale(0.5); opacity: 0; }
+      to { transform: rotate(-15deg) scale(1); opacity: 1; }
+    }
+
+    .seal::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 2px dashed #001524;
+      border-radius: 50%;
+    }
+
+    /* أزرار الشهادة */
+    .cert-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cert-action-btn {
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .cert-action-btn:hover { transform: scale(1.05); }
+
+    .cert-save-btn {
+      background: linear-gradient(to right, #00b4db, #0083b0);
+      box-shadow: 0 0 20px rgba(0, 180, 219, 0.5);
+    }
+
+    .cert-whatsapp-btn {
+      background: linear-gradient(to right, #25D366, #128C7E);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+    }
+
+    .cert-restart-btn {
+      background: linear-gradient(to right, #8a2be2, #4b0082);
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+    }
+
+    .cert-share-btn {
+      background: linear-gradient(to right, #ff6b6b, #ee5a6f);
+      box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    }
+
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 99999;
+      color: #00ffe0;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .loading-overlay.show { display: flex; }
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(0, 255, 224, 0.2);
+      border-top: 5px solid #00ffe0;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media screen and (max-width: 768px) {
+      .cert-content { padding: 25px 20px; }
+      .cert-header h1 { font-size: 1.8rem; }
+      .cert-body .student-name { font-size: 1.8rem; padding: 10px 20px; }
+      .grade-badge { font-size: 1.2rem; padding: 10px 25px; }
+      .score-section { gap: 15px; }
+      .score-item-cert { padding: 12px 20px; min-width: 100px; }
+      .score-value { font-size: 1.5rem; }
+      .cert-actions { gap: 10px; }
+      .cert-action-btn { padding: 10px 20px; font-size: 0.9rem; }
+    }
+
+    @media screen and (max-width: 480px) {
+      .cert-content { padding: 20px 15px; }
+      .cert-header h1 { font-size: 1.5rem; }
+      .cert-body .student-name { font-size: 1.5rem; }
+      .score-section { flex-direction: column; }
+      .score-item-cert { width: 100%; }
+      .cert-action-btn { width: 100%; justify-content: center; }
+    }
+
+    @media screen and (max-width: 320px) {
+      .learning-path-bar { width: 90%; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; }
+      .learning-path-bar h1 { font-size: 1.4rem; } .learning-path-bar h2 { font-size: 1.1rem; }
+      .main-container { padding: 0 10px; }
+      .quiz-box { width: 95%; padding: 15px; }
+      #homeBtn, #howItWorksBtn, #speedBtn, #listenBtn { width: 35px; height: 35px; font-size: 16px; }
+      .option-container { padding: 10px; font-size: 15px; }
+      .option-number { width: 25px; height: 25px; font-size: 14px; }
+      #actionBtn { font-size: 15px; padding: 10px 25px; width: 90%; }
+    }
+    
+    @media screen and (min-width: 321px) and (max-width: 480px) {
+      .learning-path-bar { width: 80%; font-size: 1rem; padding: 6px 15px; border-radius: 6px; }
+      .learning-path-bar h1 { font-size: 1.6rem; } .learning-path-bar h2 { font-size: 1.3rem; }
+      .quiz-box { width: 95%; max-width: 95%; margin: 10px auto; }
+      #homeBtn, #howItWorksBtn, #speedBtn, #listenBtn { width: 40px; height: 40px; font-size: 18px; }
+      .option-container { padding: 12px; font-size: 17px; }
+      .option-number { width: 28px; height: 28px; font-size: 15px; }
+      #actionBtn { font-size: 16px; padding: 12px 30px; width: 80%; }
+    }
+    
+    @media screen and (min-width: 481px) { .learning-path-bar { width: 61%; } }
+  </style>
+</head>
+<body>
+
+<div class="main-container" id="gameContainer">
+  <div class="learning-path-bar" aria-label="Learning Path">
+    <h1>Wise Learning</h1>
+    <h2>Sequence</h2>
+  </div>
+  
+  <div class="quiz-box" id="quizBox">
+    <div class="score-board">
+      <div class="score-item progress"><span class="label">السؤال</span><span class="value"><span id="currentQNum">1</span> / <span id="totalQNum">0</span></span></div>
+      <div class="score-item correct"><span class="label">✅ صحيح</span><span class="value" id="correctCount">0</span></div>
+      <div class="score-item wrong"><span class="label">❌ خطأ</span><span class="value" id="wrongCount">0</span></div>
+      <div class="score-item"><span class="label">📊 النسبة</span><span class="value" id="percentage">0%</span></div>
+    </div>
+    
+    <div class="progress-bar-container"><div class="progress-bar" id="progressBar"></div></div>
+    
+    <div id="homeBtnContainer">
+      <button id="homeBtn" onclick="goToHomePage()" title="العودة للرئيسية">🏠</button>
+    </div>
+    
+    <div id="howItWorksBtnContainer">
+      <button id="howItWorksBtn" onclick="openHowItWorksPopup()" title="كيف يعمل">❓</button>
+    </div>
+    
+    <div id="speedControlContainer">
+      <button id="speedBtn" onclick="openSpeedPopup()" aria-label="Speed Control">⚡</button>
+    </div>
+    
+    <div id="listenBtnContainer">
+      <button id="listenBtn" onclick="listenToStory()" aria-label="Listen to the story">🔊</button>
+    </div>
+    
+    <div id="options" class="options"></div>
+    
+    <button id="actionBtn" onclick="handleAction()">Submit</button>
+    
+    <p id="footer">
+      <span class="powered-by">Powered By Wise Learning</span>
+      <span class="developer">Mr Mohamed Karim</span>
+    </p>
+  </div>
+</div>
+
+<!-- ✅ شاشة الشهادة العائمة العصرية -->
+<div class="certificate-overlay" id="certificateOverlay">
+  <div class="certificate-modal">
+    <button class="cert-close-btn" onclick="closeCertificateModal()" title="إغلاق">×</button>
+    
+    <div class="cert-content" id="certificateCard">
+      <div class="cert-header">
+        <h1>🏆 ENGLISH MARATHON 🏆</h1>
+        <div class="subtitle">Certificate of Completion</div>
+      </div>
+      <div class="cert-body">
+        <p class="certify-text">This certificate is proudly presented to</p>
+        <div class="student-name" id="certName">[Student Name]</div>
+        <div class="activity-name">
+          for successfully completing the activity
+          <strong id="certActivity">Sequence (استمع ورتب الأحداث)</strong>
+           <!-- ✅ أضف هذا السطر الجديد بالضبط هنا -->
+  <span id="certPath" style="display: block; font-size: 1.1rem; color: #ffd700; margin-top: 8px; font-weight: bold; letter-spacing: 1px; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);"></span>
+        </div>
+        <div class="grade-badge" id="certGradeBadge">🌟 Excellent</div>
+        <div class="score-section">
+          <div class="score-item-cert">
+            <div class="score-label">Score</div>
+            <div class="score-value" id="certScore">0 / 0</div>
+          </div>
+          <div class="score-item-cert">
+            <div class="score-label">Percentage</div>
+            <div class="score-value" id="certPercentage">0%</div>
+          </div>
+        </div>
+        <div class="motivation-text" id="certMotivation">
+          إنجاز رائع! تفانيك في تعلم اللغة الإنجليزية ملهم حقاً. استمر في التألق وواصل هذه الرحلة المميزة نحو التميز!
+        </div>
+      </div>
+      <div class="cert-footer">
+        <div class="signature-block">
+          <div class="sig-name">Mr Mohamed Karim</div>
+          <div class="sig-line">Instructor</div>
+        </div>
+        <div class="seal">
+          ENGLISH<br>MARATHON<br>✓<br><span id="certYear">2026</span>
+        </div>
+        <div class="signature-block">
+          <div class="sig-name" id="certDate">--</div>
+          <div class="sig-line">Date</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cert-actions">
+      <button class="cert-action-btn cert-save-btn" onclick="saveCertificateAsImage()" id="saveImgBtn">📥 Download</button>
+      <button class="cert-action-btn cert-whatsapp-btn" onclick="sendToWhatsApp()" id="whatsappBtn">📱 WhatsApp</button>
+      <button class="cert-action-btn cert-restart-btn" onclick="restartQuiz()">🔄 Retake</button>
+      <button class="cert-action-btn cert-share-btn" onclick="shareCertificate()" id="shareBtn">🔗 Share</button>
+    </div>
+  </div>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay"><div class="spinner"></div><div id="loadingText">جاري تجهيز الشهادة...</div></div>
+
+<div class="success-message" id="successMessage" role="alert" aria-live="assertive">🎉 Excellent! Correct Answer! 🎉</div>
+
+<div class="popup-overlay" id="correctAnswerOverlay" onclick="closeCorrectAnswerPopup()" aria-hidden="true"></div>
+<div class="correct-answer-popup" id="correctAnswerPopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-hidden="true">
+  <h3 id="popupTitle">Correct Order:</h3>
+  <ul class="correct-answer-list" id="correctAnswerList"></ul>
+  <p id="correctAnswerReason">ترتيب الجمل بالشكل الصحيح</p>
+  <div class="popup-buttons">
+    <button id="readBtn" onclick="readCorrectAnswer()" aria-label="Read correct answer">🔊 Read</button>
+    <button id="gotItBtn" onclick="closeCorrectAnswerPopup()" aria-label="Got it">Got it</button>
+  </div>
+</div>
+
+<div class="popup-overlay" id="speedPopupOverlay" onclick="closeSpeedPopup()" aria-hidden="true"></div>
+<div class="correct-answer-popup" id="speedPopup" role="dialog" aria-modal="true" aria-labelledby="speedPopupTitle" aria-hidden="true" style="max-width: 400px;">
+  <h3 id="speedPopupTitle">اختر سرعة النطق</h3>
+  <div class="popup-buttons">
+    <button class="normal" onclick="setSpeed(1)" style="background-color: #4caf50; color: white;">عادي (100%)</button>
+    <button class="medium" onclick="setSpeed(0.5)" style="background-color: #ff9800; color: black;">متوسط (50%)</button>
+    <button class="close" onclick="closeSpeedPopup()" style="background-color: #f44336; color: white; width: 100%;">إغلاق</button>
+  </div>
+</div>
+
+<div class="popup-overlay" id="howItWorksOverlay" onclick="closeHowItWorksPopup()" aria-hidden="true"></div>
+<div class="correct-answer-popup" id="howItWorksPopup" role="dialog" aria-modal="true" aria-labelledby="howItWorksTitle" aria-hidden="true" style="max-width: 600px; border-color: #9c27b0; box-shadow: 0 0 30px #9c27b0;">
+  <h3 id="howItWorksTitle" style="color: #9c27b0; font-size: 1.8rem;">❓ كيف يعمل هذا النشاط؟</h3>
+  <div style="text-align: right; color: #00ffe0; font-size: 1.05rem; line-height: 1.8; padding: 15px; background: #2a2a2a; border-radius: 8px; margin: 15px 0;">
+    <p style="margin-bottom: 12px;">🎯 <strong>الهدف:</strong> ترتيب الجمل بالترتيب الصحيح للقصة أو الحدث.</p>
+    <p style="margin-bottom: 12px;">📝 <strong>طريقة العمل:</strong></p>
+    <ol style="padding-right: 20px; line-height: 2;">
+      <li>اضغط على زر 🔊 لسماع القصة كاملة</li>
+      <li>ستظهر لك مجموعة من الجمل المبعثرة</li>
+      <li>اسحب الجمل وأعد ترتيبها (Drag & Drop)</li>
+      <li>اضغط Submit للتحقق من الترتيب</li>
+      <li>إذا كان الترتيب صحيحاً ✅ ستنتقل للسؤال التالي</li>
+      <li>إذا كان خاطئاً ❌ ستظهر الترتيب الصحيح</li>
+      <li>في النهاية ستحصل على شهادة إنجاز</li>
+    </ol>
+    <p style="margin-top: 12px;">💡 <strong>نصيحة:</strong> استمع جيداً للقصة قبل ترتيب الجمل!</p>
+  </div>
+  <div class="popup-buttons">
+    <button onclick="closeHowItWorksPopup()" style="background-color: #9c27b0; color: white; flex: 1; min-width: 150px;">✅ فهمت، لنبدأ!</button>
+  </div>
+</div>
+
+<script>
+  const INSTRUCTOR_WHATSAPP = "201149955726";
+  
+  let currentQuestionIndex = 0;
+  let draggedItem = null;
+  let recognition = null;
+  let isRecording = false;
+  let answerSubmitted = false;
+  let shuffledQuestions = [];
+  let isNextMode = false;
+  let speechRate = parseFloat(localStorage.getItem("speechRate")) || 1.0;
+  
+  let currentScore = 0;
+  let wrongAnswers = 0;
+  let totalQuestions = 0;
+  let quizFinished = false;
+  let studentName = "";
+  let certificateBlob = null;
+  
+  let questions = [];
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentLevel = urlParams.get('level');
+  const currentGrade = urlParams.get('grade');
+  const currentType = urlParams.get('type');
+  const currentUnit = urlParams.get('unit');
+  const studentNameFromURL = urlParams.get('studentName') || '';
+  
+  const encouragingMessages = [
+    "Excellent!", "Great job!", "Perfect!", "Well done!",
+    "Awesome!", "Fantastic!", "Brilliant!", "Super!",
+    "Amazing!", "Outstanding!"
+  ];
+
+  // ==========================================
+  // ✅ دوال الشهادة العصرية
+  // ==========================================
+  function getGrade(percent) {
+    if (percent >= 90) return { en: 'Excellent', emoji: '🌟', motivation: 'إنجاز رائع! تفانيك في تعلم اللغة الإنجليزية ملهم حقاً. استمر في التألق وواصل هذه الرحلة المميزة نحو التميز!' };
+    if (percent >= 80) return { en: 'Very Good', emoji: '👏', motivation: 'عمل ممتاز! لقد أظهرت التزاماً وتقدماً كبيراً. استمر في المضي قدماً، فجهودك تؤتي ثمارها بشكل رائع!' };
+    if (percent >= 70) return { en: 'Good', emoji: '👍', motivation: 'عمل رائع! أنت على الطريق الصحيح نحو الاحتراف. حافظ على تركيزك، وتدرب يومياً، وشاهد مهاراتك تتطور بقوة كل يوم!' };
+    if (percent >= 60) return { en: 'Pass', emoji: '✅', motivation: 'جهد جيد! كل خبير كان مبتدئاً في يوم من الأيام. استمر في التدريب، وحافظ على حماسك، وتذكر: التقدم تقدم، مهما كان صغيراً!' };
+    return { en: 'Needs Improvement', emoji: '💪', motivation: 'لا تستسلم! كل تحدٍ هو فرصة للتعلم. راجع المادة، وتدرب أكثر، وستلاحظ تحسناً مذهلاً!' };
+  }
+
+  async function loadQuestionsFromDatabase() {
+    console.log("🔄 محاولة تحميل الأسئلة...");
+    let dbQuestions = [];
+    
+    try {
+      const localData = localStorage.getItem('marathon_questions_db');
+      if (localData) {
+        const db = JSON.parse(localData);
+        if (db && db.activityDatabase && db.activityDatabase.sequence) {
+          const filtered = db.activityDatabase.sequence.filter(q => 
+            q.level === currentLevel && q.grade === currentGrade && 
+            q.curriculum === currentType && q.unit === currentUnit
+          );
+          if (filtered.length > 0) {
+            dbQuestions = filtered;
+            console.log(`✅ تم تحميل ${dbQuestions.length} سؤال من localStorage`);
+            return dbQuestions;
+          }
+        }
+      }
+    } catch (e) { console.warn("⚠️ خطأ في localStorage:", e); }
+    
+    try {
+      const response = await fetch('../../marathonQuestionsDB.json');
+      if (response.ok) {
+        const db = await response.json();
+        if (db && db.activityDatabase && db.activityDatabase.sequence) {
+          const filtered = db.activityDatabase.sequence.filter(q => 
+            q.level === currentLevel && q.grade === currentGrade && 
+            q.curriculum === currentType && q.unit === currentUnit
+          );
+          if (filtered.length > 0) {
+            dbQuestions = filtered;
+            console.log(`✅ تم تحميل ${dbQuestions.length} سؤال من JSON`);
+            return dbQuestions;
+          }
+        }
+      }
+    } catch (error) { console.warn("⚠️ خطأ في JSON:", error); }
+    
+    return dbQuestions;
+  }
+
+  function showNoQuestionsMessage() {
+    const quizBox = document.getElementById("quizBox");
+    quizBox.innerHTML = `
+      <div class="no-questions-message">
+        <div class="icon">📭</div>
+        <h2>لا توجد أسئلة متاحة حالياً</h2>
+        <p>عذراً، لم يتم إضافة أسئلة لهذا المسار بعد.<br><strong>المسار:</strong> ${currentLevel} - Grade ${currentGrade} - ${currentType} - Unit ${currentUnit}</p>
+        <button class="generate-btn" onclick="goToHomePage()" style="margin-top: 15px;">🏠 العودة للرئيسية</button>
+      </div>`;
+  }
+
+  function goToHomePage() {
+    if (document.referrer && document.referrer.includes('index.html')) { 
+      window.history.back(); 
+    } else { 
+      window.location.href = '../../index.html'; 
+    }
+  }
+
+  function openHowItWorksPopup() {
+    document.getElementById("howItWorksOverlay").style.display = "block";
+    document.getElementById("howItWorksPopup").style.display = "flex";
+  }
+
+  function closeHowItWorksPopup() {
+    document.getElementById("howItWorksOverlay").style.display = "none";
+    document.getElementById("howItWorksPopup").style.display = "none";
+  }
+
+  function checkSpeechRecognitionSupport() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      console.error("Speech Recognition API not supported");
+      return false;
+    }
+    return true;
+  }
+  
+  function initSpeechRecognition() {
+    if (!checkSpeechRecognitionSupport()) return;
+    
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    
+    recognition.onstart = function() { isRecording = true; };
+    recognition.onend = function() { isRecording = false; };
+    
+    recognition.onerror = function(event) {
+      console.error("Speech recognition error:", event.error);
+      if (event.error === 'not-allowed') {
+        alert("Please allow microphone access to use voice recording.");
+      }
+    };
+  }
+  
+  function speakText(text, lang = 'en-US') {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      utterance.rate = speechRate;
+      utterance.pitch = 1.1;
+      
+      utterance.onend = function() { console.log('النطق انتهى: ' + text); };
+      utterance.onerror = function(event) { console.error('خطأ في النطق: ' + event.error); };
+      
+      speechSynthesis.speak(utterance);
+      return true;
+    }
+    return false;
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  function dragStart(e) {
+    draggedItem = this;
+    setTimeout(() => this.style.opacity = '0.5', 0);
+  }
+
+  function dragEnd() {
+    this.style.opacity = '1';
+    draggedItem = null;
+  }
+
+  function dragOver(e) { e.preventDefault(); }
+
+  function dragEnter(e) {
+    e.preventDefault();
+    this.style.boxShadow = '0 0 20px #ff00ff';
+  }
+
+  function dragLeave() {
+    this.style.boxShadow = '0 0 15px #00ffe0';
+  }
+
+  function drop() {
+    this.style.boxShadow = '0 0 15px #00ffe0';
+    if (draggedItem !== this) {
+      const container = this.parentNode;
+      const allItems = [...container.querySelectorAll('.option-container')];
+      const fromIndex = allItems.indexOf(draggedItem);
+      const toIndex = allItems.indexOf(this);
+      container.insertBefore(draggedItem, this);
+    }
+  }
+
+  document.addEventListener('touchstart', function(e) {
+    const touch = e.touches[0];
+    const target = document.elementFromPoint(touch.clientX, touch.clientY);
+    const container = target && target.closest('.option-container');
+    if (container) {
+      draggedItem = container;
+      container.style.opacity = '0.5';
+      e.preventDefault();
+    }
+  }, true);
+
+  document.addEventListener('touchmove', function(e) {
+    if (!draggedItem) return;
+    const touch = e.touches[0];
+    const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (dropTarget) {
+      const overContainer = dropTarget.classList.contains('option-container') ? dropTarget : dropTarget.closest('.option-container');
+      if (overContainer && overContainer !== draggedItem) {
+        const container = overContainer.parentNode;
+        container.insertBefore(draggedItem, overContainer);
+      }
+    }
+    e.preventDefault();
+  }, { passive: false });
+
+  document.addEventListener('touchend', function(e) {
+    if (draggedItem) {
+      draggedItem.style.opacity = '1';
+      draggedItem = null;
+    }
+  }, { passive: false });
+
+  function addDragAndDropListeners() {
+    const containers = document.querySelectorAll('.option-container');
+    containers.forEach(container => {
+      container.addEventListener('dragstart', dragStart);
+      container.addEventListener('dragend', dragEnd);
+      container.addEventListener('dragover', dragOver);
+      container.addEventListener('dragenter', dragEnter);
+      container.addEventListener('dragleave', dragLeave);
+      container.addEventListener('drop', drop);
+    });
+  }
+
+  function updateScoreBoard() {
+    document.getElementById("currentQNum").textContent = currentQuestionIndex + 1;
+    document.getElementById("totalQNum").textContent = totalQuestions;
+    document.getElementById("correctCount").textContent = currentScore;
+    document.getElementById("wrongCount").textContent = wrongAnswers;
+    
+    const answered = currentScore + wrongAnswers;
+    const percent = answered > 0 ? Math.round((currentScore / answered) * 100) : 0;
+    document.getElementById("percentage").textContent = percent + "%";
+    
+    const progressPercent = ((currentQuestionIndex) / totalQuestions) * 100;
+    document.getElementById("progressBar").style.width = progressPercent + "%";
+  }
+
+  async function loadQuestion() {
+    if (shuffledQuestions.length === 0) {
+      const dbQuestions = await loadQuestionsFromDatabase();
+      if (dbQuestions.length === 0) { 
+        showNoQuestionsMessage(); 
+        return; 
+      }
+      
+      questions = dbQuestions;
+      shuffledQuestions = [...questions];
+      shuffleArray(shuffledQuestions);
+      totalQuestions = shuffledQuestions.length;
+      currentScore = 0;
+      wrongAnswers = 0;
+      quizFinished = false;
+      updateScoreBoard();
+    }
+    
+    if (currentQuestionIndex >= shuffledQuestions.length) {
+      showEndScreen();
+      return;
+    }
+    
+    const q = shuffledQuestions[currentQuestionIndex];
+    answerSubmitted = false;
+    isNextMode = false;
+    
+    const actionBtn = document.getElementById("actionBtn");
+    actionBtn.textContent = "Submit";
+    actionBtn.onclick = handleAction;
+    actionBtn.disabled = false;
+    
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+    
+    const shuffledOptions = [...q.options];
+    const shuffledIndices = [...Array(q.options.length).keys()];
+    shuffleArray(shuffledIndices);
+    
+    shuffledIndices.forEach((index, position) => {
+      const option = shuffledOptions[index];
+      const container = document.createElement("div");
+      container.className = "option-container";
+      container.draggable = true;
+      
+      const optionButton = document.createElement("button");
+      optionButton.className = "option-button";
+      optionButton.textContent = option;
+      optionButton.onclick = () => speakText(option);
+      
+      const optionNumber = document.createElement("span");
+      optionNumber.className = "option-number";
+      optionNumber.textContent = position + 1;
+      
+      container.appendChild(optionButton);
+      container.appendChild(optionNumber);
+      
+      optionsDiv.appendChild(container);
+    });
+    
+    addDragAndDropListeners();
+    
+    document.removeEventListener('keydown', handleEnterKey);
+    document.addEventListener('keydown', handleEnterKey);
+    
+    updateScoreBoard();
+  }
+
+  function listenToStory() {
+    const q = shuffledQuestions[currentQuestionIndex];
+    if (q) {
+      speakText(q.question, 'en-US');
+      
+      const listenBtn = document.getElementById("listenBtn");
+      listenBtn.style.transform = "scale(0.98)";
+      setTimeout(() => { listenBtn.style.transform = ""; }, 100);
+    }
+  }
+
+  function submitAnswer() {
+    const q = shuffledQuestions[currentQuestionIndex];
+    const optionsContainer = document.getElementById("options");
+    const currentOrderElements = optionsContainer.querySelectorAll('.option-container');
+    
+    const currentOrder = Array.from(currentOrderElements).map(el => {
+      const text = el.querySelector('.option-button').textContent;
+      const optionIndex = q.options.indexOf(text);
+      return optionIndex + 1;
+    });
+    
+    const isCorrect = JSON.stringify(currentOrder) === JSON.stringify(q.correctOrder);
+    
+    if (isCorrect) {
+      currentScore++;
+      
+      const randomIndex = Math.floor(Math.random() * encouragingMessages.length);
+      const encouragingMessage = encouragingMessages[randomIndex];
+      speakText(encouragingMessage, 'en-US');
+      
+      const successMsg = document.getElementById("successMessage");
+      successMsg.style.display = "block";
+      
+      setTimeout(() => {
+        const actionBtn = document.getElementById("actionBtn");
+        actionBtn.textContent = "Next";
+        isNextMode = true;
+        actionBtn.disabled = false;
+        actionBtn.focus();
+      }, 1500);
+    } else {
+      wrongAnswers++;
+      
+      document.getElementById("correctAnswerList").innerHTML = '';
+      q.correctOrder.forEach(index => {
+        const li = document.createElement('li');
+        li.textContent = q.options[index - 1];
+        document.getElementById("correctAnswerList").appendChild(li);
+      });
+      
+      document.getElementById("correctAnswerPopup").style.display = "flex";
+      document.getElementById("correctAnswerOverlay").style.display = "block";
+      
+      speakText(q.question, 'en-US');
+    }
+    
+    updateScoreBoard();
+  }
+
+  function nextQuestion() {
+    if (!isNextMode) return;
+    
+    document.getElementById("successMessage").style.display = "none";
+    currentQuestionIndex++;
+    
+    if (currentQuestionIndex >= shuffledQuestions.length) {
+      showEndScreen();
+      return;
+    }
+    
+    loadQuestion();
+  }
+
+  function closeCorrectAnswerPopup() {
+    document.getElementById("correctAnswerPopup").style.display = "none";
+    document.getElementById("correctAnswerOverlay").style.display = "none";
+    currentQuestionIndex++;
+    
+    if (currentQuestionIndex >= shuffledQuestions.length) {
+      showEndScreen();
+      return;
+    }
+    
+    loadQuestion();
+  }
+  
+  function readCorrectAnswer() {
+    const q = shuffledQuestions[currentQuestionIndex];
+    speakText(q.question, 'en-US');
+  }
+
+  function handleAction() {
+    if (isNextMode) nextQuestion();
+    else submitAnswer();
+  }
+
+  function showEndScreen() {
+    quizFinished = true;
+    showCertificate();
+  }
+
+  // ✅ دالة عرض الشهادة العصرية كشاشة عائمة
+  function showCertificate() {
+    const percent = totalQuestions > 0 ? Math.round((currentScore / totalQuestions) * 100) : 0;
+    const grade = getGrade(percent);
+    const today = new Date();
+    const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    
+    document.getElementById('certName').textContent = studentName || studentNameFromURL || 'Student';
+    document.getElementById('certScore').textContent = `${currentScore} / ${totalQuestions}`;
+    document.getElementById('certPercentage').textContent = `${percent}%`;
+    document.getElementById('certGradeBadge').textContent = `${grade.emoji} ${grade.en}`;
+    document.getElementById('certDate').textContent = dateStr;
+    document.getElementById('certYear').textContent = today.getFullYear();
+    document.getElementById('certMotivation').textContent = grade.motivation;
+     // ✅ السطران الجديدان لإضافة المسار الدراسي (المرحلة_الصف_الوحدة_المنهج)
+    const pathString = `${currentLevel}_${currentGrade}_${currentUnit}_${currentType}`.toLowerCase();
+    document.getElementById('certPath').textContent = pathString;
+    
+    document.getElementById('certificateOverlay').classList.add('show');
+    
+    setTimeout(() => { speakText(`Congratulations ${studentName || studentNameFromURL || 'Student'}!`, 'en-US'); }, 600);
+  }
+
+  // ✅ دالة إغلاق الشاشة العائمة
+  function closeCertificateModal() {
+    document.getElementById('certificateOverlay').classList.remove('show');
+  }
+
+  async function generateCertificateBlob() {
+    try {
+      const canvas = await html2canvas(document.getElementById("certificateCard"), { scale: 2, backgroundColor: null, useCORS: true, logging: false });
+      return new Promise((resolve) => { canvas.toBlob((blob) => { certificateBlob = blob; resolve(blob); }, 'image/png', 1.0); });
+    } catch (error) { console.error(error); return null; }
+  }
+
+  async function saveCertificateAsImage() {
+    const btn = document.getElementById("saveImgBtn");
+    const loading = document.getElementById("loadingOverlay");
+    btn.disabled = true; loading.classList.add("show");
+    try {
+      let blob = certificateBlob; if (!blob) blob = await generateCertificateBlob();
+      if (!blob) { alert("⚠️ حدث خطأ."); return; }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `Certificate_${(studentName || studentNameFromURL || 'Student').replace(/[^a-zA-Z0-9\u0600-\u06FF ]/g, '').trim()}_Sequence.png`;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      loading.classList.remove("show");
+    } catch (error) { loading.classList.remove("show"); }
+    finally { btn.disabled = false; }
+  }
+
+  async function sendToWhatsApp() {
+    const btn = document.getElementById("whatsappBtn");
+    const loading = document.getElementById("loadingOverlay");
+    btn.disabled = true; loading.classList.add("show");
+    try {
+      let blob = certificateBlob; if (!blob) blob = await generateCertificateBlob();
+      const percent = totalQuestions > 0 ? Math.round((currentScore / totalQuestions) * 100) : 0;
+      const grade = getGrade(percent);
+      const messageText = `🎉 *Certificate of Completion* 🎉\n\n👤 *Student:* ${studentName || studentNameFromURL || 'Student'}\n📚 *Activity:* Sequence (استمع ورتب الأحداث)\n📊 *Score:* ${currentScore} / ${totalQuestions} (${percent}%)\n🏆 *Grade:* ${grade.emoji} ${grade.en}\n\n📎 Please find my certificate attached!\n\n🏆 English Marathon Platform 🚀`;
+      const whatsappUrl = `https://wa.me/${INSTRUCTOR_WHATSAPP}?text=${encodeURIComponent(messageText)}`;
+      
+      if (blob && navigator.canShare && navigator.canShare({ files: [new File([blob], 'certificate.png', { type: 'image/png' })] })) {
+        try { await navigator.share({ title: '🏆 English Marathon Certificate', text: messageText, files: [new File([blob], `Certificate_${studentName || studentNameFromURL || 'Student'}.png`, { type: 'image/png' })] }); loading.classList.remove("show"); btn.disabled = false; return; } catch (e) { if (e.name === 'AbortError') { loading.classList.remove("show"); btn.disabled = false; return; } }
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = `Certificate_${studentName || studentNameFromURL || 'Student'}.png`;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(() => { URL.revokeObjectURL(url); window.open(whatsappUrl, '_blank'); loading.classList.remove("show"); btn.disabled = false; alert("✅ تم تحميل الصورة وفتح واتساب. الرجاء إرفاق الصورة."); }, 1500);
+    } catch (error) { loading.classList.remove("show"); btn.disabled = false; }
+  }
+
+  async function shareCertificate() {
+    const btn = document.getElementById("shareBtn");
+    const loading = document.getElementById("loadingOverlay");
+    btn.disabled = true; loading.classList.add("show");
+    try {
+      let blob = certificateBlob; if (!blob) blob = await generateCertificateBlob();
+      if (!blob) { alert("⚠️ حدث خطأ."); return; }
+      const percent = totalQuestions > 0 ? Math.round((currentScore / totalQuestions) * 100) : 0;
+      const grade = getGrade(percent);
+      const shareData = {
+        title: '🏆 English Marathon Certificate',
+        text: `I just completed Sequence (استمع ورتب الأحداث) on English Marathon! 🎉\n\n📊 Score: ${currentScore}/${totalQuestions} (${percent}%)\n🏆 Grade: ${grade.emoji} ${grade.en}`,
+        files: [new File([blob], `Certificate_${studentName || studentNameFromURL || 'Student'}.png`, { type: 'image/png' })]
+      };
+      
+      if (navigator.canShare && navigator.canShare({ files: [new File([blob], 'certificate.png', { type: 'image/png' })] })) {
+        try { await navigator.share(shareData); loading.classList.remove("show"); btn.disabled = false; return; } catch (err) { if (err.name !== 'AbortError') { await saveCertificateAsImage(); loading.classList.remove("show"); btn.disabled = false; alert("📥 تم تنزيل الشهادة\n\nالرجاء مشاركتها يدوياً من معرض الصور"); return; } }
+      } else {
+        await saveCertificateAsImage();
+        loading.classList.remove("show");
+        btn.disabled = false;
+        alert('📥 تم تنزيل الشهادة\n\nالرجاء مشاركتها يدوياً من معرض الصور');
+      }
+    } catch (error) { loading.classList.remove("show"); btn.disabled = false; }
+  }
+
+  function restartQuiz() {
+    currentQuestionIndex = 0;
+    currentScore = 0;
+    wrongAnswers = 0;
+    quizFinished = false;
+    shuffledQuestions = [];
+    questions = [];
+    studentName = "";
+    certificateBlob = null;
+    
+    closeCertificateModal();
+    updateScoreBoard();
+    loadQuestion();
+  }
+
+  function handleEnterKey(event) {
+    if (event.key === 'Enter') {
+      if (document.getElementById('successMessage').style.display === 'block') {
+        document.getElementById("successMessage").style.display = "none";
+        const actionBtn = document.getElementById("actionBtn");
+        actionBtn.textContent = "Next";
+        isNextMode = true;
+        actionBtn.disabled = false;
+        actionBtn.focus();
+        return;
+      }
+      if (document.getElementById('correctAnswerPopup').style.display === 'flex') { closeCorrectAnswerPopup(); return; }
+      if (document.getElementById('speedPopup').style.display === 'flex') { closeSpeedPopup(); return; }
+      if (document.getElementById('howItWorksPopup').style.display === 'flex') { closeHowItWorksPopup(); return; }
+      
+      if (isNextMode && !document.getElementById('actionBtn').disabled) { nextQuestion(); return; }
+      if (!isNextMode && !document.getElementById('actionBtn').disabled) { submitAnswer(); return; }
+    }
+  }
+
+  function openSpeedPopup() { document.getElementById("speedPopupOverlay").style.display = "block"; document.getElementById("speedPopup").style.display = "flex"; }
+  function closeSpeedPopup() { document.getElementById("speedPopupOverlay").style.display = "none"; document.getElementById("speedPopup").style.display = "none"; }
+  function setSpeed(rate) { speechRate = rate; localStorage.setItem("speechRate", speechRate.toString()); closeSpeedPopup(); }
+
+  document.getElementById("actionBtn").onclick = handleAction;
+
+  window.onload = async function() {
+    initSpeechRecognition();
+    await loadQuestion();
+  };
+</script>
+</body>
+</html>

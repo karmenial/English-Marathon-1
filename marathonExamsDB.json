@@ -1,0 +1,767 @@
+{
+  "exams": [{
+  "quizTitle": "امتحان علي الوحدة الخامسة",
+  "passageText": "",
+  "currentTheme": "dark",
+  "currentLang": "en",
+  "questionsList": [
+    {
+      "id": 7,
+      "passage": "This is my {blank1}. There is a blue {blank2} on the floor. There are two comfortable {blank3} beside the sofa. My cat is {blank4} the table. There is a vase {blank5} the table. A tall plant is in the {blank6}. There is a large TV on a {blank7}. I like sitting on the sofa and watching {blank8}.",
+      "options": [
+        "living room",
+        "carpet",
+        "armchairs",
+        "under",
+        "on",
+        "corner",
+        "stand",
+        "TV"
+      ],
+      "correctAnswer": [
+        "living room",
+        "carpet",
+        "armchairs",
+        "under",
+        "on",
+        "corner",
+        "stand",
+        "TV"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "complete",
+      "completeState": {
+        "answers": {},
+        "isSaved": false,
+        "score": 0,
+        "total": 8
+      },
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 52,
+      "sentence": "I aren't happy in my living room.",
+      "errorWord": "aren't",
+      "correctWord": "am not",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "correct",
+      "correctState": {
+        "answer": "",
+        "isSaved": false,
+        "isCorrect": false
+      }
+    },
+    {
+      "id": 54,
+      "sentence": "They doesn't play in the living room.",
+      "errorWord": "doesn't",
+      "correctWord": "don't",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "correct",
+      "correctState": {
+        "answer": "",
+        "isSaved": false,
+        "isCorrect": false
+      }
+    },
+    {
+      "id": 19,
+      "question": "The flowers ______ beautiful.",
+      "correctAnswer": "aren't",
+      "options": [
+        "aren't",
+        "isn't",
+        "am not",
+        "doesn't"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "grammer",
+      "grammerState": {
+        "selectedOption": null,
+        "selectedOptionText": "",
+        "isSaved": false
+      }
+    },
+    {
+      "id": 20,
+      "question": "My friends ______ clean the room.",
+      "correctAnswer": "don't",
+      "options": [
+        "don't",
+        "doesn't",
+        "aren't",
+        "am not"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "grammer",
+      "grammerState": {
+        "selectedOption": null,
+        "selectedOptionText": "",
+        "isSaved": false
+      }
+    },
+    {
+      "id": 8,
+      "sentences": [
+        {
+          "text": "I love my living room because it is beautiful.",
+          "target": "I love my living room because it is beautiful."
+        }
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "justtalk",
+      "justtalkState": {
+        "currentSentenceIndex": 0,
+        "savedTranscripts": {},
+        "isRecording": false,
+        "recognition": {},
+        "isCompleted": false
+      },
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 9,
+      "sentences": [
+        {
+          "text": "The tall plant is in the corner.",
+          "target": "The tall plant is in the corner."
+        },
+        {
+          "text": "There is a large TV on a stand.",
+          "target": "There is a large TV on a stand."
+        },
+        {
+          "text": "I like sitting on the sofa and watching TV.",
+          "target": "I like sitting on the sofa and watching TV."
+        }
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "justtalk",
+      "justtalkState": {
+        "currentSentenceIndex": 0,
+        "savedTranscripts": {},
+        "isRecording": false,
+        "recognition": {},
+        "isCompleted": false
+      },
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 69,
+      "sentence": "I love my living room.",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "re_arrange",
+      "rearrangeState": {
+        "savedWords": [],
+        "isSaved": false
+      }
+    },
+    {
+      "id": 70,
+      "sentence": "I watch TV every evening.",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "re_arrange",
+      "rearrangeState": {
+        "savedWords": [],
+        "isSaved": false
+      }
+    },
+    {
+      "id": 28,
+      "sentence": "My cat likes the sofa.",
+      "targetWord": "doesn't",
+      "correctAnswer": "My cat doesn't like the sofa.",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "rewrite",
+      "rewriteState": {
+        "savedAnswer": "",
+        "isSaved": false
+      }
+    },
+    {
+      "id": 29,
+      "sentence": "They play in the living room.",
+      "targetWord": "don't",
+      "correctAnswer": "They don't play in the living room.",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "rewrite",
+      "rewriteState": {
+        "savedAnswer": "",
+        "isSaved": false
+      }
+    },
+    {
+      "id": 80,
+      "word": "living room",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "Scramble",
+      "scrambleState": {
+        "savedAnswer": "",
+        "isSaved": false
+      },
+      "spillingState": {
+        "savedAnswer": "",
+        "isSaved": false
+      }
+    },
+    {
+      "id": 81,
+      "word": "carpet",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "Scramble",
+      "scrambleState": {
+        "savedAnswer": "",
+        "isSaved": false
+      },
+      "spillingState": {
+        "savedAnswer": "",
+        "isSaved": false
+      }
+    },
+    {
+      "id": 80,
+      "word": "living room",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "spilling"
+    },
+    {
+      "id": 81,
+      "word": "carpet",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "spilling"
+    },
+    {
+      "id": 47,
+      "sentence": "The picture is above the TV.",
+      "instruction": "Underline the preposition.",
+      "correctWords": [
+        "above"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "Underline",
+      "underlineState": {
+        "selectedWords": [],
+        "isSaved": false
+      }
+    },
+    {
+      "id": 48,
+      "sentence": "There are two armchairs beside the sofa.",
+      "instruction": "Underline the preposition.",
+      "correctWords": [
+        "beside"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "Underline",
+      "underlineState": {
+        "selectedWords": [],
+        "isSaved": false
+      }
+    },
+    {
+      "id": 88,
+      "word": "in front of",
+      "meaning": "أمام",
+      "options": [
+        "أمام",
+        "خلف",
+        "بين",
+        "فوق"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 89,
+      "word": "behind",
+      "meaning": "خلف",
+      "options": [
+        "خلف",
+        "أمام",
+        "فوق",
+        "تحت"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 90,
+      "word": "stand",
+      "meaning": "حامل",
+      "options": [
+        "حامل",
+        "كرسي",
+        "طاولة",
+        "رف"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 91,
+      "word": "corner",
+      "meaning": "ركن",
+      "options": [
+        "ركن",
+        "باب",
+        "سقف",
+        "نافذة"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 92,
+      "word": "plant",
+      "meaning": "نبات",
+      "options": [
+        "نبات",
+        "زهرة",
+        "شجرة",
+        "ورقة"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 93,
+      "word": "vase",
+      "meaning": "مزهرية",
+      "options": [
+        "مزهرية",
+        "نبات",
+        "كرسي",
+        "نافذة"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 94,
+      "word": "comfortable",
+      "meaning": "مريح",
+      "options": [
+        "مريح",
+        "صلب",
+        "قديم",
+        "ضيق"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 95,
+      "word": "armchair",
+      "meaning": "كرسي بذراعين",
+      "options": [
+        "كرسي بذراعين",
+        "أريكة",
+        "سرير",
+        "مكتب"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 96,
+      "word": "carpet",
+      "meaning": "سجادة",
+      "options": [
+        "سجادة",
+        "ستارة",
+        "طاولة",
+        "باب"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 97,
+      "word": "living room",
+      "meaning": "غرفة المعيشة",
+      "options": [
+        "غرفة المعيشة",
+        "غرفة النوم",
+        "المطبخ",
+        "الحمام"
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "vocab_quiz",
+      "vocabQuizState": {
+        "selectedOption": null,
+        "isSaved": false
+      }
+    },
+    {
+      "id": 2,
+      "word": "My bedroom is always tidy.",
+      "meaning": "غرفة نومي دائمًا مرتبة.",
+      "options": [
+        "غرفة نومي دائمًا مرتبة.",
+        "غرفة نومي دائمًا صغيرة.",
+        "غرفة نومي دائمًا متسخة.",
+        "غرفة نومي دائمًا مزدحمة."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate",
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 3,
+      "word": "He doesn't clean his room every day.",
+      "meaning": "هو لا ينظف غرفته كل يوم.",
+      "options": [
+        "هو لا ينظف غرفته كل يوم.",
+        "هو ينظف غرفته كل يوم.",
+        "هم لا ينظفون غرفتهم.",
+        "هو يقرأ في غرفته كل يوم."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate",
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 4,
+      "word": "هناك نافذة بستائر خضراء.",
+      "meaning": "There is a window with green curtains.",
+      "options": [
+        "There is a window with green curtains.",
+        "There is a door with green curtains.",
+        "There are green curtains on the bed.",
+        "There is a bookshelf with green curtains."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate",
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 5,
+      "word": "الستائر ليست زرقاء.",
+      "meaning": "The curtains aren't blue.",
+      "options": [
+        "The curtains aren't blue.",
+        "The curtains are blue.",
+        "The curtain isn't blue.",
+        "The curtains aren't green."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate",
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 6,
+      "word": "أنا أحب قراءة الكتب قبل النوم.",
+      "meaning": "I like to read books before bed.",
+      "options": [
+        "I like to read books before bed.",
+        "I like to watch TV before bed.",
+        "I don't like to read books.",
+        "She likes to read books before bed."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate",
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 7,
+      "word": "الكتب على رف الكتب.",
+      "meaning": "The books are on the bookshelf.",
+      "options": [
+        "The books are on the bookshelf.",
+        "The books are under the table.",
+        "The books are in the bedroom.",
+        "The books are behind the door."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate"
+    },
+    {
+      "id": 8,
+      "word": "هو لا يحب الغرفة الفوضوية.",
+      "meaning": "He doesn't like the messy room.",
+      "options": [
+        "He doesn't like the messy room.",
+        "He likes the messy room.",
+        "They don't like the messy room.",
+        "He doesn't clean the messy room."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate"
+    },
+    {
+      "id": 9,
+      "word": "There is a green carpet on the floor.",
+      "meaning": "توجد سجادة خضراء على الأرض.",
+      "options": [
+        "توجد سجادة خضراء على الأرض.",
+        "توجد ستارة خضراء على الحائط.",
+        "يوجد سرير أخضر في الغرفة.",
+        "توجد سجادة زرقاء على الأرض."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate"
+    },
+    {
+      "id": 10,
+      "word": "They like to read before they go to bed.",
+      "meaning": "هم يحبون القراءة قبل أن يذهبوا إلى النوم.",
+      "options": [
+        "هم يحبون القراءة قبل أن يذهبوا إلى النوم.",
+        "هم ينامون قبل قراءة الكتب.",
+        "هي تحب القراءة قبل النوم.",
+        "هم يذهبون إلى المدرسة كل صباح."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate",
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    },
+    {
+      "id": 11,
+      "word": "The cat is under the table.",
+      "meaning": "القطة تحت الطاولة.",
+      "options": [
+        "القطة تحت الطاولة.",
+        "القطة فوق الطاولة.",
+        "القطة أمام الطاولة.",
+        "القطة بين الكراسي."
+      ],
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "5",
+      "fromDB": true,
+      "type": "translate",
+      "translateState": {
+        "selectedOption": null,
+        "isSaved": false,
+        "recognition": {}
+      }
+    }
+  ],
+  "level": "primary",
+  "grade": "2",
+  "curriculum": "OL",
+  "unit": "5",
+  "units": [
+    "5"
+  ],
+  "id": 1786376281020,
+  "createdAt": "2026-08-10T15:38:01.020Z"
+}]
+}

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏆 English Marathon</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  .brand-title {
+    font-family: 'Fredoka One', 'Cairo', cursive;
+    font-size: 32px;
+    background: linear-gradient(45deg, #f59e0b, #ef4444, #8b5cf6, #3b82f6);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease infinite;
+    text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .brand-subtitle {
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- 🔐 بوابة الدخول الموحدة -->
+<div id="authBox" class="auth-container">
+  <h1 class="brand-title">🏆 English Marathon 🏆</h1>
+  <p class="brand-subtitle">منصة الماراتون الإنجليزي التفاعلية</p>
+  
+  <div class="form-group">
+    <label>البريد الإلكتروني / اسم المستخدم:</label>
+    <input type="text" id="authEmail" class="form-control" placeholder="أدخل البريد أو اسم المستخدم">
+  </div>
+  <div class="form-group">
+    <label>كلمة المرور:</label>
+    <input type="password" id="authPass" class="form-control" placeholder="أدخل كلمة المرور">
+  </div>
+  <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
+    <input type="checkbox" id="authRemember" style="width: auto;">
+    <label for="authRemember" style="margin: 0; cursor: pointer;">تذكرني دائماً على هذا الجهاز</label>
+  </div>
+  <button id="authBtn" class="btn" onclick="handleAuth()">🔑 دخول المنصة</button>
+  <div class="auth-switch">
+    ليس لديك حساب؟ <span onclick="toggleAuthMode()">سجل كطالب جديد الآن</span>
+  </div>
+  <div class="benefit-link" onclick="openBenefitsModal()">ماذا تستفيد من هذا التطبيق؟ اكتشف المزايا مجاناً</div>
+</div>
+
+<!-- 🎯 نافذة المزايا -->
+<div id="benefitsModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeBenefitsModal()">×</button>
+    <h1 class="brand-title" style="font-size: 24px;">🏆 English Marathon </h1>
+    <div class="modal-header">ماذا تستفيد وتتعلم مع English Marathon؟</div>
+    <div class="benefit-item"><div class="benefit-icon">🎁</div><div class="benefit-text"><h4>التطبيق مجاني بالكامل 100%</h4><p>صُممت هذه المنصة لخدمة طلابنا الأعزاء دون أي تكاليف مادية.</p></div></div>
+    <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-text"><h4>18 نشاطاً وتحدياً تفاعلياً</h4><p>ألعاب ذكية وتحديات متكاملة تغطي الكلمات، القواعد، الإملاء، ترتيب الجمل.</p></div></div>
+    <div class="benefit-item"><div class="benefit-icon">🗣️</div><div class="benefit-text"><h4>تعليم تفاعلي بالصوت والنطق الصحيح</h4><p>تطوير مهارتي النطق والكلام والاستماع لدى أولادنا.</p></div></div>
+    <div class="benefit-item"><div class="benefit-icon">📖</div><div class="benefit-text"><h4>شروحات متميزة ومراجعات وامتحانات شاملة</h4><p>تغطية شاملة لكل صغيرة وكبيرة في المنهج الدراسي.</p></div></div>
+    <div class="benefit-item"><div class="benefit-icon">💬</div><div class="benefit-text"><h4>تواصل مباشر وفوري مع المستر</h4><p>يمكن للطالب إرسال استفساراته ورسائله للمستر مباشرة.</p></div></div>
+    <button class="btn btn-success" onclick="closeBenefitsModalAndRegister()"> اشترك الآن وسجل حسابك فوراً مجاناً</button>
+  </div>
+</div>
+
+<!-- 👑 لوحة الإدارة الرئيسية -->
+<div id="mainDashboardLayout" class="admin-layout hidden">
+  <aside class="sidebar">
+    <h1 class="brand-title" style="font-size: 20px; margin-bottom: 15px;"> English Marathon</h1>
+    <h3 id="sidebarTitle">👑 لوحة المستر</h3>
+    <div id="studentNameSidebar" style="display: none;">
+      <div class="sidebar-student-label">الطالب</div>
+      <div class="sidebar-student-name" id="studentNameSidebarText">---</div>
+    </div>
+    <ul class="sidebar-menu">
+      <li id="menu-item-students" class="hidden" onclick="switchMainTab('students')"> إدارة المستخدمين</li>
+      <li id="menu-item-questions" class="hidden" onclick="switchMainTab('questions')">📝 إدارة الأسئلة والمحتوى</li>
+<li id="menu-item-exams" class="hidden" onclick="switchMainTab('exams'); renderExamsAdmin();">📝 إدارة الامتحانات</li>   
+       <li id="menu-item-messages" class="hidden" onclick="switchMainTab('messages')">📢 بث وإدارة الرسائل</li>
+      <li id="menu-item-preview" class="hidden" onclick="switchMainTab('preview')">️ معاينة صفحة الطلاب</li>
+      <li id="menu-item-groups" class="hidden" onclick="handleGroupsClick()">👥 <span id="groupsBtnText">مجموعاتي</span></li>
+      <li id="menu-item-teacher-exams" class="hidden" onclick="showTeacherExams()">📝 امتحاناتي</li>
+      <li id="menu-item-images" class="hidden" onclick="openImagesModal()">🖼️ إدارة الصور</li>
+      <li id="menu-item-pwa" class="hidden btn-gold-menu" onclick="triggerPWAInstall()">📲 أضفني إلى شاشتك</li>
+      
+      <!-- ✅ زر تبادلي للطالب -->
+      <li id="menu-item-toggle-view" class="hidden" style="padding: 0; border: none; background: transparent;">
+        <div class="toggle-container">
+          <button id="btnMyGroup" class="toggle-btn active" onclick="toggleStudentView('mygroup')">👥 مجموعتي</button>
+          <button id="btnMarathon" class="toggle-btn" onclick="toggleStudentView('marathon')"> Marathon</button>
+        </div>
+      </li>
+      
+      <li id="menu-item-my-group" class="hidden" onclick="openMyGroupModal()">👥 مجموعتي</li>
+       <li id="menu-item-my-exams" class="hidden" onclick="showMyExams()">📝 امتحاناتي</li>
+      <li id="menu-item-contact" class="hidden" onclick="openContactUsModal()">💬 راسلنا</li>
+      <li id="sidebar-download-students" class="hidden btn-download-action" onclick="exportStudentsDB()">💾 تحميل ملف المستخدمين (GitHub)</li>
+      <li id="sidebar-download-questions" class="hidden btn-download-action" onclick="exportQuestionsDB()">💾 تحميل ملف الأسئلة (GitHub)</li>
+      <li id="sidebar-import-students" class="btn-download-action hidden" onclick="document.getElementById('importUsersInput').click()">📤 استيراد ملف المستخدمين (GitHub)</li>
+<input type="file" id="importUsersInput" accept=".json" style="display:none;" onchange="importUsersDB(event)">
+<li id="sidebar-clear-students" class="btn-download-action hidden" style="background: rgba(239,68,68,0.1); color:#ef4444; border:1px solid rgba(239,68,68,0.3);" onclick="clearAllUsersDB()">🗑️ حذف جميع المستخدمين (تحذير)</li>
+    </ul>
+    <button id="studentExpiryPulseBtn" class="btn btn-danger-pulse hidden" style="margin-top: 15px;" onclick="openSubscriptionModal()">️ تنبيه</button>
+    <button id="menu-item-back-to-admin" class="hidden btn btn-warning" style="margin-top: 15px;" onclick="exitStudentPreview()">👑 العودة للوحة الإدارة</button>
+    <button class="btn btn-danger" style="margin-top: 15px;" onclick="logout()">🔄 خروج</button>
+  </aside>
+
+  <main class="admin-main">
+    <!-- تبويب إدارة المستخدمين -->
+    <div id="tab-students" class="admin-tab hidden">
+      <!-- ✅ البانر المعدل: الصورة يسار، الترحيب يمين -->
+      <div class="student-banner" id="adminBanner" style="flex-direction: row-reverse;">
+        <div class="student-logo"><img id="platformLogo" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo"></div>
+        <div class="student-welcome" style="text-align: right; flex: 1;">
+          <h1 class="brand-title" style="font-size: 24px; margin: 0;">🏆 English Marathon</h1>
+          <h2>مرحباً بك، <span id="lblAdminName">مستر إنجليزي</span> 👑</h2>
+          <p style="color: var(--text-muted); font-size: 14px;">لوحة إدارة المنصة التعليمية</p>
+        </div>
+      </div>
+      
+      <div class="panel-header"><h2>👥 سجل إدارة المستخدمين</h2></div>
+      
+      <div class="dashboard-grid">
+        <div class="stat-card"><h4>إجمالي المستخدمين</h4><p id="statTotalUsers">0</p></div>
+        <div class="stat-card"><h4>حسابات مفعّلة</h4><p id="statActiveUsers">0</p></div>
+        <div class="stat-card"><h4>عدد المدرسين</h4><p id="statTotalTeachers">0</p></div>
+      </div>
+      
+      <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+        <button class="btn btn-primary" id="btnShowStudents" onclick="showStudentsTable()" style="width: auto; flex: 1;">👥 عرض قاعدة بيانات الطلبة</button>
+        <button class="btn btn-success" id="btnShowTeachers" onclick="showTeachersTable()" style="width: auto; flex: 1;">‍🏫 عرض قاعدة بيانات المدرسين</button>
+      </div>
+      
+      <div class="filter-bar">
+        <div class="filter-group"><label>المرحلة:</label><select id="filterLevel" class="form-control" onchange="adaptGradesSelector('filterLevel', 'filterGrade', true); renderUsersTable();"><option value="all">الكل</option><option value="primary">الابتدائية</option><option value="preparatory">الإعدادية</option><option value="secondary">الثانوية</option></select></div>
+        <div class="filter-group"><label>الصف:</label><select id="filterGrade" class="form-control" onchange="renderUsersTable();"></select></div>
+<div class="filter-group">
+  <label>المنهج:</label>
+  <select id="filterType" class="form-control" onchange="renderUsersTable();">
+    <!-- سيتم ملؤها ديناميكياً -->
+  </select>
+</div>        <div class="filter-group"><label>حالة التفعيل:</label><select id="filterPaid" class="form-control" onchange="renderUsersTable();"><option value="all">الكل</option><option value="active">مفعل ✅</option><option value="suspended">معلق ❌</option></select></div>
+        <div class="filter-group"><label>حالة الاشتراك:</label><select id="filterExpiry" class="form-control" onchange="renderUsersTable();"><option value="all">الكل</option><option value="valid">نشط 👍</option><option value="warning">ينتهي قريباً ⚠️</option><option value="expired">منتهي 🚫</option></select></div>
+      </div>
+      
+      <button class="btn btn-success" id="btnAddUser" style="width: auto; margin-bottom: 15px;" onclick="openAddUserModal()">➕ إضافة طالب جديد</button>
+      
+      <div id="studentsTableContainer" class="table-responsive">
+        <table class="data-table" id="usersTable">
+          <thead>
+            <tr>
+              <th>الاسم / البريد</th>
+              <th>كلمة المرور</th>
+              <th>الدور</th>
+              <th>المجموعة</th>
+              <th>بداية الاشتراك</th>
+              <th>مدة الاشتراك</th>
+              <th>الفترة المتبقية</th>
+              <th>الحالة</th>
+              <th>المراسلة</th>
+              <th>الإجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody"></tbody>
+        </table>
+      </div>
+      
+      <div id="teachersTableContainer" class="table-responsive hidden">
+        <table class="data-table" id="teachersTable">
+          <thead>
+            <tr>
+              <th>الاسم</th>
+              <th>الإيميل</th>
+              <th>كلمة المرور</th>
+              <th>نسبة العمولة (%)</th>
+              <th>رقم الموبايل</th>
+              <th>عدد الطلاب</th>
+              <th>إجمالي الإيرادات</th>
+              <th>تاريخ الانضمام</th>
+              <th>الحالة</th>
+              <th>الإجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="teachersTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 📝 تبويب إدارة قاعدة الامتحانات (للأدمن) -->
+<div id="tab-exams" class="admin-tab hidden">
+    <div class="panel-header">
+        <h2>📝 إدارة قاعدة بيانات الامتحانات</h2>
+    </div>
+
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label>المرحلة:</label>
+            <select id="examFilterLevel" class="form-control" onchange="adaptGradesSelector('examFilterLevel','examFilterGrade',true); renderExamsAdmin();">
+                <option value="all">الكل</option>
+                <option value="primary">الابتدائية</option>
+                <option value="preparatory">الإعدادية</option>
+                <option value="secondary">الثانوية</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>الصف:</label>
+            <select id="examFilterGrade" class="form-control" onchange="renderExamsAdmin();"></select>
+        </div>
+        <div class="filter-group">
+            <label>المنهج:</label>
+            <select id="examFilterCurriculum" class="form-control" onchange="renderExamsAdmin();"></select>
+        </div>
+    </div>
+
+    <div class="flex-layout" style="margin-bottom:20px;">
+        <button class="btn btn-warning" style="width:auto; padding:10px 20px;" onclick="exportExamsDB()">💾 تنزيل قاعدة الامتحانات (GitHub)</button>
+        <label class="btn btn-success" style="width:auto; padding:10px 20px; cursor:pointer;">
+            📤 تحميل قاعدة الامتحانات (استيراد)
+            <input type="file" id="importExamsInput" accept=".json" style="display:none;" onchange="importExamsDB(event)">
+        </label>
+        <span id="examsCountBadge" class="badge badge-success" style="font-size:14px; padding:8px 14px;"></span>
+    </div>
+
+    <div id="examsAdminGrid" class="activity-grid"></div>
+</div>
+
+    <!-- تبويب إدارة الأسئلة -->
+    <div id="tab-questions" class="admin-tab hidden">
+      <!-- زر مسح قاعدة البيانات بالكامل (أضفه أسفل أزرار الاستيراد والإضافة) -->
+<button class="btn btn-danger" style="width: auto; margin-bottom: 15px; background: linear-gradient(135deg, #dc2626, #991b1b); border: 2px solid #fca5a5;" onclick="clearAllQuestionsDB()">
+    🗑️ مسح قاعدة بيانات الأسئلة بالكامل (تحذير)
+</button>
+      <div class="panel-header"><h2>📝 محرك إدارة الأسئلة والشروح والامتحانات المركزية</h2></div>
+      <div class="filter-bar">
+        <div class="filter-group"><label>نوع النشاط:</label><select id="qFilterActivity" class="form-control"><option value="all">الكل</option></select></div>
+        <div class="filter-group"><label>المرحلة:</label><select id="qFilterLevel" class="form-control" onchange="adaptGradesSelector('qFilterLevel', 'qFilterGrade', true);"><option value="all">الكل</option><option value="primary">الابتدائية</option><option value="preparatory">الإعدادية</option><option value="secondary">الثانوية</option></select></div>
+        <div class="filter-group"><label>الصف:</label><select id="qFilterGrade" class="form-control"></select></div>
+<div class="filter-group">
+  <label>المنهج:</label>
+  <div style="display: flex; gap: 5px; align-items: flex-end;">
+    <select id="qFilterCurriculum" class="form-control" style="flex: 1;">
+      <!-- سيتم ملؤها ديناميكياً -->
+    </select>
+    <button class="btn btn-success" style="width: auto; padding: 8px 12px; font-size: 14px;" onclick="openAddCurriculumModal()" title="إضافة منهج جديد">➕</button>
+  </div>
+</div>        
+        <div class="filter-group"><label>الوحدة:</label><select id="qFilterUnit" class="form-control"><option value="all">الكل</option></select></div>
+      </div>
+      <button class="btn btn-success" style="width: auto; margin-bottom: 15px;" onclick="openInjectorModal()">➕ إضافة وحقن أسئلة / محتوى جديد</button>
+      <button class="btn btn-primary" style="width: auto; margin-bottom: 15px;" onclick="fetchAndDisplayQuestionsJSON()">🔍 عرض وتحرير المحتوى المفرز الحالي</button>
+      <div id="jsonEditorZone" class="hidden" style="margin-top: 20px;">
+        <h3> محرر الـ JSON التفاعلي الحي:</h3>
+        <textarea id="liveJsonTextarea" class="form-control" style="min-height: 400px; font-family: monospace; direction: ltr;"></textarea>
+        <button class="btn btn-success" style="margin-top: 10px;" onclick="saveLiveJsonEdits()">💾 حفظ وتحديث التعديلات</button>
+      </div>
+      <div style="margin-top: 20px;">
+        <label style="font-weight: bold;">🔄 استيراد كامل لقاعدة بيانات الأسئلة أوفلاين:</label>
+<input type="file" id="importQuestionsFile" class="form-control" style="margin-top: 10px;" accept=".json" onchange="importQuestionsDB(event, true)">     
+ </div>
+    </div>
+
+    <!-- تبويب الرسائل -->
+    <div id="tab-messages" class="admin-tab hidden">
+      <div class="panel-header"><h2> نظام بث وإرسال الرسائل والتوجيهات الفورية للطلاب</h2></div>
+      <div class="filter-bar">
+        <div class="filter-group"><label>المرحلة:</label><select id="msgFilterLevel" class="form-control"><option value="all">الكل</option><option value="primary">الابتدائية</option><option value="preparatory">الإعدادية</option><option value="secondary">الثانوية</option></select></div>
+        <div class="filter-group"><label>الصف:</label><select id="msgFilterGrade" class="form-control"></select></div>
+<div class="filter-group">
+  <label>المنهج:</label>
+  <select id="msgFilterType" class="form-control">
+    <!-- سيتم ملؤها ديناميكياً -->
+  </select>
+</div>        <div class="filter-group"><label>حالة التفعيل:</label><select id="msgFilterPaid" class="form-control"><option value="all">الكل</option><option value="active">مفعل ✅</option><option value="suspended">معلق </option></select></div>
+      </div>
+      <div class="form-group">
+        <label>نص الرسالة العامة الموجهة:</label>
+        <textarea id="broadcastMessageInput" class="form-control" rows="4" placeholder="اكتب رسالتك هنا..."></textarea>
+      </div>
+      <button class="btn btn-success" style="width: auto;" onclick="sendBroadcastMessage()"> بث وإرسال الرسالة للطلاب المستهدفين الآن</button>
+    </div>
+    <!-- 📝 تبويب امتحاناتي - الكروت المربعة -->
+<div id="tab-my-exams" class="admin-tab hidden">
+    <div class="panel-header">
+        <h2>📝 امتحاناتي</h2>
+    </div>
+    <div id="myExamsCardsGrid" class="exams-cards-grid"></div>
+</div>
+
+    <!-- تبويب المعاينة -->
+    <div id="tab-preview" class="admin-tab hidden">
+      <div id="adminPreviewBanner" class="exam-mode-banner hidden">👀 أنت في وضع "معاينة واجهة الطالب اللحظية" كمسؤول!</div>
+      <div class="student-banner">
+        <div class="student-logo"><img id="previewLogo" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo"></div>
+        <div class="student-welcome">
+          <h1 class="brand-title" style="font-size: 22px; margin: 0;">🏆 English Marathon</h1>
+          <h2>مرحباً بك مجدداً يا بطل، <span id="previewStudentName">--</span> 👋</h2>
+          <p>جاهز اليوم لخوض تحديات وماراثون الإنجليزية واكتساب مهارات جديدة؟</p>
+          <div class="student-path-badges">
+            <span class="path-pill"> المرحلة: <strong id="previewLevel">--</strong></span>
+            <span class="path-pill">📚 الصف: <strong id="previewGrade">--</strong></span>
+            <span class="path-pill">🎯 المنهج: <strong id="previewType">--</strong></span>
+            <span class="path-pill path-pill-unit">🎯 الوحدة: <select id="previewUnitFilter" onchange="updateUnitFilter(this.value)"></select></span>
+            <span id="studentExpiryBadge" class="path-pill hidden" style="background: rgba(239,68,68,0.2); color: var(--danger); animation: pulseDanger 1.5s infinite; cursor: pointer;">⚠️ جدد الآن</span>
+          </div>
+        </div>
+      </div>
+      <div id="previewActivitiesGrid" class="activity-grid"></div>
+      
+      <!-- قسم امتحانات المدرس المرتبط -->
+      <div id="teacherExamsSection" class="hidden" style="margin-top: 40px;">
+        <div class="panel-header">
+          <h2>👨‍🏫 امتحانات مدرسي</h2>
+        </div>
+        <div id="teacherExamsGrid" class="activity-grid"></div>
+      </div>
+    </div>
+
+    <!-- ✅ تبويب لوحة المدرس (يظهر فقط للمدرسين) -->
+    <div id="tab-groups" class="admin-tab hidden">
+      <div class="student-banner">
+        <div class="student-logo"><img id="teacherLogo" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo"></div>
+        <div class="student-welcome">
+          <h1 class="brand-title" style="font-size: 22px; margin: 0;">🏆 English Marathon</h1>
+          <h2>مرحباً بك، <span id="teacherWelcomeName">---</span> 👨‍</h2>
+          <div class="student-path-badges">
+            <span class="path-pill">📱 <strong id="teacherPhoneDisplay">---</strong></span>
+            <span class="path-pill">💰 عمولتك: <strong id="teacherCommissionDisplay">0%</strong></span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dashboard-grid">
+        <div class="stat-card">
+          <h4>عدد مجموعاتي</h4>
+          <p id="teacherGroupsCount">0</p>
+        </div>
+        <div class="stat-card">
+          <h4>إجمالي طلابي</h4>
+          <p id="teacherTotalStudents">0</p>
+        </div>
+        <div class="stat-card">
+          <h4>الطلاب المفعلين</h4>
+          <p id="teacherActiveStudents">0</p>
+        </div>
+        <div class="stat-card highlight">
+          <h4>إجمالي مستحقاتي هذا الشهر</h4>
+          <p id="teacherMonthlyEarnings">0 ج.م</p>
+        </div>
+      </div>
+      
+      <h3 style="color: var(--warning); margin: 20px 0;"> مجموعاتي الدراسية</h3>
+      <div id="teacherGroupsGrid" class="cards-grid"></div>
+      
+      <div id="teacherGroupDetails" class="hidden" style="margin-top: 20px;">
+        <button class="btn btn-primary" style="width: auto; margin-bottom: 15px;" onclick="backToTeacherGroups()">← عودة للمجموعات</button>
+        <h3 id="teacherGroupTitle" style="margin: 15px 0; color: var(--primary);"></h3>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>اسم الطالب</th>
+                <th>البريد</th>
+                <th>سعر الاشتراك</th>
+                <th>حالة الاشتراك</th>
+                <th>المتبقي</th>
+              </tr>
+            </thead>
+            <tbody id="teacherGroupStudentsTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- 💬 زر الدعم العائم -->
+<button id="floatingContactBtn" class="btn btn-primary hidden" style="position: fixed; bottom: 20px; left: 20px; width: auto; padding: 12px 20px; z-index: 999;" onclick="openContactUsModal()">💬 راسلنا</button>
+
+<!-- 🔔 نافذة تنبيه الاشتراك -->
+<div id="studentReportModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeStudentReportModal()">×</button>
+    <div class="modal-header">⚠️ تنبيه انتهاء الاشتراك</div>
+    <p id="studentReportModalText" style="line-height: 1.8; margin: 20px 0;"></p>
+    <button class="btn btn-primary" onclick="openContactUsModal()">💬 تواصل مع المستر للتجديد الآن</button>
+    <button class="btn btn-danger" style="margin-top: 10px;" onclick="closeStudentReportModal()">إغلاق</button>
+  </div>
+</div>
+
+<!-- 💬 نافذة التواصل -->
+<div id="contactUsModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeContactUsModal()">×</button>
+    <div class="modal-header">💬 راسل المستر مباشرة عبر واتساب</div>
+    <p style="margin-bottom: 15px;">اكتب سؤالك وسيقوم النظام بتوجيهك مباشرة للواتساب مدمجاً به بياناتك الدراسية تلقائياً!</p>
+    <textarea id="studentContactInput" class="form-control" rows="4" placeholder="اكتب استفسارك هنا..."></textarea>
+    <button class="btn btn-success" style="margin-top: 15px;" onclick="sendWhatsAppMessageToTeacher()">🚀 إرسال الرسالة عبر واتساب</button>
+  </div>
+</div>
+
+<!--  نافذة الرسالة الفردية -->
+<div id="messageModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeMessageModal()">×</button>
+    <div class="modal-header">💬 تحديث الرسالة الفورية الفردية للطالب</div>
+    <p style="margin-bottom: 15px;">الطالب: <strong id="msgModalTargetName">---</strong></p>
+    <input type="hidden" id="msgModalTargetIdx">
+    <textarea id="studentCustomMsgInput" class="form-control" rows="4" placeholder="اكتب رسالة خاصة لهذا الطالب..."></textarea>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeMessageModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="saveStudentCustomMessage()">💾 حفظ وتثبيت الرسالة</button>
+    </div>
+  </div>
+</div>
+
+<!-- ➕ نافذة إضافة مستخدم جديد -->
+<div id="addUserModal" class="modal-overlay hidden">
+  <div class="modal-content" style="max-width: 600px;">
+    <button class="close-btn" onclick="closeAddUserModal()">×</button>
+    <div class="modal-header">➕ إضافة مستخدم جديد</div>
+    <div class="form-group">
+      <label>نوع المستخدم:</label>
+      <select id="newUserRole" class="form-control" onchange="onUserRoleChange()">
+        <option value="student">🎓 طالب</option>
+        <option value="teacher">👨‍ مدرس شريك</option>
+        <option value="assistant">🤝 مساعد مدير</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>الاسم الكامل:</label>
+      <input type="text" id="newUserName" class="form-control" placeholder="أدخل الاسم">
+    </div>
+    <div class="form-group">
+      <label>البريد الإلكتروني / اسم المستخدم:</label>
+      <input type="text" id="newUserEmail" class="form-control" placeholder="أدخل البريد">
+    </div>
+    <div class="form-group">
+      <label>كلمة المرور:</label>
+      <input type="text" id="newUserPass" class="form-control" placeholder="أدخل كلمة المرور">
+    </div>
+    <div id="studentFields">
+      <div class="form-group">
+        <label>المرحلة الدراسية:</label>
+        <select id="newStudentLevel" class="form-control" onchange="adaptGradesSelector('newStudentLevel', 'newStudentGrade')">
+          <option value="primary">الابتدائية</option>
+          <option value="preparatory">الإعدادية</option>
+          <option value="secondary">الثانوية</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>الصف:</label>
+        <select id="newStudentGrade" class="form-control"></select>
+      </div>
+      <div class="form-group">
+        <label>نوع المنهج:</label>
+        <select id="newStudentType" class="form-control"></select>
+      </div>
+      <div class="form-group">
+        <label>تاريخ بداية الاشتراك:</label>
+        <input type="date" id="newStudentJoinDate" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>مدة الاشتراك (بالأيام):</label>
+        <input type="number" id="newStudentDuration" class="form-control" value="30" min="1">
+      </div>
+      <div class="form-group">
+        <label>ربط بمدرس (اختياري):</label>
+        <select id="newStudentTeacher" class="form-control">
+          <option value="">-- حر (بدون مدرس) --</option>
+        </select>
+      </div>
+      <div class="form-group" id="subscriptionPriceGroup">
+        <label>سعر الاشتراك الشهري (ج.م):</label>
+        <input type="number" id="newStudentSubscriptionPrice" class="form-control" value="0" min="0" placeholder="يظهر فقط إذا كان مرتبطاً بمدرس">
+      </div>
+    </div>
+    <div id="teacherFields" class="hidden">
+      <div class="form-group">
+        <label>نسبة العمولة (%):</label>
+        <input type="number" id="newTeacherCommission" class="form-control" value="15" min="5" max="30">
+      </div>
+      <div class="form-group">
+        <label>رقم الموبايل (للتحويل المالي):</label>
+        <input type="text" id="newTeacherPhone" class="form-control" placeholder="01xxxxxxxxx">
+      </div>
+    </div>
+    <div id="assistantFields" class="hidden">
+      <div class="form-group">
+        <label>الصلاحيات الممنوحة:</label>
+        <div id="permissionsList" style="background: var(--bg-dark); padding: 15px; border-radius: 8px; border: 1px solid var(--border); max-height: 200px; overflow-y: auto;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeAddUserModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="saveNewUser()">💾 حفظ المستخدم</button>
+    </div>
+  </div>
+</div>
+
+<!-- 🔗 نافذة اختيار المدرس -->
+<div id="selectTeacherModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeSelectTeacherModal()">×</button>
+    <div class="modal-header">👨‍🏫 اختر المدرس المرتبط</div>
+    <p style="margin-bottom: 15px;">الطالب: <strong id="selectTeacherStudentName">---</strong></p>
+    <div class="form-group">
+      <label>اختر المدرس:</label>
+      <select id="selectTeacherList" class="form-control"></select>
+    </div>
+    <div class="form-group">
+      <label>سعر الاشتراك الشهري (ج.م):</label>
+      <input type="number" id="selectTeacherSubscriptionPrice" class="form-control" value="100" min="0">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeSelectTeacherModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="confirmSelectTeacher()">💾 تأكيد الربط</button>
+    </div>
+  </div>
+</div>
+
+<!-- 👥 نافذة إدارة المجموعات والشركاء (للأدمن فقط) -->
+<div id="groupsModal" class="modal-overlay hidden">
+  <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+    <button class="close-btn" onclick="closeGroupsModal()">×</button>
+    <div class="modal-header">
+       إدارة المجموعات والشركاء
+      <button class="btn btn-success" style="float: left; font-size: 13px; width: auto; padding: 8px 15px;" onclick="openAddExamModal()">➕ إضافة امتحان/لينك جديد</button>
+    </div>
+    <div id="teachersOverview">
+      <h3 style="color: var(--warning); margin-bottom: 15px;">👨‍🏫 المدرسون الشركاء</h3>
+      <div id="teachersList" class="teachers-list-vertical"></div>
+    </div>
+    <div id="teacherDetails" class="hidden" style="margin-top: 20px;">
+      <button class="btn btn-primary" style="margin-bottom: 15px; width: auto;" onclick="backToTeachersList()">← العودة لقائمة المدرسين</button>
+      <div class="student-banner">
+        <div class="student-welcome">
+          <h2 id="teacherNameDisplay">---</h2>
+          <div class="student-path-badges">
+            <span class="path-pill">📱 <strong id="teacherPhoneDisplay">---</strong></span>
+            <span class="path-pill">💰 <strong id="teacherCommissionDisplay">---</strong>%</span>
+            <span class="path-pill"> <strong id="teacherStudentsCountDisplay">0</strong> طالب</span>
+            <span class="path-pill">💵 <strong id="teacherEarningsDisplay">0</strong> ج</span>
+          </div>
+        </div>
+      </div>
+      <h4 style="color: var(--primary); margin: 15px 0;"> طلاب هذا المدرس</h4>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead><tr><th>الاسم</th><th>المسار</th><th>حالة الاشتراك</th><th>المتبقي</th></tr></thead>
+          <tbody id="teacherStudentsTable"></tbody>
+        </table>
+      </div>
+      <h4 style="color: var(--primary); margin: 20px 0 15px 0;">📝 الامتحانات واللينكات</h4>
+      <div id="teacherExamsList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Modal معلومات المدرس وامتحاناته (للطالب) -->
+<div id="teacherInfoModal" class="modal-overlay hidden">
+  <div class="modal-content" style="max-width: 700px;">
+    <button class="close-btn" onclick="closeTeacherInfoModal()">×</button>
+    <div class="modal-header">👨‍🏫 معلومات مدرسي</div>
+    
+    <div class="teacher-info-card">
+      <div class="teacher-avatar">👨‍🏫</div>
+      <div class="teacher-details">
+        <h3 id="modalTeacherName">---</h3>
+        <p><strong>📱 الهاتف:</strong> <span id="modalTeacherPhone">---</span></p>
+        <p><strong> البريد:</strong> <span id="modalTeacherEmail">---</span></p>
+      </div>
+    </div>
+    
+    <h4 style="margin: 20px 0 10px 0; color: var(--warning);"> امتحانات المدرس:</h4>
+    <div id="modalTeacherExamsList" class="exams-list"></div>
+    
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeTeacherInfoModal()">❌ إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Modal امتحانات المدرس -->
+<div id="teacherExamsModal" class="modal-overlay hidden">
+  <div class="modal-content" style="max-width: 800px;">
+    <button class="close-btn" onclick="closeTeacherExamsModal()">×</button>
+    <div class="modal-header">📝 امتحاناتي</div>
+    <div class="table-responsive">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>عنوان الامتحان</th>
+            <th>المسار الدراسي</th>
+            <th>تاريخ الإضافة</th>
+            <th>إجراء</th>
+          </tr>
+        </thead>
+        <tbody id="teacherExamsModalTable"></tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeTeacherExamsModal()"> إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Modal إدارة الصور -->
+<div id="imagesModal" class="modal-overlay hidden">
+  <div class="modal-content" style="max-width: 600px;">
+    <button class="close-btn" onclick="closeImagesModal()">×</button>
+    <div class="modal-header">🖼️ إدارة صور المنصة</div>
+    
+    <div class="form-group">
+      <label>🖼️ رابط صورة المشاركة:</label>
+      <input type="text" id="shareImageUrlInput" class="form-control" placeholder="أدخل رابط صورة المشاركة">
+    </div>
+    
+    <div class="form-group">
+      <label>🖼️ رابط لوجو المنصة:</label>
+      <input type="text" id="logoUrlInput" class="form-control" placeholder="أدخل رابط لوجو المنصة">
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeImagesModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="saveImagesSettings()">💾 حفظ التغييرات</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Modal رسالة الاشتراك -->
+<div id="subscriptionModal" class="modal-overlay hidden">
+  <div class="modal-content" style="max-width: 500px;">
+    <button class="close-btn" onclick="closeSubscriptionModal()">×</button>
+    <div class="modal-header" id="subscriptionModalTitle">⚠️ تنبيه الاشتراك</div>
+    <div id="subscriptionModalContent" style="text-align: center; padding: 20px;">
+      <!-- المحتوى يتغير ديناميكياً -->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeSubscriptionModal()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- ➕ نافذة إضافة امتحان/لينك -->
+<div id="addExamModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeAddExamModal()">×</button>
+    <div class="modal-header">➕ إضافة امتحان/لينك جديد</div>
+    <div class="form-group">
+      <label>اختر المدرس:</label>
+      <select id="examTeacherSelect" class="form-control" onchange="onExamTeacherChange()">
+        <option value="">-- اختر المدرس --</option>
+      </select>
+    </div>
+    <div id="examTeacherInfo" class="hidden" style="background: var(--bg-dark); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+      <p><strong>الاسم:</strong> <span id="examTeacherName">---</span></p>
+      <p><strong>عدد الطلاب:</strong> <span id="examTeacherStudentsCount">0</span></p>
+      <p><strong>العمولة:</strong> <span id="examTeacherCommission">0</span>%</p>
+    </div>
+    <div class="form-group">
+      <label>عنوان الامتحان/اللينك:</label>
+      <input type="text" id="examTitle" class="form-control" placeholder="مثال: Unit 3 Exam - Grade 4">
+    </div>
+    <div class="form-group">
+      <label>الرابط (URL):</label>
+      <input type="url" id="examUrl" class="form-control" placeholder="https://...">
+    </div>
+    <div class="flex-layout">
+      <div class="flex-item"><label>المرحلة:</label><select id="examLevel" class="form-control" onchange="adaptGradesSelector('examLevel', 'examGrade')"><option value="primary">الابتدائية</option><option value="preparatory">الإعدادية</option><option value="secondary">الثانوية</option></select></div>
+      <div class="flex-item"><label>الصف:</label><select id="examGrade" class="form-control"></select></div>
+      <div class="flex-item"><label>المنهج:</label><select id="examCurriculum" class="form-control"></select></div>
+      <div class="flex-item"><label>الوحدة:</label><select id="examUnit" class="form-control"></select></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeAddExamModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="saveNewExam()">💾 حفظ الامتحان</button>
+    </div>
+  </div>
+</div>
+
+<!-- ➕ نافذة إضافة منهج جديد -->
+<div id="addCurriculumModal" class="modal-overlay hidden">
+  <div class="modal-content" style="max-width: 400px;">
+    <button class="close-btn" onclick="closeAddCurriculumModal()">×</button>
+    <div class="modal-header">➕ إضافة منهج جديد</div>
+    <div class="form-group">
+      <label>اسم المنهج (مثال: Cambridge, IG, etc.):</label>
+      <input type="text" id="newCurriculumName" class="form-control" placeholder="أدخل اسم المنهج">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeAddCurriculumModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="saveNewCurriculum()">💾 إضافة المنهج</button>
+    </div>
+  </div>
+</div>
+
+<!-- 📥 نافذة محقن المحتوى -->
+<div id="injectorModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeInjectorModal()">×</button>
+    <div class="modal-header"> محقن المحتوى وبنك الأسئلة المركزي</div>
+    <div class="form-group"><label>📚 عنوان الدرس الفرعي (اختياري):</label><input type="text" id="injLessonTitle" class="form-control"></div>
+    <div class="form-group"><label>📝 الصق كود الـ JSON المخصص هنا:</label><textarea id="injJsonInput" class="form-control" rows="10" style="direction: ltr; font-family: monospace;"></textarea></div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeInjectorModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="processInjection()">🔍 حقن ودمج المحتوى</button>
+    </div>
+  </div>
+</div>
+<!-- ✅ Modal إضافة منهج جديد -->
+<div id="addCurriculumModal" class="modal-overlay hidden">
+  <div class="modal-content" style="max-width: 400px;">
+    <button class="close-btn" onclick="closeAddCurriculumModal()">×</button>
+    <div class="modal-header">➕ إضافة منهج جديد</div>
+    <div class="form-group">
+      <label>اسم المنهج (مثال: Cambridge, IG, etc.):</label>
+      <input type="text" id="newCurriculumName" class="form-control" placeholder="أدخل اسم المنهج">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeAddCurriculumModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="saveNewCurriculum()">💾 إضافة المنهج</button>
+    </div>
+  </div>
+</div>
+<!-- Modal امتحاناتي للطالب -->
+<div class="modal-overlay hidden" id="myExamsModal">
+  <div class="modal-content" style="max-width:900px;">
+    <button class="close-btn" onclick="closeMyExamsModal()">×</button>
+    <div class="modal-header">
+      <h3>📝 امتحاناتي المتاحة</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>عنوان الامتحان</th>
+            <th>المسار الدراسي</th>
+            <th>تاريخ الإضافة</th>
+            <th>إجراء</th>
+          </tr>
+        </thead>
+        <tbody id="myExamsTableBody">
+          <!-- سيتم ملؤها ديناميكياً -->
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" onclick="closeMyExamsModal()">❌ إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<script src="shared/path-filter.js"></script>
+<script src="shared/activities-registry.js"></script>
+<script src="shared/whatsapp-system.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

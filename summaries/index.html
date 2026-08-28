@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💡 اشرحلي - الملخص التفاعلي</title>
+    <!-- ربط stylesheet الرئيسي للمنصة للحفاظ على الثيم -->
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body { padding: 20px; display: flex; justify-content: center; }
+        .summary-container { max-width: 600px; width: 100%; margin-top: 20px; }
+        .summary-header { text-align: center; margin-bottom: 30px; }
+        .summary-header h1 { color: var(--admin-gold); font-size: 24px; margin-bottom: 10px; }
+        .summary-header p { color: var(--text-muted); }
+        
+        .rule-box { margin-bottom: 15px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .rule-header { background: rgba(59, 130, 246, 0.1); padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .rule-header h3 { color: var(--primary); font-size: 16px; margin: 0; }
+        .rule-header .icon { transition: transform 0.3s; color: var(--primary); }
+        .rule-header.active .icon { transform: rotate(180deg); }
+        
+        .rule-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .rule-content.open { padding: 15px; max-height: 500px; }
+        .rule-content p { margin-bottom: 10px; line-height: 1.6; }
+        .keyword { background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 3px 10px; border-radius: 20px; font-size: 13px; margin: 3px; display: inline-block; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .example-box { background: rgba(16, 185, 129, 0.1); border-right: 3px solid var(--success); padding: 10px; border-radius: 6px; margin-top: 10px; color: #d1fae5; }
+
+        .quiz-box { background: var(--bg-card); border: 2px dashed var(--admin-gold); border-radius: 12px; padding: 20px; margin-top: 30px; text-align: center; }
+        .quiz-box h3 { color: var(--admin-gold); margin-bottom: 15px; }
+        .quiz-btn { display: block; width: 100%; padding: 12px; margin: 8px 0; background: var(--bg-dark); border: 1px solid var(--border); color: white; border-radius: 8px; cursor: pointer; font-size: 16px; transition: 0.2s; }
+        .quiz-btn:hover { border-color: var(--admin-gold); transform: translateX(-5px); }
+        .quiz-btn.correct { background: var(--success); color: black; font-weight: bold; border-color: var(--success); }
+        .quiz-btn.wrong { background: var(--danger); color: white; border-color: var(--danger); }
+        .feedback-msg { margin-top: 15px; font-weight: bold; display: none; }
+
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-bottom: 20px; transition: 0.2s; }
+        .back-btn:hover { border-color: var(--primary); }
+        .no-content { text-align: center; padding: 50px; background: var(--bg-card); border-radius: 12px; border: 1px dashed var(--border); color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<div class="summary-container">
+    <a href="../index.html" class="back-btn">→ العودة للمنصة</a>
+    
+    <div id="contentArea">
+        <div class="no-content">⏳ جاري تحميل الملخص التفاعلي...</div>
+    </div>
+</div>
+
+<script>
+    // 1. قراءة المعاملات من الرابط (URL Parameters)
+    const params = new URLSearchParams(window.location.search);
+    const level = params.get('level');
+    const grade = params.get('grade');
+    const type = params.get('type');
+    const unit = params.get('unit');
+    const studentName = params.get('studentName') || 'بطل';
+
+    // 2. جلب البيانات وعرضها
+    async function loadSummary() {
+        try {
+            const res = await fetch('summariesDB.json');
+            const data = await res.json();
+            
+            // البحث عن الملخص المطابق للمسار والوحدة
+            const summary = data.summaries.find(s => 
+                s.level === level && 
+                String(s.grade) === String(grade) && 
+                s.curriculum === type && 
+                String(s.unit) === String(unit)
+            );
+
+            const area = document.getElementById('contentArea');
+
+            if (!summary) {
+                area.innerHTML = `
+                    <div class="no-content">
+                        <h2>🚧 الملخص قيد الإعداد</h2>
+                        <p>لم يتم إضافة ملخص تفاعلي للوحدة ${unit} لهذا المسار بعد.</p>
+                        <p style="margin-top:10px; color: var(--admin-gold);">تابع التحديثات يا ${studentName}!</p>
+                    </div>`;
+                return;
+            }
+
+            // بناء الـ HTML ديناميكياً
+            let rulesHTML = summary.rules.map((rule, index) => `
+                <div class="rule-box">
+                    <div class="rule-header" onclick="toggleRule(this)">
+                        <h3>${rule.heading}</h3>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="rule-content">
+                        <p>${rule.usage}</p>
+                        <p>🔑 الكلمات المفتاحية:</p>
+                        <div>${rule.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}</div>
+                        <div class="example-box">💡 مثال: ${rule.example}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            let quizHTML = '';
+            if (summary.miniQuiz) {
+                const q = summary.miniQuiz;
+                const optionsHTML = q.options.map((opt, idx) => 
+                    `<button class="quiz-btn" onclick="checkAnswer(this, ${idx === q.correctIndex}, '${q.feedback}')">${opt}</button>`
+                ).join('');
+                
+                quizHTML = `
+                    <div class="quiz-box">
+                        <h3>🎯 تحدي سريع يا ${studentName}</h3>
+                        <p style="font-size: 18px; margin-bottom: 15px;">${q.question}</p>
+                        ${optionsHTML}
+                        <p id="feedbackMsg" class="feedback-msg"></p>
+                    </div>
+                `;
+            }
+
+            area.innerHTML = `
+                <div class="summary-header">
+                    <h1>💡 ${summary.title}</h1>
+                    <p>الملخص التفاعلي لـ Unit ${unit} | ${getLevelName(level)} - Grade ${grade}</p>
+                </div>
+                ${rulesHTML}
+                ${quizHTML}
+            `;
+
+            // فتح أول قاعدة تلقائياً
+            const firstHeader = document.querySelector('.rule-header');
+            if(firstHeader) toggleRule(firstHeader);
+
+        } catch (error) {
+            console.error(error);
+            document.getElementById('contentArea').innerHTML = '<div class="no-content">❌ حدث خطأ في تحميل البيانات.</div>';
+        }
+    }
+
+    function toggleRule(header) {
+        const content = header.nextElementSibling;
+        header.classList.toggle('active');
+        content.classList.toggle('open');
+    }
+
+    function checkAnswer(btn, isCorrect, feedback) {
+        const buttons = btn.parentElement.querySelectorAll('.quiz-btn');
+        const msg = document.getElementById('feedbackMsg');
+        buttons.forEach(b => b.disabled = true);
+        
+        if (isCorrect) {
+            btn.classList.add('correct');
+            msg.textContent = `🎉 إجابة ممتازة! ${feedback}`;
+            msg.style.color = "var(--success)";
+        } else {
+            btn.classList.add('wrong');
+            msg.textContent = `❌ حاول الانتباه أكثر. ${feedback}`;
+            msg.style.color = "var(--danger)";
+        }
+        msg.style.display = 'block';
+    }
+
+    function getLevelName(level) {
+        const names = { 'primary': 'الابتدائية', 'preparatory': 'الإعدادية', 'secondary': 'الثانوية' };
+        return names[level] || level;
+    }
+
+    // تشغيل الدالة
+    loadSummary();
+</script>
+</body>
+</html>

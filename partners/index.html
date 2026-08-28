@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة الشركاء - Wise Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 1. بوابة تسجيل الدخول (للمدرسين فقط)        -->
+    <!-- ========================================== -->
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <div class="logo-area">
+                <h1>🏆 Wise Learning</h1>
+                <p>بوابة المدرسين الشركاء</p>
+            </div>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="login-email" required placeholder="example@email.com">
+                </div>
+                <div class="input-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="login-pass" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-primary">تسجيل الدخول</button>
+                <div id="login-error" class="error-msg hidden"></div>
+            </form>
+            <div class="footer-links">
+                <a href="../index.html">العودة للمنصة الرئيسية</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 2. لوحة تحكم المدرس                        -->
+    <!-- ========================================== -->
+    <div id="dashboard-container" class="dashboard-container hidden">
+        
+        <!-- الشريط الجانبي -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🏆 Wise Learning</h2>
+                <div class="teacher-info">
+                    <div class="avatar">👨‍🏫</div>
+                    <div class="info-text">
+                        <h3 id="sidebar-teacher-name">اسم المدرس</h3>
+                        <span class="role-badge">مدرس شريك</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" onclick="showTab('my-groups')">
+                    <i class="fas fa-users"></i> مجموعاتي
+                </button>
+                <button class="nav-btn" onclick="showTab('my-files')">
+                    <i class="fas fa-file-alt"></i> ملفاتي (الامتحانات)
+                </button>
+                <button class="nav-btn" onclick="showTab('statistics')">
+                    <i class="fas fa-chart-pie"></i> إحصاءات ومالية
+                </button>
+                <button class="nav-btn" onclick="showTab('my-data')">
+                    <i class="fas fa-user-cog"></i> بياناتي
+                </button>
+                <button class="nav-btn" onclick="showTab('contact')">
+                    <i class="fas fa-envelope"></i> راسل المنصة
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i> خروج
+                </button>
+            </div>
+        </aside>
+
+        <!-- منطقة المحتوى الرئيسية -->
+        <main class="main-content">
+            
+            <!-- تبويب: مجموعاتي -->
+            <section id="tab-my-groups" class="tab-content active">
+                <div class="tab-header">
+                    <h2>👥 مجموعاتي الدراسية</h2>
+                    <p>اضغط على أي مجموعة لعرض تفاصيل الطلاب</p>
+                </div>
+                <div id="groups-grid" class="cards-grid">
+                    <!-- سيتم ملء الكروت هنا بواسطة JS -->
+                </div>
+            </section>
+
+            <!-- تبويب: تفاصيل المجموعة (يظهر عند الضغط على كارد) -->
+            <section id="tab-group-details" class="tab-content hidden">
+                <div class="tab-header">
+                    <button class="btn-back" onclick="showTab('my-groups')">← عودة للمجموعات</button>
+                    <h2 id="group-details-title">تفاصيل المجموعة</h2>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>اسم الطالب</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>حالة الاشتراك</th>
+                                <th>تاريخ الانتهاء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="group-students-tbody">
+                            <!-- صفوف الطلاب -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- تبويب: ملفاتي (الامتحانات) -->
+            <section id="tab-my-files" class="tab-content hidden">
+                <div class="tab-header">
+                    <h2>📁 ملفاتي والامتحانات المرفوعة</h2>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>عنوان الامتحان/الملف</th>
+                                <th>المسار الدراسي</th>
+                                <th>تاريخ الرفع</th>
+                                <th>إجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="files-tbody">
+                            <!-- صفوف الملفات -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- تبويب: إحصاءات -->
+            <section id="tab-statistics" class="tab-content hidden">
+                <div class="tab-header">
+                    <h2>📊 الإحصاءات والمالية</h2>
+                    <select id="stats-month-select" onchange="updateStatistics()">
+                        <option value="current">الشهر الحالي</option>
+                        <option value="last">الشهر الماضي</option>
+                    </select>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="icon blue"><i class="fas fa-users"></i></div>
+                        <div class="info">
+                            <h3>إجمالي الطلاب</h3>
+                            <p id="stat-total-students">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon green"><i class="fas fa-user-check"></i></div>
+                        <div class="info">
+                            <h3>الطلاب المفعلين</h3>
+                            <p id="stat-active-students">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon orange"><i class="fas fa-percentage"></i></div>
+                        <div class="info">
+                            <h3>نسبة التفعيل</h3>
+                            <p id="stat-activation-rate">0%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight">
+                        <div class="icon gold"><i class="fas fa-wallet"></i></div>
+                        <div class="info">
+                            <h3>إجمالي مستحقاتك</h3>
+                            <p id="stat-total-earnings">0 ج.م</p>
+                            <span class="sub-text" id="stat-commission-rate">نسبة العمولة: 0%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- تبويب: بياناتي -->
+            <section id="tab-my-data" class="tab-content hidden">
+                <div class="tab-header">
+                    <h2>⚙️ بياناتي الشخصية</h2>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-avatar">‍🏫</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <label>الاسم الكامل:</label>
+                            <span id="profile-name">---</span>
+                        </div>
+                        <div class="detail-row">
+                            <label>البريد الإلكتروني:</label>
+                            <span id="profile-email">---</span>
+                        </div>
+                        <div class="detail-row">
+                            <label>رقم الموبايل (للتحويلات):</label>
+                            <span id="profile-phone">---</span>
+                        </div>
+                        <div class="detail-row">
+                            <label>نسبة العمولة:</label>
+                            <span id="profile-commission" class="badge-success">0%</span>
+                        </div>
+                        <div class="detail-row">
+                            <label>تاريخ الانضمام:</label>
+                            <span id="profile-join-date">---</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- تبويب: راسل المنصة -->
+            <section id="tab-contact" class="tab-content hidden">
+                <div class="tab-header">
+                    <h2>✉️ راسل إدارة المنصة</h2>
+                </div>
+                <div class="contact-form-container">
+                    <form onsubmit="handleContactSubmit(event)">
+                        <div class="input-group">
+                            <label>نوع الرسالة:</label>
+                            <select required>
+                                <option value="support">دعم فني</option>
+                                <option value="financial">استفسار مالي</option>
+                                <option value="content">طلب إضافة محتوى</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>نص الرسالة:</label>
+                            <textarea rows="5" required placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ✅ هذا السطر ثابت - لا يتغير أبداً -->
+    <script src="app.js"></script>
+</body>
+</html>

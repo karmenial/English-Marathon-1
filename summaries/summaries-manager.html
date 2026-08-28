@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛠️ مُنتج ملخصات الماراثون - الإصدار الذكي</title>
+<style>
+:root {
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --primary: #3b82f6;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --gold: #f59e0b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+body { background: var(--bg-dark); color: var(--text-main); padding: 20px; min-height: 100vh; }
+.container { max-width: 1400px; margin: auto; }
+
+.header { background: linear-gradient(135deg, #1e3a8a, #0f172a); border: 1px solid var(--gold); border-radius: 16px; padding: 25px; margin-bottom: 25px; text-align: center; box-shadow: 0 0 30px rgba(245, 158, 11, 0.2); }
+.header h1 { color: var(--gold); font-size: 28px; margin-bottom: 8px; }
+.header p { color: var(--text-muted); font-size: 14px; }
+
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
+.step-card { background: var(--bg-card); border: 2px dashed var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; }
+.step-card.done { border-color: var(--gold); border-style: solid; background: rgba(245, 158, 11, 0.05); }
+.step-number { display: inline-block; width: 35px; height: 35px; line-height: 35px; border-radius: 50%; background: var(--primary); color: white; font-weight: bold; margin-bottom: 10px; }
+.step-card.done .step-number { background: var(--gold); }
+.step-card h3 { color: var(--text-main); font-size: 16px; margin-bottom: 5px; }
+.step-card p { color: var(--text-muted); font-size: 12px; }
+
+.section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+.section-title { color: var(--gold); font-size: 20px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 15px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: 13px; color: var(--text-muted); font-weight: bold; }
+.form-control { padding: 10px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; color: white; font-size: 14px; }
+.form-control:focus { border-color: var(--primary); outline: none; }
+
+/* Rich Text Editor */
+.rich-editor { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.editor-toolbar { display: flex; gap: 5px; padding: 8px; background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.editor-btn { padding: 6px 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); border-radius: 6px; cursor: pointer; font-size: 13px; transition: 0.2s; }
+.editor-btn:hover { background: var(--primary); border-color: var(--primary); }
+.editor-content { padding: 12px; min-height: 80px; outline: none; font-size: 14px; line-height: 1.6; }
+.editor-content:empty:before { content: attr(data-placeholder); color: var(--text-muted); font-style: italic; }
+
+.preview-panel { background: rgba(16, 185, 129, 0.05); border: 1px solid var(--success); border-radius: 8px; padding: 15px; margin-top: 10px; }
+.preview-label { font-size: 12px; color: var(--success); margin-bottom: 8px; font-weight: bold; }
+.preview-content { background: var(--bg-dark); border-radius: 6px; padding: 12px; font-size: 14px; line-height: 1.8; }
+.preview-content strong { color: var(--warning); }
+.preview-content em { color: #60a5fa; font-style: italic; }
+.preview-content code { background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+
+.rules-container { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 10px; padding: 15px; margin-bottom: 15px; }
+.rule-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px; position: relative; }
+.rule-item .delete-rule { position: absolute; top: 10px; left: 10px; background: var(--danger); color: white; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px; }
+.rule-preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+
+.keywords-input { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; min-height: 45px; align-items: center; }
+.keyword-tag { background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 4px 10px; border-radius: 20px; font-size: 13px; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(239, 68, 68, 0.3); }
+.keyword-tag .remove { cursor: pointer; font-weight: bold; }
+.keyword-input { flex: 1; min-width: 100px; background: transparent; border: none; color: white; outline: none; font-size: 13px; }
+
+.btn { padding: 12px 20px; border: none; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: #2563eb; }
+.btn-success { background: var(--success); color: black; }
+.btn-success:hover { background: #059669; }
+.btn-warning { background: var(--gold); color: black; }
+.btn-warning:hover { background: #d97706; }
+.btn-danger { background: var(--danger); color: white; }
+.btn-sm { padding: 6px 12px; font-size: 12px; }
+.btn-block { width: 100%; justify-content: center; }
+
+.preview-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+.preview-card { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 10px; padding: 15px; position: relative; }
+.preview-card h4 { color: var(--gold); margin-bottom: 8px; font-size: 15px; }
+.preview-card .meta { font-size: 12px; color: var(--text-muted); margin-bottom: 5px; }
+.preview-card .actions { display: flex; gap: 8px; margin-top: 10px; }
+
+.alert { padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; }
+.alert-info { background: rgba(59, 130, 246, 0.15); border: 1px solid var(--primary); color: #93c5fd; }
+.alert-success { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--success); color: #6ee7b7; }
+.alert-warning { background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); color: #fcd34d; }
+
+.stats-bar { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
+.stat-pill { background: var(--bg-dark); border: 1px solid var(--border); padding: 10px 18px; border-radius: 30px; font-size: 13px; }
+.stat-pill strong { color: var(--gold); margin-right: 5px; }
+
+.full-preview { background: var(--bg-card); border: 2px solid var(--gold); border-radius: 12px; padding: 25px; margin-top: 20px; }
+.full-preview h3 { color: var(--gold); margin-bottom: 20px; font-size: 18px; }
+
+/* Modal for Paste */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 200; display: flex; align-items: center; justify-content: center; }
+.modal-content { background: var(--bg-card); border: 1px solid var(--gold); border-radius: 16px; padding: 25px; width: 90%; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.modal-header { font-size: 19px; color: var(--gold); margin-bottom: 15px; font-weight: bold; border-bottom: 1px solid var(--border); padding-bottom: 10px; display: flex; justify-content: space-between; }
+.close-btn { cursor: pointer; background: none; border: none; color: var(--text-muted); font-size: 24px; }
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>🛠️ مُنتج ملخصات الماراثون - الإصدار الذكي</h1>
+    <p>محرر نصي غني + معاينة مباشرة + استيراد ذكي من الذكاء الاصطناعي</p>
+  </div>
+
+  <div class="steps">
+    <div class="step-card" id="step1Card">
+      <div class="step-number">1</div>
+      <h3>استيراد القديم</h3>
+      <p>حمّل ملف summariesDB.json الحالي (اختياري)</p>
+    </div>
+    <div class="step-card" id="step2Card">
+      <div class="step-number">2</div>
+      <h3>إضافة / استيراد الجديد</h3>
+      <p>أضف يدوياً أو استورد من الذكاء الاصطناعي</p>
+    </div>
+    <div class="step-card" id="step3Card">
+      <div class="step-number">3</div>
+      <h3>التصدير</h3>
+      <p>نزّل الملف المدمج وارفعه على GitHub</p>
+    </div>
+  </div>
+
+  <!-- Section 1: Import Old -->
+  <div class="section">
+    <div class="section-title">📥 الخطوة 1: استيراد الملف القديم (لحفظ الـ IDs)</div>
+    <div class="alert alert-info">
+      💡 <strong>نصيحة:</strong> إذا كانت هذه أول مرة، اضغط "ابدأ من الصفر". أما إذا كنت تضيف لوحدات جديدة على ملف موجود، فاستورده أولاً.
+    </div>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
+    <button class="btn btn-primary" onclick="document.getElementById('importFile').click()">
+      📂 اختر ملف summariesDB.json القديم
+    </button>
+    <button class="btn btn-warning" onclick="startFresh()" style="margin-right: 10px;">
+      🆕 ابدأ من الصفر (ملف جديد)
+    </button>
+    <div id="importStatus" style="margin-top: 15px;"></div>
+  </div>
+
+  <!-- Section 2: Add New -->
+  <div class="section">
+    <div class="section-title">✏️ الخطوة 2: إضافة ملخص جديد أو استيراد من الذكاء الاصطناعي</div>
+    
+    <!-- AI Import Buttons -->
+    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
+      <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 16px;"> استيراد كود JSON من الذكاء الاصطناعي</h3>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <input type="file" id="importNewChunk" accept=".json" style="display:none" onchange="importNewChunk(event)">
+        <button class="btn btn-success" onclick="document.getElementById('importNewChunk').click()">
+           استيراد ملف JSON جديد
+        </button>
+        <button class="btn btn-warning" onclick="openPasteModal()">
+          📋 لصق كود JSON مباشرة
+        </button>
+      </div>
+    </div>
+
+    <!-- Manual Form -->
+    <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 16px;">📍 بيانات المسار والوحدة (للإضافة اليدوية)</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>المرحلة</label>
+        <select id="newLevel" class="form-control">
+          <option value="primary">الابتدائية</option>
+          <option value="preparatory">الإعدادية</option>
+          <option value="secondary">الثانوية</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>الصف</label>
+        <select id="newGrade" class="form-control">
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>المنهج</label>
+        <select id="newCurriculum" class="form-control">
+          <option value="OL">OL</option>
+          <option value="AL">AL</option>
+          <option value="كامبريدج">كامبريدج</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>الوحدة (Unit)</label>
+        <input type="number" id="newUnit" class="form-control" min="1" max="12" value="1">
+      </div>
+      <div class="form-group" style="grid-column: 1 / -1;">
+        <label>عنوان الملخص</label>
+        <input type="text" id="newTitle" class="form-control" placeholder="مثال: المضارع البسيط vs المستمر">
+      </div>
+    </div>
+
+    <h3 style="color: var(--primary); margin: 20px 0 15px; font-size: 16px;">📚 القواعد (Rules) - مع معاينة مباشرة</h3>
+    <div class="rules-container" id="rulesContainer"></div>
+    <button class="btn btn-primary btn-sm" onclick="addRule()">➕ إضافة قاعدة جديدة</button>
+
+    <h3 style="color: var(--primary); margin: 25px 0 15px; font-size: 16px;">🎯 التحدي السريع (Mini Quiz) — اختياري</h3>
+    <div class="form-grid">
+      <div class="form-group" style="grid-column: 1 / -1;">
+        <label>سؤال التحدي</label>
+        <input type="text" id="quizQuestion" class="form-control" placeholder='مثال: "Listen! The baby ....... "'>
+      </div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group"><label>الخيار 1</label><input type="text" id="quizOpt1" class="form-control"></div>
+      <div class="form-group"><label>الخيار 2 ✅ (الصحيح)</label><input type="text" id="quizOpt2" class="form-control"></div>
+      <div class="form-group"><label>الخيار 3</label><input type="text" id="quizOpt3" class="form-control"></div>
+      <div class="form-group"><label>الخيار 4 (اختياري)</label><input type="text" id="quizOpt4" class="form-control"></div>
+      <div class="form-group" style="grid-column: 1 / -1;"><label>رسالة التغذية الراجعة</label><input type="text" id="quizFeedback" class="form-control" placeholder="مثال: كلمة 'Listen!' تعني أنه يحدث الآن."></div>
+    </div>
+
+    <div style="margin-top: 25px; display: flex; gap: 10px; flex-wrap: wrap;">
+      <button class="btn btn-success" onclick="addSummary()">💾 حفظ الملخص اليدوي في القائمة</button>
+      <button class="btn btn-warning" onclick="clearForm()">🧹 تفريغ النموذج</button>
+    </div>
+  </div>
+
+  <!-- Section 3: Preview & Export -->
+  <div class="section">
+    <div class="section-title">📋 الخطوة 3: معاينة وتصدير الملف المدمج</div>
+    
+    <div class="stats-bar">
+      <div class="stat-pill"><strong id="statOld">0</strong> ملخص قديم</div>
+      <div class="stat-pill"><strong id="statNew">0</strong> ملخص جديد</div>
+      <div class="stat-pill"><strong id="statTotal">0</strong> الإجمالي</div>
+    </div>
+
+    <div id="previewArea">
+      <div class="alert alert-warning">⏳ لم تُضف أي ملخصات بعد.</div>
+    </div>
+
+    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+      <button class="btn btn-success btn-block" onclick="exportFile()" style="flex: 2; min-width: 250px;">
+        📤 تصدير الملف المدمج (summariesDB.json)
+      </button>
+      <button class="btn btn-primary" onclick="previewJSON()">👁️ معاينة JSON</button>
+      <button class="btn btn-warning" onclick="showFullPreview()">👀 معاينة كاملة للطالب</button>
+      <button class="btn btn-danger" onclick="clearAll()">🗑️ مسح كل شيء</button>
+    </div>
+
+    <div id="jsonPreview" class="hidden" style="margin-top: 15px;">
+      <textarea id="jsonTextarea" style="width:100%; min-height: 300px; background: var(--bg-dark); color: var(--text-main); border: 1px solid var(--border); border-radius: 8px; padding: 15px; font-family: monospace; font-size: 12px;" readonly></textarea>
+    </div>
+
+    <div id="fullPreviewArea" class="full-preview hidden">
+      <h3>👀 المعاينة الكاملة - كما ستظهر للطالب</h3>
+      <div id="studentViewContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Paste Modal -->
+<div id="pasteModal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span> لصق كود JSON من الذكاء الاصطناعي</span>
+      <button class="close-btn" onclick="closePasteModal()">×</button>
+    </div>
+    <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 13px;">الصق الكود الذي أعطاك إياه الذكاء الاصطناعي هنا (سواء كان مصفوفة [...] أو كائن {...})</p>
+    <textarea id="pasteTextarea" style="width:100%; min-height: 250px; background: var(--bg-dark); color: var(--text-main); border: 1px solid var(--border); border-radius: 8px; padding: 15px; font-family: monospace; font-size: 12px; margin-bottom: 15px;"></textarea>
+    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+      <button class="btn btn-danger" onclick="closePasteModal()">إلغاء</button>
+      <button class="btn btn-success" onclick="processPastedJSON()">✅ استيراد الكود</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let oldSummaries = [];
+let newSummaries = [];
+let nextId = 1;
+let rulesCount = 0;
+
+// ==========================================
+// ✅ 1. استيراد الملف القديم
+// ==========================================
+function handleImport(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      let imported = [];
+      if (Array.isArray(parsed)) imported = parsed;
+      else if (parsed && Array.isArray(parsed.summaries)) imported = parsed.summaries;
+      else { alert(' الملف غير مطابق!'); return; }
+      
+      oldSummaries = imported;
+      let maxId = 0;
+      oldSummaries.forEach(s => {
+        const num = parseInt(String(s.id).replace(/\D/g, '')) || 0;
+        if (num > maxId) maxId = num;
+      });
+      nextId = maxId + 1;
+      
+      document.getElementById('importStatus').innerHTML = 
+        `<div class="alert alert-success">✅ تم استيراد <strong>${oldSummaries.length}</strong> ملخص قديم. IDs الجديدة ستبدأ من: <strong>sum_${nextId}</strong></div>`;
+      document.getElementById('step1Card').classList.add('done');
+      updateStats();
+      renderPreview();
+    } catch (err) { alert('❌ خطأ في قراءة الملف: ' + err.message); }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function startFresh() {
+  if (oldSummaries.length > 0 && !confirm('⚠️ سيتم تجاهل الملف القديم. هل أنت متأكد؟')) return;
+  oldSummaries = [];
+  nextId = 1;
+  document.getElementById('importStatus').innerHTML = `<div class="alert alert-info">🆕 تم البدء من الصفر.</div>`;
+  document.getElementById('step1Card').classList.add('done');
+  updateStats();
+  renderPreview();
+}
+
+// ==========================================
+// ✅ 2. استيراد كود JSON جديد (من AI)
+// ==========================================
+function importNewChunk(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      processNewJSON(parsed);
+    } catch (err) { alert('❌ خطأ في قراءة الملف: ' + err.message); }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function openPasteModal() {
+  document.getElementById('pasteTextarea').value = '';
+  document.getElementById('pasteModal').classList.remove('hidden');
+}
+
+function closePasteModal() {
+  document.getElementById('pasteModal').classList.add('hidden');
+}
+
+function processPastedJSON() {
+  const raw = document.getElementById('pasteTextarea').value.trim();
+  if (!raw) { alert('️ المربع فارغ!'); return; }
+  try {
+    const parsed = JSON.parse(raw);
+    processNewJSON(parsed);
+    closePasteModal();
+  } catch (err) { alert('❌ خطأ في صيغة JSON:\n' + err.message); }
+}
+
+function processNewJSON(parsed) {
+  let newArray = [];
+  if (Array.isArray(parsed)) newArray = parsed;
+  else if (parsed && Array.isArray(parsed.summaries)) newArray = parsed.summaries;
+  else { alert(' الكود غير مطابق! يجب أن يكون مصفوفة [] أو كائن { "summaries": [...] }'); return; }
+
+  let addedCount = 0;
+  newArray.forEach(item => {
+    // حماية الـ IDs
+    if (!item.id) {
+      item.id = 'sum_' + nextId++;
+    } else {
+      // إذا كان له ID، تأكد من عدم تعارضه
+      const exists = [...oldSummaries, ...newSummaries].find(s => s.id === item.id);
+      if (exists) {
+        item.id = 'sum_' + nextId++;
+      } else {
+        const num = parseInt(String(item.id).replace(/\D/g, '')) || 0;
+        if (num >= nextId) nextId = num + 1;
+      }
+    }
+    newSummaries.push(item);
+    addedCount++;
+  });
+
+  document.getElementById('step2Card').classList.add('done');
+  updateStats();
+  renderPreview();
+  alert(`✅ تم استيراد ${addedCount} ملخص جديد بنجاح من الذكاء الاصطناعي!`);
+}
+
+// ==========================================
+// ✅ 3. البناء اليدوي (Rules Builder)
+// ==========================================
+function addRule() {
+  rulesCount++;
+  const container = document.getElementById('rulesContainer');
+  const ruleDiv = document.createElement('div');
+  ruleDiv.className = 'rule-item';
+  ruleDiv.id = 'rule_' + rulesCount;
+  ruleDiv.innerHTML = `
+    <button class="delete-rule" onclick="deleteRule('rule_${rulesCount}')">×</button>
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label>عنوان القاعدة</label>
+      <input type="text" class="form-control rule-heading" placeholder="مثال: 1. المضارع البسيط" oninput="updateRulePreview('rule_${rulesCount}')">
+    </div>
+    <div style="margin-bottom: 12px;">
+      <label>متى نستخدم؟</label>
+      <div class="rich-editor">
+        <div class="editor-toolbar">
+          <button class="editor-btn" onclick="formatText('${rulesCount}', 'bold')"><strong>B</strong></button>
+          <button class="editor-btn" onclick="formatText('${rulesCount}', 'italic')"><em>I</em></button>
+          <button class="editor-btn" onclick="formatText('${rulesCount}', 'code')"><code>Code</code></button>
+        </div>
+        <div class="editor-content rule-usage" id="usage_editor_${rulesCount}" data-placeholder="اكتب هنا..." contenteditable="true" oninput="updateRulePreview('rule_${rulesCount}')"></div>
+      </div>
+    </div>
+    <div style="margin-bottom: 12px;">
+      <label>الكلمات المفتاحية (اضغط Enter)</label>
+      <div class="keywords-input" id="keywords_container_${rulesCount}">
+        <input type="text" class="keyword-input" placeholder="أضف كلمة..." onkeydown="handleKeywordInput(event, 'rule_${rulesCount}')">
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label>مثال</label>
+      <div class="rich-editor">
+        <div class="editor-toolbar">
+          <button class="editor-btn" onclick="formatText('${rulesCount}', 'bold')"><strong>B</strong></button>
+          <button class="editor-btn" onclick="formatText('${rulesCount}', 'italic')"><em>I</em></button>
+          <button class="editor-btn" onclick="formatText('${rulesCount}', 'code')"><code>Code</code></button>
+        </div>
+        <div class="editor-content rule-example" id="example_editor_${rulesCount}" data-placeholder="مثال..." contenteditable="true" oninput="updateRulePreview('rule_${rulesCount}')"></div>
+      </div>
+    </div>
+    <div class="rule-preview-grid">
+      <div class="preview-panel">
+        <div class="preview-label">👀 معاينة مباشرة:</div>
+        <div class="preview-content" id="preview_rule_${rulesCount}"><em style="color: var(--text-muted);">ابدأ الكتابة...</em></div>
+      </div>
+    </div>
+  `;
+  container.appendChild(ruleDiv);
+}
+
+function formatText(num, format) {
+  const editor = document.getElementById(`usage_editor_${num}`);
+  editor.focus();
+  document.execCommand(format, false, null);
+  updateRulePreview('rule_' + num);
+}
+
+function handleKeywordInput(event, ruleId) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    const input = event.target;
+    const value = input.value.trim();
+    if (value) {
+      const container = document.getElementById(`keywords_container_${ruleId}`);
+      const tag = document.createElement('span');
+      tag.className = 'keyword-tag';
+      tag.innerHTML = `${value} <span class="remove" onclick="this.parentElement.remove(); updateRulePreview('${ruleId}')">×</span>`;
+      container.insertBefore(tag, input);
+      input.value = '';
+      updateRulePreview(ruleId);
+    }
+  }
+}
+
+function updateRulePreview(ruleId) {
+  const num = ruleId.split('_')[1];
+  const heading = document.querySelector(`#${ruleId} .rule-heading`).value;
+  const usage = document.getElementById(`usage_editor_${num}`).innerHTML;
+  const example = document.getElementById(`example_editor_${num}`).innerHTML;
+  const keywordTags = document.querySelectorAll(`#${ruleId} .keyword-tag`);
+  const keywords = Array.from(keywordTags).map(tag => tag.childNodes[0].textContent.trim()).filter(k => k);
+  const keywordsHTML = keywords.map(k => `<code>${k}</code>`).join(' ');
+  
+  const preview = document.getElementById(`preview_rule_${num}`);
+  if (!heading && !usage && !example && keywords.length === 0) {
+    preview.innerHTML = '<em style="color: var(--text-muted);">ابدأ الكتابة...</em>';
+    return;
+  }
+  preview.innerHTML = `
+    ${heading ? `<strong style="color: var(--gold); font-size: 15px;">${heading}</strong><br>` : ''}
+    ${usage ? `<div style="margin: 8px 0;">${usage}</div>` : ''}
+    ${keywordsHTML ? `<div style="margin: 8px 0;">🔑 الكلمات: ${keywordsHTML}</div>` : ''}
+    ${example ? `<div style="background: rgba(16, 185, 129, 0.1); border-right: 3px solid var(--success); padding: 8px; border-radius: 6px; margin-top: 8px;">💡 مثال: ${example}</div>` : ''}
+  `;
+}
+
+function deleteRule(id) {
+  const el = document.getElementById(id);
+  if (el && confirm('حذف هذه القاعدة؟')) el.remove();
+}
+
+// ==========================================
+// ✅ 4. حفظ الملخص اليدوي
+// ==========================================
+function addSummary() {
+  const level = document.getElementById('newLevel').value;
+  const grade = document.getElementById('newGrade').value;
+  const curriculum = document.getElementById('newCurriculum').value;
+  const unit = document.getElementById('newUnit').value;
+  const title = document.getElementById('newTitle').value.trim();
+  if (!title) { alert('⚠️ أدخل عنوان الملخص!'); return; }
+  
+  const ruleEls = document.querySelectorAll('.rule-item');
+  const rules = [];
+  ruleEls.forEach(el => {
+    const ruleId = el.id;
+    const num = ruleId.split('_')[1];
+    const heading = el.querySelector('.rule-heading').value.trim();
+    const usage = document.getElementById(`usage_editor_${num}`).innerHTML.trim();
+    const example = document.getElementById(`example_editor_${num}`).innerHTML.trim();
+    const keywordTags = el.querySelectorAll('.keyword-tag');
+    const keywords = Array.from(keywordTags).map(tag => tag.childNodes[0].textContent.trim()).filter(k => k);
+    if (heading && usage) rules.push({ heading, usage, keywords, example });
+  });
+  if (rules.length === 0) { alert('⚠️ أضف قاعدة واحدة على الأقل!'); return; }
+  
+  const quizQ = document.getElementById('quizQuestion').value.trim();
+  const quizOpt1 = document.getElementById('quizOpt1').value.trim();
+  const quizOpt2 = document.getElementById('quizOpt2').value.trim();
+  const quizOpt3 = document.getElementById('quizOpt3').value.trim();
+  const quizOpt4 = document.getElementById('quizOpt4').value.trim();
+  const quizFeedback = document.getElementById('quizFeedback').value.trim();
+  
+  const summary = { id: 'sum_' + nextId++, level, grade, curriculum, unit, title, rules };
+  if (quizQ && quizOpt1 && quizOpt2) {
+    summary.miniQuiz = {
+      question: quizQ,
+      options: [quizOpt1, quizOpt2, quizOpt3, quizOpt4].filter(o => o),
+      correctIndex: 1,
+      feedback: quizFeedback || ''
+    };
+  }
+  newSummaries.push(summary);
+  document.getElementById('step2Card').classList.add('done');
+  updateStats();
+  renderPreview();
+  alert(`✅ تم حفظ الملخص "${title}"!`);
+  clearForm();
+}
+
+function clearForm() {
+  document.getElementById('newTitle').value = '';
+  document.getElementById('quizQuestion').value = '';
+  document.getElementById('quizOpt1').value = '';
+  document.getElementById('quizOpt2').value = '';
+  document.getElementById('quizOpt3').value = '';
+  document.getElementById('quizOpt4').value = '';
+  document.getElementById('quizFeedback').value = '';
+  document.getElementById('rulesContainer').innerHTML = '';
+  rulesCount = 0;
+  addRule();
+}
+
+// ==========================================
+// ✅ 5. المعاينة والتصدير
+// ==========================================
+function updateStats() {
+  document.getElementById('statOld').textContent = oldSummaries.length;
+  document.getElementById('statNew').textContent = newSummaries.length;
+  document.getElementById('statTotal').textContent = oldSummaries.length + newSummaries.length;
+}
+
+function renderPreview() {
+  const area = document.getElementById('previewArea');
+  const all = [...oldSummaries, ...newSummaries];
+  if (all.length === 0) { area.innerHTML = '<div class="alert alert-warning">⏳ لم تُضف أي ملخصات بعد.</div>'; return; }
+  const levelNames = { primary: 'ابتدائية', preparatory: 'إعدادية', secondary: 'ثانوية' };
+  area.innerHTML = '<div class="preview-list">' + all.map((s, idx) => {
+    const isNew = idx >= oldSummaries.length;
+    return `
+      <div class="preview-card" style="border-color: ${isNew ? 'var(--success)' : 'var(--border)'};">
+        ${isNew ? '<span style="position:absolute; top:10px; left:10px; background:var(--success); color:black; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:bold;">جديد ✨</span>' : ''}
+        <h4>${s.title}</h4>
+        <div class="meta"> ${s.id}</div>
+        <div class="meta">📚 ${levelNames[s.level] || s.level} - Grade ${s.grade} - ${s.curriculum}</div>
+        <div class="meta">📖 Unit ${s.unit} | ${s.rules ? s.rules.length : 0} قاعدة</div>
+        ${s.miniQuiz ? '<div class="meta">🎯 يحتوي على تحدي سريع</div>' : ''}
+        ${isNew ? `<div class="actions"><button class="btn btn-danger btn-sm" onclick="removeNewSummary(${idx - oldSummaries.length})">🗑️ حذف</button></div>` : ''}
+      </div>
+    `;
+  }).join('') + '</div>';
+}
+
+function removeNewSummary(localIndex) {
+  if (!confirm('حذف هذا الملخص الجديد؟')) return;
+  newSummaries.splice(localIndex, 1);
+  updateStats();
+  renderPreview();
+}
+
+function exportFile() {
+  const all = [...oldSummaries, ...newSummaries];
+  if (all.length === 0) { alert('⚠️ لا توجد ملخصات!'); return; }
+  const data = { summaries: all };
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+  const dlAnchor = document.createElement('a');
+  dlAnchor.setAttribute("href", dataStr);
+  dlAnchor.setAttribute("download", "summariesDB.json");
+  document.body.appendChild(dlAnchor);
+  dlAnchor.click();
+  dlAnchor.remove();
+  document.getElementById('step3Card').classList.add('done');
+  alert(`✅ تم تنزيل الملف!\n📊 يحتوي على ${all.length} ملخص.\n🚀 ارفعه الآن على GitHub في مجلد /summaries/`);
+}
+
+function previewJSON() {
+  const area = document.getElementById('jsonPreview');
+  const textarea = document.getElementById('jsonTextarea');
+  const all = [...oldSummaries, ...newSummaries];
+  textarea.value = JSON.stringify({ summaries: all }, null, 2);
+  area.classList.toggle('hidden');
+}
+
+function showFullPreview() {
+  const all = [...oldSummaries, ...newSummaries];
+  if (all.length === 0) { alert('️ لا توجد ملخصات!'); return; }
+  const previewArea = document.getElementById('fullPreviewArea');
+  const contentArea = document.getElementById('studentViewContent');
+  const lastSummary = all[all.length - 1];
+  let rulesHTML = lastSummary.rules.map(rule => `
+    <div style="background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+      <h3 style="color: var(--gold); margin-bottom: 10px; font-size: 16px;">${rule.heading}</h3>
+      <div style="margin-bottom: 10px;">${rule.usage}</div>
+      ${rule.keywords && rule.keywords.length > 0 ? `<div style="margin-bottom: 10px;"><strong style="color: var(--text-muted); font-size: 12px;"> الكلمات:</strong><br>${rule.keywords.map(k => `<code style="background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin: 2px; display: inline-block;">${k}</code>`).join(' ')}</div>` : ''}
+      ${rule.example ? `<div style="background: rgba(16, 185, 129, 0.1); border-right: 3px solid var(--success); padding: 10px; border-radius: 6px;"><strong style="color: var(--success);">💡 مثال:</strong> ${rule.example}</div>` : ''}
+    </div>
+  `).join('');
+  let quizHTML = '';
+  if (lastSummary.miniQuiz) {
+    const q = lastSummary.miniQuiz;
+    quizHTML = `<div style="background: rgba(245, 158, 11, 0.1); border: 2px dashed var(--gold); border-radius: 12px; padding: 20px; margin-top: 20px;"><h3 style="color: var(--gold); margin-bottom: 15px; text-align: center;">🎯 تحدي سريع</h3><p style="font-size: 16px; margin-bottom: 15px; text-align: center;"><strong>${q.question}</strong></p><div style="display: flex; flex-direction: column; gap: 10px;">${q.options.map((opt, idx) => `<button style="padding: 12px; background: var(--bg-dark); border: 1px solid var(--border); color: white; border-radius: 8px; cursor: pointer; text-align: right; font-size: 14px;">${String.fromCharCode(65 + idx)}) ${opt}</button>`).join('')}</div><p style="margin-top: 15px; padding: 10px; background: rgba(16, 185, 129, 0.1); border-radius: 6px; color: var(--success); text-align: center;">💡 ${q.feedback || 'إجابة صحيحة!'}</p></div>`;
+  }
+  contentArea.innerHTML = `<div style="background: linear-gradient(135deg, #1e3a8a, #0f172a); border: 1px solid var(--gold); border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: center;"><h2 style="color: var(--gold); font-size: 22px; margin-bottom: 10px;">💡 ${lastSummary.title}</h2><p style="color: var(--text-muted); font-size: 13px;">📚 ${lastSummary.level} - Grade ${lastSummary.grade} - ${lastSummary.curriculum} - Unit ${lastSummary.unit}</p></div>${rulesHTML}${quizHTML}`;
+  previewArea.classList.remove('hidden');
+  previewArea.scrollIntoView({ behavior: 'smooth' });
+}
+
+function clearAll() {
+  if (!confirm('⚠️ مسح كل شيء؟')) return;
+  if (!confirm('⚠️ تأكيد أخير!')) return;
+  oldSummaries = []; newSummaries = []; nextId = 1;
+  document.getElementById('importStatus').innerHTML = '';
+  document.querySelectorAll('.step-card').forEach(c => c.classList.remove('done'));
+  updateStats(); renderPreview();
+}
+
+window.onload = function() { addRule(); };
+</script>
+</body>
+</html>

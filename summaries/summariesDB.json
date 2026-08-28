@@ -1,0 +1,32 @@
+{
+  "summaries": [
+    {
+      "id": "sum_1",
+      "level": "primary",
+      "grade": "2",
+      "curriculum": "OL",
+      "unit": "2",
+      "title": "المضارع البسيط vs المستمر",
+      "rules": [
+        {
+          "heading": "1. المضارع البسيط (Present Simple)",
+          "usage": "نستخدمه للـ <strong>عادات وروتين يومي</strong>.",
+          "keywords": ["always", "every day", "usually"],
+          "example": "I <strong>play</strong> football every Friday."
+        },
+        {
+          "heading": "2. المضارع المستمر (Present Continuous)",
+          "usage": "نستخدمه لشيء يحدث <strong>الآن (في هذه اللحظة)</strong>.",
+          "keywords": ["now", "at the moment", "Look!"],
+          "example": "Look! I <strong>am playing</strong> football now."
+        }
+      ],
+      "miniQuiz": {
+        "question": "\"Listen! The baby ....... \"",
+        "options": ["cries", "is crying", "cry"],
+        "correctIndex": 1,
+        "feedback": "كلمة 'Listen!' تعني أنه يحدث الآن."
+      }
+    }
+  ]
+}
