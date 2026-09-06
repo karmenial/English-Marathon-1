@@ -174,126 +174,73 @@
         return obj;
     }
 
-   // ==========================================
-// 🧠 اكتشاف المسار الأساسي تلقائياً (يعمل محلياً وعلى GitHub Pages)
-// ==========================================
-function getBasePath() {
-    const path = window.location.pathname;
-    // إذا كنا داخل مجلد exams/، نرجع للخطوة السابقة
-    if (path.includes('/exams/')) {
-        return path.substring(0, path.lastIndexOf('/exams/')) + '/';
-    }
-    // إذا كنا في الجذر
-    return path.substring(0, path.lastIndexOf('/') + 1);
-}
-
-const BASE_PATH = getBasePath();
-console.log('📍 المسار الأساسي المكتشف:', BASE_PATH);
-
-//  مزامنة قاعدة الأسئلة من السيرفر
-async function syncQuestionsDBFromServer() {
-    try {
-        const url = BASE_PATH + 'marathonQuestionsDB.json?v=' + Date.now();
-        console.log('🔄 محاولة جلب الأسئلة من:', url);
-        
-        const res = await fetch(url, { cache: 'no-store' });
-        
-        if (!res.ok) {
-            console.error(`❌ فشل جلب الأسئلة: HTTP ${res.status} - ${res.statusText}`);
-            console.error('💡 تأكد من: 1- اسم الملف وحالة الأحرف 2- أن الملف مرفوع في جذر المستودع');
-            return;
-        }
-        
-        const data = deepTrim(await res.json());
-        if (data && data.activityDatabase) {
-            localStorage.setItem('marathon_questions_db', JSON.stringify(data));
-            console.log('✅ تمت مزامنة قاعدة الأسئلة من السيرفر بنجاح');
-        } else {
-            console.warn('⚠️ هيكل ملف الأسئلة غير صحيح (يجب أن يحتوي على activityDatabase)');
-        }
-    } catch (e) {
-        console.error('⚠️ تعذرت مزامنة الأسئلة:', e.message);
-    }
-}
-
-// 📥 جلب الامتحان من السيرفر
-async function loadExamFromDB(examId, preferLocal = false) {
-    const fromServer = async () => {
+    // 📚 مزامنة قاعدة الأسئلة من السيرفر (أونلاين أولاً، ثم حفظ محلي كـ Fallback)
+    async function syncQuestionsDBFromServer() {
         try {
-            const url = BASE_PATH + 'marathonExamsDB.json?v=' + Date.now();
-            console.log('🔄 محاولة جلب الامتحانات من:', url);
-            
-            const res = await fetch(url, { cache: 'no-store' });
-            
-            if (!res.ok) {
-                console.error(`❌ فشل جلب ملف الامتحانات: HTTP ${res.status} - ${res.statusText}`);
-                return null;
+            // ✅ المسار الصحيح: ../ لأن هذا الملف داخل مجلد exams/
+            const res = await fetch('../marathonQuestionsDB.json?v=' + Date.now(), { cache: 'no-store' });
+            if (res.ok) {
+                const data = deepTrim(await res.json());
+                if (data && data.activityDatabase) {
+                    localStorage.setItem('marathon_questions_db', JSON.stringify(data));
+                    console.log('✅ تمت مزامنة قاعدة الأسئلة من السيرفر');
+                }
             }
-            
-            const db = deepTrim(await res.json());
-            const exam = (db.exams || []).find(e => String(e.id) === String(examId));
-            
-            if (exam) {
-                console.log('✅ تم العثور على الامتحان في السيرفر:', exam.quizTitle || exam.title);
-            } else {
-                console.warn('⚠️ لم يتم العثور على امتحان بـ ID:', examId);
-            }
-            
-            return exam || null;
-        } catch (e) { 
-            console.error('⚠️ تعذر الوصول للسيرفر:', e.message); 
-            return null; 
+        } catch (e) {
+            console.warn('⚠️ تعذرت مزامنة الأسئلة، سيعتمد النظام على النسخة المحلية المحفوظة:', e.message);
         }
-    };
-    
-    const fromLocal = () => {
-        try {
-            const db = deepTrim(JSON.parse(localStorage.getItem('marathon_exams_db') || '{"exams": []}'));
-            return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
-        } catch (e) { 
-            console.error(' خطأ في localStorage:', e); 
-            return null; 
-        }
-    };
-
-    if (preferLocal) {
-        const local = fromLocal();
-        if (local) { console.log('✅ تم تحميل الامتحان من localStorage (معاينة الأدمن)'); return local; }
     }
-    
-    const remote = await fromServer();
-    if (remote) { console.log('✅ تم تحميل الامتحان من السيرفر (GitHub)'); return remote; }
-    
-    console.warn('⚠️ فشل التحميل من السيرفر، يتم الاعتماد على النسخة المحلية');
-    return fromLocal();
-}
 
-//  تحميل ملفات المنطق المطلوبة
-async function loadRequiredLogic(types) {
-    window.activitiesLogic = window.activitiesLogic || {};
-    
-    await Promise.allSettled(types.map(t => {
-        const url = BASE_PATH + 'activities-logic/' + t + '.js';
-        console.log('🔄 تحميل منطق النشاط:', url);
-        return loadScript(url).catch(e => {
-            console.error('❌ فشل تحميل:', t, '-', e.message);
+    // 📥 جلب الامتحان: ذكي (السيرفر أولاً، أو المحلي أولاً حسب مصدر الطلب)
+    async function loadExamFromDB(examId, preferLocal = false) {
+        const fromServer = async () => {
+            try {
+                // ✅ المسار الصحيح: ../ لأن هذا الملف داخل مجلد exams/
+                const res = await fetch('../marathonExamsDB.json?v=' + Date.now(), { cache: 'no-store' });
+                if (res.ok) {
+                    const db = deepTrim(await res.json());
+                    return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
+                }
+            } catch (e) { console.warn('⚠️ تعذر الوصول للسيرفر:', e.message); }
+            return null;
+        };
+        
+        const fromLocal = () => {
+            try {
+                const db = deepTrim(JSON.parse(localStorage.getItem('marathon_exams_db') || '{"exams": []}'));
+                return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
+            } catch (e) { console.error('❌ خطأ في localStorage:', e); return null; }
+        };
+
+        if (preferLocal) {
+            const local = fromLocal();
+            if (local) { console.log('✅ تم تحميل الامتحان من localStorage (معاينة الأدمن)'); return local; }
+        }
+        
+        const remote = await fromServer();
+        if (remote) { console.log('✅ تم تحميل الامتحان من السيرفر (GitHub)'); return remote; }
+        
+        // Fallback أخير إذا فشل السيرفر
+        return fromLocal();
+    }
+
+    // 📚 تحميل ملفات المنطق المطلوبة فقط (ديناميكياً + شبكة أمان)
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = src;
+            s.onload = resolve;
+            s.onerror = () => reject(new Error('فشل تحميل ' + src));
+            document.body.appendChild(s);
         });
-    }));
-    
-    // 🛡️ إعادة تهيئة إذا لزم الأمر
-    const missing = types.filter(t => !window.activitiesLogic[t]);
-    if (missing.length > 0) {
-        console.warn('🛡️ إعادة تهيئة لـ:', missing.join(', '));
-        document.dispatchEvent(new Event('DOMContentLoaded'));
-        await new Promise(r => setTimeout(r, 400));
-        
-        const still = types.filter(t => !window.activitiesLogic[t]);
-        if (still.length > 0) {
-            console.error('❌ ما زالت غير مسجلة:', still.join(', '));
-            showFatalError('️ فشل تحميل منطق الأنشطة: ' + still.join(', ') + '<br><br>تأكد من وجود مجلد <strong>activities-logic</strong> في جذر المستودع.');
-        }
     }
-}
+
+    async function loadRequiredLogic(types) {
+        window.activitiesLogic = window.activitiesLogic || {};
+        await Promise.allSettled(types.map(t =>
+            // ✅ المسار الصحيح: ../activities-logic/
+            loadScript('../activities-logic/' + t + '.js').catch(e => console.error('❌ ' + e.message))
+        ));
         
         // 🛡️ بعض ملفات المنطق تسجّل نفسها عند حدث DOMContentLoaded فقط
         const missing = types.filter(t => !window.activitiesLogic[t]);
