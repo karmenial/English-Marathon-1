@@ -1281,8 +1281,15 @@ function setupStudentDashboardView(uData) {
     if (lblGrade) lblGrade.textContent = uData.grade || '--';
     const lblType = document.getElementById('previewType');
     if (lblType) lblType.textContent = uData.type || '--';
-    populateUnits();
-    window.currentActiveUnit = '1';
+       populateUnits();
+    // ✅ استرجاع آخر وحدة كان يقف عندها الطالب بدلاً من إجباره على الوحدة 1
+    let startUnit = '1';
+    if (sessionUser && sessionUser.role === 'student' && sessionUser.id) {
+        startUnit = localStorage.getItem('marathon_last_unit_' + sessionUser.id) || '1';
+    }
+    window.currentActiveUnit = startUnit;
+    const unitSel = document.getElementById('previewUnitFilter');
+    if (unitSel) unitSel.value = String(startUnit);
     window.currentActivePath = uData;
     renderStudentActivities();
     calculateStudentSubscriptionPulse();
@@ -1298,7 +1305,12 @@ function setupStudentDashboardView(uData) {
 }
 function updateUnitFilter(unit) {
     window.currentActiveUnit = unit;
+    // ✅ حفظ آخر وحدة وقف عندها الطالب (مفتاح خاص بكل طالب)
+    if (sessionUser && sessionUser.role === 'student' && sessionUser.id) {
+        localStorage.setItem('marathon_last_unit_' + sessionUser.id, String(unit));
+    }
     renderStudentActivities();
+}
 }
 function calculateStudentSubscriptionPulse() {
     const badge = document.getElementById('studentExpiryBadge');
