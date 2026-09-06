@@ -1,170 +1,198 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💡 اشرحلي - الملخص التفاعلي</title>
-    <!-- ربط stylesheet الرئيسي للمنصة للحفاظ على الثيم -->
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        body { padding: 20px; display: flex; justify-content: center; }
-        .summary-container { max-width: 600px; width: 100%; margin-top: 20px; }
-        .summary-header { text-align: center; margin-bottom: 30px; }
-        .summary-header h1 { color: var(--admin-gold); font-size: 24px; margin-bottom: 10px; }
-        .summary-header p { color: var(--text-muted); }
-        
-        .rule-box { margin-bottom: 15px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
-        .rule-header { background: rgba(59, 130, 246, 0.1); padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
-        .rule-header h3 { color: var(--primary); font-size: 16px; margin: 0; }
-        .rule-header .icon { transition: transform 0.3s; color: var(--primary); }
-        .rule-header.active .icon { transform: rotate(180deg); }
-        
-        .rule-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: all 0.4s ease; }
-        .rule-content.open { padding: 15px; max-height: 500px; }
-        .rule-content p { margin-bottom: 10px; line-height: 1.6; }
-        .keyword { background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 3px 10px; border-radius: 20px; font-size: 13px; margin: 3px; display: inline-block; border: 1px solid rgba(239, 68, 68, 0.3); }
-        .example-box { background: rgba(16, 185, 129, 0.1); border-right: 3px solid var(--success); padding: 10px; border-radius: 6px; margin-top: 10px; color: #d1fae5; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💡 اشرحلي - الملخص التفاعلي</title>
+<style>
+:root {
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --primary: #3b82f6;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --gold: #f59e0b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+body { background: var(--bg-dark); color: var(--text-main); padding: 20px; min-height: 100vh; }
+.container { max-width: 900px; margin: auto; }
 
-        .quiz-box { background: var(--bg-card); border: 2px dashed var(--admin-gold); border-radius: 12px; padding: 20px; margin-top: 30px; text-align: center; }
-        .quiz-box h3 { color: var(--admin-gold); margin-bottom: 15px; }
-        .quiz-btn { display: block; width: 100%; padding: 12px; margin: 8px 0; background: var(--bg-dark); border: 1px solid var(--border); color: white; border-radius: 8px; cursor: pointer; font-size: 16px; transition: 0.2s; }
-        .quiz-btn:hover { border-color: var(--admin-gold); transform: translateX(-5px); }
-        .quiz-btn.correct { background: var(--success); color: black; font-weight: bold; border-color: var(--success); }
-        .quiz-btn.wrong { background: var(--danger); color: white; border-color: var(--danger); }
-        .feedback-msg { margin-top: 15px; font-weight: bold; display: none; }
+.header { background: linear-gradient(135deg, #1e3a8a, #0f172a); border: 1px solid var(--gold); border-radius: 16px; padding: 25px; margin-bottom: 25px; text-align: center; box-shadow: 0 0 30px rgba(245, 158, 11, 0.2); }
+.header h1 { color: var(--gold); font-size: 28px; margin-bottom: 8px; }
+.header p { color: var(--text-muted); font-size: 14px; }
+.back-link { display: inline-block; margin-top: 15px; color: var(--primary); text-decoration: none; font-size: 14px; }
+.back-link:hover { text-decoration: underline; }
 
-        .back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-bottom: 20px; transition: 0.2s; }
-        .back-btn:hover { border-color: var(--primary); }
-        .no-content { text-align: center; padding: 50px; background: var(--bg-card); border-radius: 12px; border: 1px dashed var(--border); color: var(--text-muted); }
-    </style>
+.summary-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+.summary-header { background: linear-gradient(135deg, #1e3a8a, #0f172a); border: 1px solid var(--gold); border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: center; }
+.summary-header h2 { color: var(--gold); font-size: 22px; margin-bottom: 10px; }
+.summary-meta { color: var(--text-muted); font-size: 13px; }
+
+.rule-box { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+.rule-heading { color: var(--gold); margin-bottom: 10px; font-size: 16px; }
+.rule-usage { margin-bottom: 10px; line-height: 1.8; }
+.rule-keywords { margin-bottom: 10px; }
+.rule-keywords strong { color: var(--text-muted); font-size: 12px; display: block; margin-bottom: 5px; }
+.keyword { background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin: 2px; display: inline-block; }
+.rule-example { background: rgba(16, 185, 129, 0.1); border-right: 3px solid var(--success); padding: 10px; border-radius: 6px; }
+.rule-example strong { color: var(--success); }
+
+.quiz-box { background: rgba(245, 158, 11, 0.1); border: 2px dashed var(--gold); border-radius: 12px; padding: 20px; margin-top: 20px; }
+.quiz-title { color: var(--gold); margin-bottom: 15px; text-align: center; font-size: 18px; }
+.quiz-question { font-size: 16px; margin-bottom: 15px; text-align: center; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-btn { padding: 12px; background: var(--bg-dark); border: 1px solid var(--border); color: white; border-radius: 8px; cursor: pointer; text-align: right; font-size: 14px; transition: 0.3s; }
+.quiz-btn:hover { border-color: var(--primary); }
+.quiz-btn.correct { background: var(--success); border-color: var(--success); color: black; font-weight: bold; }
+.quiz-btn.wrong { background: var(--danger); border-color: var(--danger); color: white; }
+.quiz-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+.quiz-feedback { margin-top: 15px; padding: 10px; background: rgba(16, 185, 129, 0.1); border-radius: 6px; color: var(--success); text-align: center; display: none; }
+.quiz-feedback.show { display: block; animation: fadeIn 0.3s; }
+
+.loading { text-align: center; padding: 50px; color: var(--text-muted); font-size: 18px; }
+.error { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--danger); color: #f87171; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body>
 
-<div class="summary-container">
-    <a href="../index.html" class="back-btn">→ العودة للمنصة</a>
-    
-    <div id="contentArea">
-        <div class="no-content">⏳ جاري تحميل الملخص التفاعلي...</div>
-    </div>
+<div class="container">
+  <div class="header">
+    <h1>💡 اشرحلي - الملخص التفاعلي</h1>
+    <p>ملخصات الماراثون التفاعلية</p>
+    <a href="../index.html" class="back-link">→ العودة للمنصة</a>
+  </div>
+  
+  <div id="content">
+    <div class="loading"> جاري تحميل الملخص التفاعلي...</div>
+  </div>
 </div>
 
 <script>
-    // 1. قراءة المعاملات من الرابط (URL Parameters)
-    const params = new URLSearchParams(window.location.search);
-    const level = params.get('level');
-    const grade = params.get('grade');
-    const type = params.get('type');
-    const unit = params.get('unit');
-    const studentName = params.get('studentName') || 'بطل';
+let summariesData = [];
+let urlParams = new URLSearchParams(window.location.search);
+let targetLevel = urlParams.get('level') || 'primary';
+let targetGrade = urlParams.get('grade') || '2';
+let targetCurriculum = urlParams.get('curriculum') || 'OL';
+let targetUnit = urlParams.get('unit') || '2';
 
-    // 2. جلب البيانات وعرضها
-    async function loadSummary() {
-        try {
-            const res = await fetch('summariesDB.json');
-            const data = await res.json();
-            
-            // البحث عن الملخص المطابق للمسار والوحدة
-            const summary = data.summaries.find(s => 
-                s.level === level && 
-                String(s.grade) === String(grade) && 
-                s.curriculum === type && 
-                String(s.unit) === String(unit)
-            );
+// تحميل البيانات
+async function loadSummaries() {
+  try {
+    const response = await fetch('summariesDB.json');
+    if (!response.ok) throw new Error('فشل في تحميل الملف');
+    const data = await response.json();
+    summariesData = data.summaries || [];
+    displaySummary();
+  } catch (error) {
+    document.getElementById('content').innerHTML = 
+      `<div class="error">❌ خطأ في تحميل الملخص: ${error.message}<br>تأكد من وجود ملف summariesDB.json</div>`;
+  }
+}
 
-            const area = document.getElementById('contentArea');
+// عرض الملخص المناسب
+function displaySummary() {
+  const summary = summariesData.find(s => 
+    s.level?.trim() === targetLevel && 
+    s.grade?.trim() === targetGrade && 
+    s.curriculum?.trim() === targetCurriculum && 
+    s.unit?.trim() === targetUnit
+  );
+  
+  if (!summary) {
+    document.getElementById('content').innerHTML = 
+      `<div class="error">❌ لم يتم العثور على ملخص لهذه الوحدة<br>
+      المرحلة: ${targetLevel} | الصف: ${targetGrade} | المنهج: ${targetCurriculum} | الوحدة: ${targetUnit}</div>`;
+    return;
+  }
+  
+  const levelNames = { primary: 'ابتدائية', preparatory: 'إعدادية', secondary: 'ثانوية' };
+  
+  let rulesHTML = summary.rules.map(rule => `
+    <div class="rule-box">
+      <h3 class="rule-heading">${rule.heading}</h3>
+      <div class="rule-usage">${rule.usage}</div>
+      ${rule.keywords && rule.keywords.length > 0 ? `
+        <div class="rule-keywords">
+          <strong> الكلمات المفتاحية:</strong>
+          ${rule.keywords.map(k => `<span class="keyword">${k}</span>`).join(' ')}
+        </div>
+      ` : ''}
+      ${rule.example ? `<div class="rule-example"><strong>💡 مثال:</strong> ${rule.example}</div>` : ''}
+    </div>
+  `).join('');
+  
+  let quizHTML = '';
+  if (summary.miniQuiz) {
+    const q = summary.miniQuiz;
+    quizHTML = `
+      <div class="quiz-box">
+        <h3 class="quiz-title">🎯 تحدي سريع</h3>
+        <p class="quiz-question"><strong>${q.question}</strong></p>
+        <div class="quiz-options">
+          ${q.options.map((opt, idx) => `
+            <button class="quiz-btn" onclick="checkAnswer(${idx}, ${q.correctIndex}, '${(q.feedback || '').replace(/'/g, "\\'")}')">
+              ${String.fromCharCode(65 + idx)}) ${opt}
+            </button>
+          `).join('')}
+        </div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+      </div>
+    `;
+  }
+  
+  document.getElementById('content').innerHTML = `
+    <div class="summary-card">
+      <div class="summary-header">
+        <h2>💡 ${summary.title}</h2>
+        <div class="summary-meta">
+          📚 ${levelNames[summary.level] || summary.level} - Grade ${summary.grade} - ${summary.curriculum} - Unit ${summary.unit}
+        </div>
+      </div>
+      
+      ${rulesHTML}
+      ${quizHTML}
+    </div>
+  `;
+}
 
-            if (!summary) {
-                area.innerHTML = `
-                    <div class="no-content">
-                        <h2>🚧 الملخص قيد الإعداد</h2>
-                        <p>لم يتم إضافة ملخص تفاعلي للوحدة ${unit} لهذا المسار بعد.</p>
-                        <p style="margin-top:10px; color: var(--admin-gold);">تابع التحديثات يا ${studentName}!</p>
-                    </div>`;
-                return;
-            }
+// التحقق من الإجابة
+function checkAnswer(selectedIndex, correctIndex, feedback) {
+  const buttons = document.querySelectorAll('.quiz-btn');
+  const feedbackEl = document.getElementById('quizFeedback');
+  
+  // تعطيل كل الأزرار
+  buttons.forEach(btn => btn.disabled = true);
+  
+  // التحقق من الإجابة
+  if (selectedIndex === correctIndex) {
+    // إجابة صحيحة - أخضر
+    buttons[selectedIndex].classList.add('correct');
+    buttons[selectedIndex].innerHTML += ' ✅';
+    feedbackEl.innerHTML = '🎉 أحسنت! إجابة صحيحة!<br>' + (feedback || '');
+  } else {
+    // إجابة خاطئة - أحمر
+    buttons[selectedIndex].classList.add('wrong');
+    buttons[selectedIndex].innerHTML += ' ';
+    // إظهار الإجابة الصحيحة
+    buttons[correctIndex].classList.add('correct');
+    buttons[correctIndex].innerHTML += ' ✓';
+    feedbackEl.innerHTML = '😅 إجابة خاطئة<br>' + (feedback || '');
+  }
+  
+  feedbackEl.classList.add('show');
+}
 
-            // بناء الـ HTML ديناميكياً
-            let rulesHTML = summary.rules.map((rule, index) => `
-                <div class="rule-box">
-                    <div class="rule-header" onclick="toggleRule(this)">
-                        <h3>${rule.heading}</h3>
-                        <span class="icon">▼</span>
-                    </div>
-                    <div class="rule-content">
-                        <p>${rule.usage}</p>
-                        <p>🔑 الكلمات المفتاحية:</p>
-                        <div>${rule.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}</div>
-                        <div class="example-box">💡 مثال: ${rule.example}</div>
-                    </div>
-                </div>
-            `).join('');
-
-            let quizHTML = '';
-            if (summary.miniQuiz) {
-                const q = summary.miniQuiz;
-                const optionsHTML = q.options.map((opt, idx) => 
-                    `<button class="quiz-btn" onclick="checkAnswer(this, ${idx === q.correctIndex}, '${q.feedback}')">${opt}</button>`
-                ).join('');
-                
-                quizHTML = `
-                    <div class="quiz-box">
-                        <h3>🎯 تحدي سريع يا ${studentName}</h3>
-                        <p style="font-size: 18px; margin-bottom: 15px;">${q.question}</p>
-                        ${optionsHTML}
-                        <p id="feedbackMsg" class="feedback-msg"></p>
-                    </div>
-                `;
-            }
-
-            area.innerHTML = `
-                <div class="summary-header">
-                    <h1>💡 ${summary.title}</h1>
-                    <p>الملخص التفاعلي لـ Unit ${unit} | ${getLevelName(level)} - Grade ${grade}</p>
-                </div>
-                ${rulesHTML}
-                ${quizHTML}
-            `;
-
-            // فتح أول قاعدة تلقائياً
-            const firstHeader = document.querySelector('.rule-header');
-            if(firstHeader) toggleRule(firstHeader);
-
-        } catch (error) {
-            console.error(error);
-            document.getElementById('contentArea').innerHTML = '<div class="no-content">❌ حدث خطأ في تحميل البيانات.</div>';
-        }
-    }
-
-    function toggleRule(header) {
-        const content = header.nextElementSibling;
-        header.classList.toggle('active');
-        content.classList.toggle('open');
-    }
-
-    function checkAnswer(btn, isCorrect, feedback) {
-        const buttons = btn.parentElement.querySelectorAll('.quiz-btn');
-        const msg = document.getElementById('feedbackMsg');
-        buttons.forEach(b => b.disabled = true);
-        
-        if (isCorrect) {
-            btn.classList.add('correct');
-            msg.textContent = `🎉 إجابة ممتازة! ${feedback}`;
-            msg.style.color = "var(--success)";
-        } else {
-            btn.classList.add('wrong');
-            msg.textContent = `❌ حاول الانتباه أكثر. ${feedback}`;
-            msg.style.color = "var(--danger)";
-        }
-        msg.style.display = 'block';
-    }
-
-    function getLevelName(level) {
-        const names = { 'primary': 'الابتدائية', 'preparatory': 'الإعدادية', 'secondary': 'الثانوية' };
-        return names[level] || level;
-    }
-
-    // تشغيل الدالة
-    loadSummary();
+// بدء التطبيق
+window.onload = loadSummaries;
 </script>
 </body>
 </html>
