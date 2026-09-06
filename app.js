@@ -143,6 +143,21 @@ async function loadAllDataHybrid() {
     } catch (error) {
         console.warn("⚠️ لم يتم العثور على ملفات JSON أو فشل الاتصال، جاري التحميل من localStorage (وضع الأوفلاين)...");
     }
+    async function syncExamsDBFromServer() {
+    try {
+        const res = await fetch('marathonExamsDB.json?v=' + Date.now(), { cache: 'no-store' });
+        if (res.ok) {
+            const data = deepTrim(await res.json());
+            if (data && Array.isArray(data.exams)) {
+                marathonExamsDB = data;
+                localStorage.setItem('marathon_exams_db', JSON.stringify(marathonExamsDB));
+                console.log(`✅ تمت مزامنة ${data.exams.length} امتحاناً من السيرفر`);
+            }
+        }
+    } catch (e) {
+        console.warn('⚠️ تعذرت المزامنة، سأستخدم النسخة المحلية:', e.message);
+    }
+}
 
     // ==========================================
     // ✅ وضع الأوفلاين: التحميل من localStorage
