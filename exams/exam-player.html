@@ -98,7 +98,7 @@
     </div>
 
     <div class="exam-header">
-        <h1 id="exam-title-display">My Sweet English Quiz </h1>
+        <h1 id="exam-title-display">My Sweet English Quiz 🌟</h1>
         <p id="exam-path-display">المرحلة: -- | الصف: -- | المنهج: --</p>
         <div class="student-info">
             <input type="text" id="studentNameInput" placeholder="اكتب اسمك الثلاثي هنا للحصول على الشهادة">
@@ -139,16 +139,16 @@
             <div class="cert-actions">
                 <button class="cert-action-btn cert-save-btn" onclick="saveCertificateAsImage()" id="saveImgBtn">💾 Download</button>
                 <button class="cert-action-btn cert-whatsapp-btn" onclick="sendToWhatsApp()" id="whatsappBtn">📱 WhatsApp</button>
-                <button class="cert-action-btn cert-restart-btn" onclick="location.reload()"> Retake</button>
+                <button class="cert-action-btn cert-restart-btn" onclick="location.reload()">🔄 Retake</button>
             </div>
         </div>
     </div>
 
     <div class="loading-overlay" id="loadingOverlay"><div class="spinner"></div><div>جاري تجهيز الشهادة...</div></div>
 
-    <script>
+        <script>
     // ==========================================
-    // 🧠 المحرك الديناميكي - الإصدار النهائي المُصحّح لـ GitHub Pages
+    // 🧠 المحرك الديناميكي - الإصدار الثاني النهائي
     // ==========================================
     const INSTRUCTOR_WHATSAPP = "201149955726";
 
@@ -162,22 +162,6 @@
     let questionsList = [];
     let certificateBlob = null;
 
-    // ==========================================
-    // 📍 اكتشاف المسار الأساسي تلقائياً (يعمل محلياً وعلى GitHub Pages)
-    // ==========================================
-    function getBasePath() {
-        const path = window.location.pathname;
-        // إذا كنا داخل مجلد exams/، نرجع للخطوة السابقة (جذر المستودع)
-        if (path.includes('/exams/')) {
-            return path.substring(0, path.lastIndexOf('/exams/')) + '/';
-        }
-        // إذا كنا في الجذر
-        return path.substring(0, path.lastIndexOf('/') + 1);
-    }
-
-    const BASE_PATH = getBasePath();
-    console.log('📍 المسار الأساسي المكتشف:', BASE_PATH);
-
     // 🧹 شبكة الأمان: تنظيف المفاتيح والقيم من أي مسافات زائدة
     function deepTrim(obj) {
         if (Array.isArray(obj)) return obj.map(deepTrim);
@@ -190,81 +174,53 @@
         return obj;
     }
 
-    // 📚 مزامنة قاعدة الأسئلة من السيرفر
+    // 📚 مزامنة قاعدة الأسئلة من السيرفر (أونلاين أولاً، ثم حفظ محلي كـ Fallback)
     async function syncQuestionsDBFromServer() {
         try {
-            const url = BASE_PATH + 'marathonQuestionsDB.json?v=' + Date.now();
-            console.log('🔄 محاولة جلب الأسئلة من:', url);
-
-            const res = await fetch(url, { cache: 'no-store' });
-
-            if (!res.ok) {
-                console.error(`❌ فشل جلب الأسئلة: HTTP ${res.status} - ${res.statusText}`);
-                console.error('💡 تأكد من: 1- اسم الملف وحالة الأحرف 2- أن الملف مرفوع في جذر المستودع');
-                return;
-            }
-
-            const data = deepTrim(await res.json());
-            if (data && data.activityDatabase) {
-                localStorage.setItem('marathon_questions_db', JSON.stringify(data));
-                console.log('✅ تمت مزامنة قاعدة الأسئلة من السيرفر بنجاح');
-            } else {
-                console.warn('️ هيكل ملف الأسئلة غير صحيح (يجب أن يحتوي على activityDatabase)');
+            // ✅ المسار الصحيح: ../ لأن هذا الملف داخل مجلد exams/
+            const res = await fetch('../marathonQuestionsDB.json?v=' + Date.now(), { cache: 'no-store' });
+            if (res.ok) {
+                const data = deepTrim(await res.json());
+                if (data && data.activityDatabase) {
+                    localStorage.setItem('marathon_questions_db', JSON.stringify(data));
+                    console.log('✅ تمت مزامنة قاعدة الأسئلة من السيرفر');
+                }
             }
         } catch (e) {
-            console.error('️ تعذرت مزامنة الأسئلة:', e.message);
+            console.warn('⚠️ تعذرت مزامنة الأسئلة، سيعتمد النظام على النسخة المحلية المحفوظة:', e.message);
         }
     }
 
-    //  جلب الامتحان من السيرفر
+    // 📥 جلب الامتحان: ذكي (السيرفر أولاً، أو المحلي أولاً حسب مصدر الطلب)
     async function loadExamFromDB(examId, preferLocal = false) {
         const fromServer = async () => {
             try {
-                const url = BASE_PATH + 'marathonExamsDB.json?v=' + Date.now();
-                console.log('🔄 محاولة جلب الامتحانات من:', url);
-
-                const res = await fetch(url, { cache: 'no-store' });
-
-                if (!res.ok) {
-                    console.error(`❌ فشل جلب ملف الامتحانات: HTTP ${res.status} - ${res.statusText}`);
-                    return null;
+                // ✅ المسار الصحيح: ../ لأن هذا الملف داخل مجلد exams/
+                const res = await fetch('../marathonExamsDB.json?v=' + Date.now(), { cache: 'no-store' });
+                if (res.ok) {
+                    const db = deepTrim(await res.json());
+                    return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
                 }
-
-                const db = deepTrim(await res.json());
-                const exam = (db.exams || []).find(e => String(e.id) === String(examId));
-
-                if (exam) {
-                    console.log('✅ تم العثور على الامتحان في السيرفر:', exam.quizTitle || exam.title);
-                } else {
-                    console.warn('⚠️ لم يتم العثور على امتحان بـ ID:', examId);
-                }
-
-                return exam || null;
-            } catch (e) {
-                console.error('️ تعذر الوصول للسيرفر:', e.message);
-                return null;
-            }
+            } catch (e) { console.warn('⚠️ تعذر الوصول للسيرفر:', e.message); }
+            return null;
         };
-
+        
         const fromLocal = () => {
             try {
                 const db = deepTrim(JSON.parse(localStorage.getItem('marathon_exams_db') || '{"exams": []}'));
                 return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
-            } catch (e) {
-                console.error('❌ خطأ في localStorage:', e);
-                return null;
-            }
+            } catch (e) { console.error('❌ خطأ في localStorage:', e); return null; }
         };
 
         if (preferLocal) {
             const local = fromLocal();
             if (local) { console.log('✅ تم تحميل الامتحان من localStorage (معاينة الأدمن)'); return local; }
         }
-
+        
         const remote = await fromServer();
         if (remote) { console.log('✅ تم تحميل الامتحان من السيرفر (GitHub)'); return remote; }
-
-        console.warn('⚠️ فشل التحميل من السيرفر، يتم الاعتماد على النسخة المحلية');
+        
+        // Fallback أخير إذا فشل السيرفر
         return fromLocal();
     }
 
@@ -281,16 +237,11 @@
 
     async function loadRequiredLogic(types) {
         window.activitiesLogic = window.activitiesLogic || {};
-
-        await Promise.allSettled(types.map(t => {
-            // ✅ المسار الصحيح: ../activities-logic/ (مجلد الأنشطة في الجذر)
-            const url = BASE_PATH + 'activities-logic/' + t + '.js';
-            console.log('🔄 تحميل منطق النشاط:', url);
-            return loadScript(url).catch(e => {
-                console.error(' فشل تحميل:', t, '-', e.message);
-            });
-        }));
-
+        await Promise.allSettled(types.map(t =>
+            // ✅ المسار الصحيح: ../activities-logic/
+            loadScript('../activities-logic/' + t + '.js').catch(e => console.error('❌ ' + e.message))
+        ));
+        
         // 🛡️ بعض ملفات المنطق تسجّل نفسها عند حدث DOMContentLoaded فقط
         const missing = types.filter(t => !window.activitiesLogic[t]);
         if (missing.length > 0) {
@@ -298,10 +249,7 @@
             document.dispatchEvent(new Event('DOMContentLoaded'));
             await new Promise(r => setTimeout(r, 400));
             const still = types.filter(t => !window.activitiesLogic[t]);
-            if (still.length > 0) {
-                console.error('❌ ما زالت غير مسجلة:', still.join(', '));
-                showFatalError('⚠️ فشل تحميل منطق الأنشطة: ' + still.join(', ') + '<br><br>تأكد من وجود مجلد <strong>activities-logic</strong> في جذر المستودع.');
-            }
+            if (still.length > 0) console.error('❌ ما زالت غير مسجلة:', still.join(', '));
         }
     }
 
@@ -319,16 +267,8 @@
         // 👁️ معاينة الأدمن تقرأ النسخة المحلية أولاً
         const preferLocal = params.get('src') === 'local';
 
-        console.log('📍 المسار الحالي:', window.location.pathname);
-        console.log('🔄 بدء تحميل البيانات...');
-
         await syncQuestionsDBFromServer();
         const exam = await loadExamFromDB(examId, preferLocal);
-
-        if (!exam) {
-            showFatalError(' لم يتم العثور على الامتحان!<br><br>تأكد من:<br>1- وجود ملف <strong>marathonExamsDB.json</strong> في جذر المستودع<br>2- أن الـ ID في الرابط صحيح<br><br>الـ ID المطلوب: <strong>' + examId + '</strong>');
-            return;
-        }
 
         // 🔄 محولات التوافق مع برنامج إنشاء الامتحانات (بدون كسر أي مفتاح)
         examData = {
@@ -340,7 +280,7 @@
             questions: exam.questionsList || exam.questions || []
         };
         questionsList = examData.questions;
-
+        
         if (questionsList.length === 0) { showFatalError('📭 هذا الامتحان لا يحتوي على أسئلة!'); return; }
 
         // ترويسة ديناميكية
@@ -355,7 +295,7 @@
             if (sess && sess.name) document.getElementById('studentNameInput').value = sess.name;
         } catch (e) {}
 
-        //  تحميل منطق الأنشطة الموجودة في الامتحان فقط
+        // 🎯 تحميل منطق الأنشطة الموجودة في الامتحان فقط
         const neededTypes = [...new Set(questionsList.map(q => q.type))];
         console.log('🎮 سيتم تحميل منطق:', neededTypes.join(', '));
         await loadRequiredLogic(neededTypes);
@@ -364,14 +304,14 @@
     };
 
     // ==========================================
-    // 📦 محرك العرض (لم يتم التعديل عليه)
+    // 📦 محرك العرض (لم يتم التعديل عليه إطلاقاً)
     // ==========================================
     function deleteQuestion(id) { console.log('Delete requested for:', id); }
-
+    
     function renderExam() {
         const container = document.getElementById('exam-container');
         let currentType = '', actContainer = null, subIdx = 0;
-
+        
         examData.questions.forEach((q) => {
             if (q.type !== currentType) {
                 currentType = q.type; subIdx = 0;
@@ -380,19 +320,19 @@
                 actContainer.innerHTML = '<h3 class="activity-header">📝 ' + currentType.replace(/_/g, ' ').toUpperCase() + '</h3>';
                 container.appendChild(actContainer);
             }
-
+            
             const row = document.createElement('div');
             row.className = 'question-row'; row.setAttribute('data-id', q.id);
-
+            
             if (typeof window !== 'undefined' && window.activitiesLogic && window.activitiesLogic[q.type]) {
                 try {
                     row.innerHTML = window.activitiesLogic[q.type].render(q, subIdx);
                     actContainer.appendChild(row);
                     setTimeout(() => { if (window.activitiesLogic[q.type].init) window.activitiesLogic[q.type].init(q.id); }, 100);
-                } catch (e) {
-                    console.error('Error:', e);
-                    row.innerHTML = '<p style="color:red;">Error</p>';
-                    actContainer.appendChild(row);
+                } catch (e) { 
+                    console.error('Error:', e); 
+                    row.innerHTML = '<p style="color:red;">Error</p>'; 
+                    actContainer.appendChild(row); 
                 }
             } else {
                 row.innerHTML = '<p style="color: #ef4444; text-align: center;">⚠️ لم يتم تحميل منطق: ' + q.type + '</p>';
@@ -403,12 +343,12 @@
     }
 
     // ==========================================
-    // 🏆 التقدير والشهادة (لم يتم التعديل عليه)
+    // 🏆 التقدير والشهادة (لم يتم التعديل عليه إطلاقاً)
     // ==========================================
     function getGrade(percent) {
         if (percent >= 90) return { en: 'Excellent', emoji: '🌟', motivation: 'إنجاز رائع! تفانيك في تعلم اللغة الإنجليزية ملهم حقاً. استمر في التألق وواصل هذه الرحلة المميزة نحو التميز!' };
         if (percent >= 80) return { en: 'Very Good', emoji: '👏', motivation: 'عمل ممتاز! لقد أظهرت التزاماً وتقدماً كبيراً. استمر في المضي قدماً، فجهودك تؤتي ثمارها بشكل رائع!' };
-        if (percent >= 70) return { en: 'Good', emoji: '', motivation: 'عمل رائع! أنت على الطريق الصحيح نحو الاحتراف. حافظ على تركيزك، وتدرب يومياً، وشاهد مهاراتك تتطور بقوة كل يوم!' };
+        if (percent >= 70) return { en: 'Good', emoji: '👍', motivation: 'عمل رائع! أنت على الطريق الصحيح نحو الاحتراف. حافظ على تركيزك، وتدرب يومياً، وشاهد مهاراتك تتطور بقوة كل يوم!' };
         if (percent >= 60) return { en: 'Pass', emoji: '✅', motivation: 'جهد جيد! كل خبير كان مبتدئاً في يوم من الأيام. استمر في التدريب، وحافظ على حماسك، وتذكر: التقدم تقدم، مهما كان صغيراً!' };
         return { en: 'Needs Improvement', emoji: '💪', motivation: 'لا تستسلم! كل تحدٍ هو فرصة للتعلم. راجع المادة، وتدرب أكثر، وستلاحظ تحسناً مذهلاً!' };
     }
@@ -416,27 +356,27 @@
     function finishExam() {
         const studentName = document.getElementById('studentNameInput').value.trim();
         if (!studentName) { alert('الرجاء كتابة اسمك في الحقل المخصص أعلى الصفحة!'); document.getElementById('studentNameInput').focus(); return; }
-
+        
         let studentFinalScore = 0, totalMaxScore = 0;
-
+        
         examData.questions.forEach(q => {
             let maxScore = 1;
             if (window.activitiesLogic && window.activitiesLogic[q.type] && typeof window.activitiesLogic[q.type].getMaxScore === 'function') {
                 maxScore = window.activitiesLogic[q.type].getMaxScore(q.id);
             }
             totalMaxScore += maxScore;
-
+            
             if (window.activitiesLogic && window.activitiesLogic[q.type] && typeof window.activitiesLogic[q.type].calculateScore === 'function') {
                 try { studentFinalScore += window.activitiesLogic[q.type].calculateScore(q.id); } catch (e) {}
             }
         });
-
+        
         const percent = totalMaxScore > 0 ? Math.round((studentFinalScore / totalMaxScore) * 100) : 0;
         const grade = getGrade(percent);
         const today = new Date();
         const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         const pathString = `${examData.level}_${examData.grade}_${examData.curriculum}_${examData.title}`.toLowerCase().replace(/\s+/g, '_');
-
+        
         document.getElementById('certName').textContent = studentName;
         document.getElementById('certExamTitle').textContent = examData.title;
         document.getElementById('certPath').textContent = pathString;
@@ -448,7 +388,7 @@
         document.getElementById('certMotivation').textContent = grade.motivation;
         document.getElementById('certificateOverlay').classList.add('show');
     }
-
+    
     function closeCertificateModal() { document.getElementById('certificateOverlay').classList.remove('show'); }
 
     async function generateCertificateBlob() {
@@ -457,7 +397,7 @@
             return new Promise((resolve) => { canvas.toBlob((blob) => { certificateBlob = blob; resolve(blob); }, 'image/png', 1.0); });
         } catch (error) { console.error(error); return null; }
     }
-
+    
     async function saveCertificateAsImage() {
         const btn = document.getElementById("saveImgBtn");
         const loading = document.getElementById("loadingOverlay");
@@ -473,7 +413,7 @@
         } catch (error) {}
         finally { loading.classList.remove("show"); btn.disabled = false; }
     }
-
+    
     async function sendToWhatsApp() {
         const btn = document.getElementById("whatsappBtn");
         const loading = document.getElementById("loadingOverlay");
@@ -483,13 +423,13 @@
             const percent = document.getElementById('certPercentage').textContent;
             const gradeText = document.getElementById('certGradeBadge').textContent;
             const studentName = document.getElementById('studentNameInput').value;
-            const messageText = '🎉 *Certificate of Completion* \n\n👤 *Student:* ' + studentName + '\n📚 *Exam:* ' + examData.title + '\n *Score:* ' + document.getElementById('certScore').textContent + ' (' + percent + ')\n🏆 *Grade:* ' + gradeText + '\n\n📎 Please find my certificate attached!\n\n🏆 English Marathon Platform ';
+            const messageText = '🎉 *Certificate of Completion* 🎉\n\n👤 *Student:* ' + studentName + '\n📚 *Exam:* ' + examData.title + '\n *Score:* ' + document.getElementById('certScore').textContent + ' (' + percent + ')\n🏆 *Grade:* ' + gradeText + '\n\n📎 Please find my certificate attached!\n\n🏆 English Marathon Platform ';
             const whatsappUrl = 'https://wa.me/' + INSTRUCTOR_WHATSAPP + '?text=' + encodeURIComponent(messageText);
-
+            
             if (blob && navigator.canShare && navigator.canShare({ files: [new File([blob], 'certificate.png', { type: 'image/png' })] })) {
                 try { await navigator.share({ title: '🏆 English Marathon Certificate', text: messageText, files: [new File([blob], 'Certificate_' + studentName.replace(/\s+/g, '_') + '.png', { type: 'image/png' })] }); loading.classList.remove("show"); btn.disabled = false; return; } catch (e) {}
             }
-
+            
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a'); a.href = url; a.download = 'Certificate_' + studentName.replace(/\s+/g, '_') + '.png';
             document.body.appendChild(a); a.click(); document.body.removeChild(a);
@@ -497,5 +437,6 @@
         } catch (error) { loading.classList.remove("show"); btn.disabled = false; }
     }
     </script>
+    <!-- ✅ لا توجد وسوم script ثابتة للأنشطة — التحميل ديناميكي بالكامل -->
 </body>
 </html>
