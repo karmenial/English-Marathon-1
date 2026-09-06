@@ -222,6 +222,50 @@ function migrateOldDatabase() {
 // ==========================================
 // ✅ حفظ جميع البيانات في localStorage
 // ==========================================
+// ==========================================
+// ✅ دالة التنظيف الذكي (لإزالة المسافات الزائدة من مفاتيح JSON)
+// ==========================================
+function deepTrim(obj) {
+    if (Array.isArray(obj)) return obj.map(deepTrim);
+    if (obj !== null && typeof obj === 'object') {
+        const out = {};
+        for (const [k, v] of Object.entries(obj)) out[k.trim()] = deepTrim(v);
+        return out;
+    }
+    if (typeof obj === 'string') return obj.trim();
+    return obj;
+}
+
+// ==========================================
+// ✅ دالة التحميل الهجين (تجلب الامتحانات من GitHub أو localStorage)
+// ==========================================
+async function syncExamsDBFromServer() {
+    try {
+        // محاولة جلب الملف من السيرفر (GitHub) مع منع الكاش
+        const res = await fetch('marathonExamsDB.json?v=' + Date.now(), { cache: 'no-store' });
+        if (res.ok) {
+            const data = deepTrim(await res.json());
+            if (data && Array.isArray(data.exams)) {
+                marathonExamsDB = data;
+                localStorage.setItem('marathon_exams_db', JSON.stringify(marathonExamsDB));
+                console.log(`✅ تمت مزامنة ${data.exams.length} امتحاناً من السيرفر (GitHub)`);
+                return; // نجح التحميل من السيرفر، نخرج
+            }
+        }
+    } catch (e) {
+        console.warn('⚠️ تعذرت المزامنة من السيرفر، سأعتمد على النسخة المحلية:', e.message);
+    }
+
+    // الـ Fallback: التحميل من localStorage (وضع الأوفلاين)
+    if (localStorage.getItem('marathon_exams_db')) {
+        try {
+            marathonExamsDB = JSON.parse(localStorage.getItem('marathon_exams_db'));
+            console.log(`✅ تم تحميل ${marathonExamsDB.exams.length} امتحاناً من الذاكرة المحلية`);
+        } catch (e) {
+            console.warn("⚠️ خطأ في قراءة marathon_exams_db:", e);
+        }
+    }
+}
 function saveAllDataToStorage() {
     localStorage.setItem('users_db', JSON.stringify(usersDB));
     localStorage.setItem('marathon_questions_db', JSON.stringify(marathonQuestionsDB));
@@ -312,7 +356,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (!marathonQuestionsDB.activityDatabase.explanation) marathonQuestionsDB.activityDatabase.explanation = [];
     if (!marathonQuestionsDB.activityDatabase.exam) marathonQuestionsDB.activityDatabase.exam = [];
     if (!marathonExamsDB.exams) marathonExamsDB.exams = [];
-
+ await syncExamsDBFromServer(); 
+    
       adaptGradesSelector('filterLevel', 'filterGrade', true);
     adaptGradesSelector('qFilterLevel', 'qFilterGrade', true);
     adaptGradesSelector('msgFilterLevel', 'msgFilterGrade', true);
@@ -643,6 +688,10 @@ function showMyExams() {
         alert("⚠️ هذه الميزة للطالب فقط!");
         return;
     }
+    // ✅ التعديل: القراءة من المتغير العام بدلاً من localStorage مباشرة
+    const examsDB = marathonExamsDB || { exams: [] };
+    
+    // ... باقي الكود (const activeUnit = ... )
     renderMyExamsCards();
     switchMainTab('my-exams');
 }
@@ -679,8 +728,11 @@ function closeMyExamsModal() {
 // ✅ بدء الامتحان (نظام قديم - يُترك للتوافق)
 // ==========================================
 function startStudentExam(examId) {
-    const examsDB = JSON.parse(localStorage.getItem('marathon_exams_db') || '{"exams": []}');
-    const exam = examsDB.exams.find(e => String(e.id) === String(examId));
+    // ✅ التعديل: القراءة من المتغير العام
+    const examsDB = marathonExamsDB || { exams: [] };
+    const exam = examsDB.exams.find(e => e.id === examId);
+    
+    // ... باقي الكود
     if (!exam) { alert("⚠️ الامتحان غير موجود!"); return; }
     localStorage.setItem('current_exam_session', JSON.stringify({
         examId: exam.id,
