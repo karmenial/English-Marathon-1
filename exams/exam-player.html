@@ -7,96 +7,755 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Cairo:wght@400;700;900&family=Fredoka+One&family=Orbitron:wght@400;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-main:#1e1b4b; --text-main:#f8fafc; --card-bg:#2e2a72; --border-color:#4338ca; --btn-primary:#60a5fa; --danger:#f87171; --success:#4ade80; --kids-yellow:#fef08a; --text-muted:#cbd5e1; }
-        body { font-family:'Nunito','Cairo',sans-serif; background-color:var(--bg-main); color:var(--text-main); margin:0; padding:20px; font-weight:700; font-size:17px; letter-spacing:0.3px; line-height:1.5; }
-        .exam-header { text-align:center; margin-bottom:30px; padding:20px; background:var(--card-bg); border-radius:24px; border:4px solid var(--border-color); box-shadow:0 10px 30px rgba(0,0,0,0.2); }
-        .exam-header h1 { font-family:'Fredoka One','Cairo',sans-serif; font-size:2.5rem; color:#ff7676; margin-bottom:10px; text-shadow:3px 3px 0px var(--kids-yellow); font-weight:900; letter-spacing:1px; }
-        .exam-header p { font-size:1.1rem; color:var(--text-muted); margin:0; }
-        .student-info { margin-top:20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap; }
-        .student-info input { padding:12px 20px; border:3px solid var(--border-color); border-radius:14px; background:rgba(255,255,255,0.08); color:var(--text-main); font-size:1.2rem; font-weight:700; font-family:'Nunito','Cairo',sans-serif; text-align:center; min-width:300px; outline:none; transition:all 0.2s; }
-        .student-info input:focus { border-color:var(--btn-primary); background:rgba(255,255,255,0.15); }
-        .activity-container { background:rgba(255,255,255,0.03); border:3px solid var(--border-color); border-radius:20px; padding:20px; margin-bottom:25px; }
-        .activity-header { font-size:1.7rem; color:#ff6b6b; margin-top:0; margin-bottom:15px; border-bottom:3px solid #ff6b6b; padding-bottom:5px; text-transform:capitalize; font-weight:900; letter-spacing:0.5px; }
-        .question-row { position:relative; background:rgba(255,255,255,0.04); border:2px solid rgba(255,255,255,0.15); padding:15px; border-radius:12px; margin-bottom:15px; }
-        .question-row p, .question-row label, .question-row input, .question-row span { font-family:'Nunito','Cairo',sans-serif !important; font-weight:700; }
-        .question-title-text { font-size:1.3rem; margin-top:0; margin-bottom:10px; padding-inline-end:45px; font-weight:900; letter-spacing:0.3px; }
-        .delete-q-btn { display:none; }
-        .btn { padding:10px 14px; border:none; border-radius:12px; cursor:pointer; font-weight:900; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; font-family:inherit; box-shadow:0 3px 0px rgba(0,0,0,0.15); text-align:center; justify-content:center; transition:transform 0.1s, box-shadow 0.1s; letter-spacing:0.3px; }
-        .btn:active { transform:translateY(3px); box-shadow:none; }
-        .btn-primary { background-color:var(--btn-primary); color:white; }
-        .btn-success { background-color:#22c55e; color:white; }
-        .btn-danger { background-color:#ef4444; color:white; }
-        .btn-secondary { background-color:#a855f7; color:white; }
-        .btn-warning { background-color:#eab308; color:white; }
-        .btn-info { background-color:#06b6d4; color:white; }
-        .finish-section { text-align:center; margin:40px 0; }
-        .finish-section .btn { font-size:1.3rem; padding:15px 40px; }
-        .complete-passage-container { background:rgba(255,255,255,0.08); border:3px solid var(--border-color); border-radius:14px; padding:20px; margin:15px 0; font-size:1.25rem; line-height:2; font-weight:700; }
-        .complete-blank { display:inline-block; min-width:100px; min-height:35px; border:3px dashed var(--btn-primary); border-radius:8px; background:rgba(96,165,250,0.1); padding:4px 12px; margin:0 4px; text-align:center; font-weight:900; cursor:pointer; transition:all 0.2s; vertical-align:middle; }
-        .complete-blank:hover { border-color:var(--success); background:rgba(74,222,128,0.15); }
-        .complete-blank.filled { background:var(--success); color:white; border-style:solid; border-color:#15803d; }
-        .complete-blank.correct { background:#22c55e; border-color:#15803d; }
-        .complete-blank.wrong { background:#ef4444; border-color:#dc2626; }
-        .complete-words-bank { background:rgba(255,255,255,0.05); border:3px dashed var(--border-color); border-radius:14px; padding:15px; margin:15px 0; display:flex; flex-wrap:wrap; gap:10px; min-height:60px; align-items:center; }
-        .complete-word-item { display:inline-block; background:var(--kids-yellow); color:#854d0e; padding:8px 16px; border-radius:10px; font-weight:900; font-size:1.1rem; border:3px dashed #ca8a04; cursor:grab; user-select:none; transition:all 0.2s; box-shadow:0 3px 0 rgba(0,0,0,0.15); }
-        .complete-word-item:hover { transform:translateY(-2px); box-shadow:0 5px 0 rgba(0,0,0,0.2); }
-        .complete-word-item:active { cursor:grabbing; transform:translateY(1px); box-shadow:0 1px 0 rgba(0,0,0,0.15); }
-        .complete-word-item.dragging { opacity:0.5; }
-        .complete-controls { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:15px; }
-        .complete-controls .btn { flex:1; min-width:120px; padding:12px 20px; font-size:1rem; }
-        .stt-status { display:none; text-align:center; margin-top:15px; font-weight:700; padding:8px; border-radius:8px; }
-        .certificate-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:10000; display:none; align-items:center; justify-content:center; padding:20px; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
-        .certificate-overlay.show { display:flex; }
-        .certificate-modal { position:relative; width:100%; max-width:900px; max-height:95vh; overflow-y:auto; background:linear-gradient(135deg,#001524 0%,#000d17 100%); border:3px solid #00ffe0; border-radius:20px; padding:30px; box-shadow:0 0 50px rgba(0,255,224,0.4); animation:modalSlideIn 0.5s ease; }
-        @keyframes modalSlideIn { from { opacity:0; transform:scale(0.9) translateY(-30px); } to { opacity:1; transform:scale(1) translateY(0); } }
-        .cert-close-btn { position:absolute; top:15px; right:15px; width:40px; height:40px; background:linear-gradient(135deg,#ef4444,#dc2626); color:white; border:none; border-radius:50%; font-size:24px; cursor:pointer; z-index:10001; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; }
-        .cert-close-btn:hover { transform:scale(1.1) rotate(90deg); }
-        .cert-content { background:linear-gradient(135deg,#001524 0%,#000d17 100%); border:3px solid #00ffe0; border-radius:20px; padding:40px; color:#ffffff; font-family:'Poppins','Cairo',sans-serif; position:relative; overflow:hidden; box-shadow:0 0 30px rgba(0,255,224,0.5); text-align:center; }
-        .cert-content::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle,rgba(0,255,224,0.1) 0%,transparent 70%); animation:rotateGlow 10s linear infinite; pointer-events:none; }
-        @keyframes rotateGlow { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
-        .cert-header h1 { font-family:'Orbitron',sans-serif; font-size:2.2rem; color:#ffd700; margin:0 0 10px 0; letter-spacing:4px; text-transform:uppercase; text-shadow:0 0 10px rgba(255,215,0,0.5); font-weight:900; }
-        .cert-header .subtitle { font-family:'Orbitron',sans-serif; color:#00ffe0; font-size:1rem; letter-spacing:6px; text-transform:uppercase; text-shadow:0 0 10px rgba(0,255,224,0.5); margin-bottom:20px; }
-        .cert-body .certify-text { font-size:1.1rem; color:#00ffe0; margin-bottom:15px; font-style:italic; }
-        .cert-body .student-name { font-family:'Orbitron',sans-serif; font-size:2.2rem; color:#ffd700; margin:15px auto; padding:12px 30px; border:2px solid #00ffe0; border-radius:15px; display:inline-block; background:rgba(0,255,224,0.05); box-shadow:0 0 20px rgba(0,255,224,0.5); text-shadow:0 0 15px rgba(255,215,0,0.5); }
-        .cert-body .exam-name { font-size:1.2rem; color:#ffffff; margin:15px 0; }
-        .cert-body .exam-name strong { color:#00ffe0; font-size:1.4rem; display:block; margin-top:8px; text-shadow:0 0 10px rgba(0,255,224,0.5); }
-        .grade-badge { display:inline-block; padding:12px 30px; background:linear-gradient(135deg,#ffd700,#d4af37); color:#001524; font-size:1.4rem; font-weight:bold; border-radius:25px; margin:15px 0; box-shadow:0 0 30px rgba(255,215,0,0.5); letter-spacing:2px; font-family:'Orbitron',sans-serif; }
-        .score-section { display:flex; justify-content:center; gap:20px; margin:25px 0; flex-wrap:wrap; }
-        .score-item { text-align:center; padding:15px 25px; background:rgba(0,255,224,0.05); border-radius:15px; border:2px solid #00ffe0; box-shadow:0 0 20px rgba(0,255,224,0.5); min-width:120px; }
-        .score-label { font-size:0.9rem; color:#00ffe0; text-transform:uppercase; margin-bottom:8px; letter-spacing:2px; }
-        .score-value { font-size:1.6rem; color:#ffd700; font-weight:bold; font-family:'Orbitron',sans-serif; text-shadow:0 0 10px rgba(255,215,0,0.5); }
-        .motivation-text { font-family:'Cairo',sans-serif; font-size:1.1rem; color:#ffffff; line-height:1.8; margin:25px auto; max-width:600px; padding:20px; background:rgba(0,255,224,0.05); border-radius:15px; border-right:4px solid #ffd700; border-left:4px solid #ffd700; }
-        .cert-footer { display:flex; justify-content:space-around; align-items:flex-end; margin-top:30px; padding-top:20px; border-top:2px solid #00ffe0; flex-wrap:wrap; gap:20px; position:relative; z-index:1; }
-        .signature-block { text-align:center; min-width:150px; }
-        .signature-block .sig-name { font-family:'Brush Script MT',cursive; font-size:1.6rem; color:#ffd700; margin-bottom:5px; }
-        .signature-block .sig-line { border-top:2px solid #00ffe0; padding-top:6px; font-size:0.85rem; color:#00ffe0; margin-top:6px; letter-spacing:2px; text-transform:uppercase; }
-        .seal { width:90px; height:90px; border:4px solid #ffd700; border-radius:50%; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle,#ffd700,#d4af37); color:#001524; font-weight:bold; font-size:0.75rem; text-align:center; box-shadow:0 0 30px rgba(255,215,0,0.6); transform:rotate(-15deg); line-height:1.3; padding:8px; font-family:'Orbitron',sans-serif; position:relative; }
-        .seal::before { content:""; position:absolute; top:5px; left:5px; right:5px; bottom:5px; border:2px dashed #001524; border-radius:50%; }
-        .cert-actions { display:flex; justify-content:center; gap:15px; margin-top:30px; flex-wrap:wrap; position:relative; z-index:1; }
-        .cert-action-btn { padding:12px 25px; font-size:1rem; font-weight:bold; border:none; border-radius:25px; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; gap:8px; color:white; font-family:'Poppins',sans-serif; }
-        .cert-action-btn:hover { transform:scale(1.05); }
-        .cert-save-btn { background:linear-gradient(to right,#00b4db,#0083b0); box-shadow:0 0 20px rgba(0,180,219,0.5); }
-        .cert-whatsapp-btn { background:linear-gradient(to right,#25D366,#128C7E); box-shadow:0 0 20px rgba(37,211,102,0.5); }
-        .cert-restart-btn { background:linear-gradient(to right,#8a2be2,#4b0082); box-shadow:0 0 20px rgba(138,43,226,0.6); }
-        .loading-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:none; align-items:center; justify-content:center; flex-direction:column; z-index:99999; color:#00ffe0; font-size:1.3rem; font-weight:bold; }
-        .loading-overlay.show { display:flex; }
-        .spinner { width:50px; height:50px; border:5px solid rgba(0,255,224,0.2); border-top:5px solid #00ffe0; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:20px; }
-        @keyframes spin { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
-        @media screen and (max-width:768px) {
-            .cert-content { padding:25px 20px; } .cert-header h1 { font-size:1.6rem; }
-            .cert-body .student-name { font-size:1.6rem; padding:10px 20px; }
-            .grade-badge { font-size:1.1rem; padding:10px 25px; }
-            .score-section { gap:15px; } .score-item { padding:12px 20px; min-width:100px; }
-            .score-value { font-size:1.4rem; } .cert-actions { gap:10px; }
-            .cert-action-btn { padding:10px 20px; font-size:0.9rem; }
+        :root {
+            --bg-main: #1e1b4b;
+            --text-main: #f8fafc;
+            --card-bg: #2e2a72;
+            --border-color: #4338ca;
+            --btn-primary: #60a5fa;
+            --danger: #f87171;
+            --success: #4ade80;
+            --kids-yellow: #fef08a;
+            --text-muted: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', 'Cairo', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            font-weight: 700;
+            font-size: 17px;
+            letter-spacing: 0.3px;
+            line-height: 1.5;
+        }
+
+        /* Header Styles */
+        .exam-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 4px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .exam-header h1 {
+            font-family: 'Fredoka One', 'Cairo', sans-serif;
+            font-size: 2.5rem;
+            color: #ff7676;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0px var(--kids-yellow);
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .exam-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .student-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .student-info input {
+            padding: 12px 20px;
+            border: 3px solid var(--border-color);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Nunito', 'Cairo', sans-serif;
+            text-align: center;
+            min-width: 300px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .student-info input:focus {
+            border-color: var(--btn-primary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Activity Container */
+        .activity-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 3px solid var(--border-color);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .activity-header {
+            font-size: 1.7rem;
+            color: #ff6b6b;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff6b6b;
+            padding-bottom: 5px;
+            text-transform: capitalize;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+
+        .question-row {
+            position: relative;
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .question-row p,
+        .question-row label,
+        .question-row input,
+        .question-row span {
+            font-family: 'Nunito', 'Cairo', sans-serif !important;
+            font-weight: 700;
+        }
+
+        .question-title-text {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            padding-inline-end: 45px;
+            font-weight: 900;
+            letter-spacing: 0.3px;
+        }
+
+        .delete-q-btn {
+            display: none;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 900;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            box-shadow: 0 3px 0px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            justify-content: center;
+            transition: transform 0.1s, box-shadow 0.1s;
+            letter-spacing: 0.3px;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: var(--btn-primary);
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #22c55e;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #a855f7;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #eab308;
+            color: white;
+        }
+
+        .btn-info {
+            background-color: #06b6d4;
+            color: white;
+        }
+
+        /* Finish Section */
+        .finish-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .finish-section .btn {
+            font-size: 1.3rem;
+            padding: 15px 40px;
+        }
+
+        /* Complete Activity Styles */
+        .complete-passage-container {
+            background: rgba(255, 255, 255, 0.08);
+            border: 3px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            margin: 15px 0;
+            font-size: 1.25rem;
+            line-height: 2;
+            font-weight: 700;
+        }
+
+        .complete-blank {
+            display: inline-block;
+            min-width: 100px;
+            min-height: 35px;
+            border: 3px dashed var(--btn-primary);
+            border-radius: 8px;
+            background: rgba(96, 165, 250, 0.1);
+            padding: 4px 12px;
+            margin: 0 4px;
+            text-align: center;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.2s;
+            vertical-align: middle;
+        }
+
+        .complete-blank:hover {
+            border-color: var(--success);
+            background: rgba(74, 222, 128, 0.15);
+        }
+
+        .complete-blank.filled {
+            background: var(--success);
+            color: white;
+            border-style: solid;
+            border-color: #15803d;
+        }
+
+        .complete-blank.correct {
+            background: #22c55e;
+            border-color: #15803d;
+        }
+
+        .complete-blank.wrong {
+            background: #ef4444;
+            border-color: #dc2626;
+        }
+
+        .complete-words-bank {
+            background: rgba(255, 255, 255, 0.05);
+            border: 3px dashed var(--border-color);
+            border-radius: 14px;
+            padding: 15px;
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            min-height: 60px;
+            align-items: center;
+        }
+
+        .complete-word-item {
+            display: inline-block;
+            background: var(--kids-yellow);
+            color: #854d0e;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border: 3px dashed #ca8a04;
+            cursor: grab;
+            user-select: none;
+            transition: all 0.2s;
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .complete-word-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .complete-word-item:active {
+            cursor: grabbing;
+            transform: translateY(1px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .complete-word-item.dragging {
+            opacity: 0.5;
+        }
+
+        .complete-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .complete-controls .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 20px;
+            font-size: 1rem;
+        }
+
+        .stt-status {
+            display: none;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 700;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        /* Certificate Overlay */
+        .certificate-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .certificate-overlay.show {
+            display: flex;
+        }
+
+        .certificate-modal {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            max-height: 95vh;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #001524 0%, #000d17 100%);
+            border: 3px solid #00ffe0;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 50px rgba(0, 255, 224, 0.4);
+            animation: modalSlideIn 0.5s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .cert-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-close-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .cert-content {
+            background: linear-gradient(135deg, #001524 0%, #000d17 100%);
+            border: 3px solid #00ffe0;
+            border-radius: 20px;
+            padding: 40px;
+            color: #ffffff;
+            font-family: 'Poppins', 'Cairo', sans-serif;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 255, 224, 0.5);
+            text-align: center;
+        }
+
+        .cert-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 224, 0.1) 0%, transparent 70%);
+            animation: rotateGlow 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotateGlow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cert-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: #ffd700;
+            margin: 0 0 10px 0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            font-weight: 900;
+        }
+
+        .cert-header .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffe0;
+            font-size: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 255, 224, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .cert-body .certify-text {
+            font-size: 1.1rem;
+            color: #00ffe0;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .cert-body .student-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: #ffd700;
+            margin: 15px auto;
+            padding: 12px 30px;
+            border: 2px solid #00ffe0;
+            border-radius: 15px;
+            display: inline-block;
+            background: rgba(0, 255, 224, 0.05);
+            box-shadow: 0 0 20px rgba(0, 255, 224, 0.5);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .cert-body .exam-name {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin: 15px 0;
+        }
+
+        .cert-body .exam-name strong {
+            color: #00ffe0;
+            font-size: 1.4rem;
+            display: block;
+            margin-top: 8px;
+            text-shadow: 0 0 10px rgba(0, 255, 224, 0.5);
+        }
+
+        .grade-badge {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ffd700, #d4af37);
+            color: #001524;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-radius: 25px;
+            margin: 15px 0;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .score-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .score-item {
+            text-align: center;
+            padding: 15px 25px;
+            background: rgba(0, 255, 224, 0.05);
+            border-radius: 15px;
+            border: 2px solid #00ffe0;
+            box-shadow: 0 0 20px rgba(0, 255, 224, 0.5);
+            min-width: 120px;
+        }
+
+        .score-label {
+            font-size: 0.9rem;
+            color: #00ffe0;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .score-value {
+            font-size: 1.6rem;
+            color: #ffd700;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .motivation-text {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            line-height: 1.8;
+            margin: 25px auto;
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(0, 255, 224, 0.05);
+            border-radius: 15px;
+            border-right: 4px solid #ffd700;
+            border-left: 4px solid #ffd700;
+        }
+
+        .cert-footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #00ffe0;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature-block {
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .signature-block .sig-name {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.6rem;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+
+        .signature-block .sig-line {
+            border-top: 2px solid #00ffe0;
+            padding-top: 6px;
+            font-size: 0.85rem;
+            color: #00ffe0;
+            margin-top: 6px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .seal {
+            width: 90px;
+            height: 90px;
+            border: 4px solid #ffd700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, #ffd700, #d4af37);
+            color: #001524;
+            font-weight: bold;
+            font-size: 0.75rem;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            transform: rotate(-15deg);
+            line-height: 1.3;
+            padding: 8px;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+        }
+
+        .seal::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 2px dashed #001524;
+            border-radius: 50%;
+        }
+
+        .cert-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cert-action-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cert-action-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .cert-save-btn {
+            background: linear-gradient(to right, #00b4db, #0083b0);
+            box-shadow: 0 0 20px rgba(0, 180, 219, 0.5);
+        }
+
+        .cert-whatsapp-btn {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .cert-restart-btn {
+            background: linear-gradient(to right, #8a2be2, #4b0082);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 99999;
+            color: #00ffe0;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(0, 255, 224, 0.2);
+            border-top: 5px solid #00ffe0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .cert-content {
+                padding: 25px 20px;
+            }
+
+            .cert-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .cert-body .student-name {
+                font-size: 1.6rem;
+                padding: 10px 20px;
+            }
+
+            .grade-badge {
+                font-size: 1.1rem;
+                padding: 10px 25px;
+            }
+
+            .score-section {
+                gap: 15px;
+            }
+
+            .score-item {
+                padding: 12px 20px;
+                min-width: 100px;
+            }
+
+            .score-value {
+                font-size: 1.4rem;
+            }
+
+            .cert-actions {
+                gap: 10px;
+            }
+
+            .cert-action-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .exam-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .student-info input {
+                min-width: 250px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <div style="text-align: center; margin-bottom: 10px;">
         <button class="btn btn-secondary" style="width: auto; padding: 10px 25px;" onclick="window.location.href='../index.html'">🏠 العودة إلى صفحة الطالب</button>
     </div>
 
+    <!-- Exam Header -->
     <div class="exam-header">
         <h1 id="exam-title-display">My Sweet English Quiz 🌟</h1>
         <p id="exam-path-display">المرحلة: -- | الصف: -- | المنهج: --</p>
@@ -105,12 +764,15 @@
         </div>
     </div>
 
+    <!-- Exam Container -->
     <div id="exam-container"></div>
 
+    <!-- Finish Button -->
     <div class="finish-section">
         <button class="btn btn-primary" onclick="finishExam()">🏁 إنهاء الامتحان والحصول على الشهادة</button>
     </div>
 
+    <!-- Certificate Overlay -->
     <div class="certificate-overlay" id="certificateOverlay">
         <div class="certificate-modal">
             <button class="cert-close-btn" onclick="closeCertificateModal()" title="إغلاق">×</button>
@@ -122,18 +784,36 @@
                 <div class="cert-body">
                     <p class="certify-text">This certificate is proudly presented to</p>
                     <div class="student-name" id="certName">Student Name</div>
-                    <div class="exam-name">for successfully completing the exam<strong id="certExamTitle">Exam Title</strong><span id="certPath" style="display: block; font-size: 1rem; color: #ffd700; margin-top: 8px; font-weight: bold;"></span></div>
+                    <div class="exam-name">
+                        for successfully completing the exam
+                        <strong id="certExamTitle">Exam Title</strong>
+                        <span id="certPath" style="display: block; font-size: 1rem; color: #ffd700; margin-top: 8px; font-weight: bold;"></span>
+                    </div>
                     <div class="grade-badge" id="certGradeBadge">🌟 Excellent</div>
                     <div class="score-section">
-                        <div class="score-item"><div class="score-label">Percentage</div><div class="score-value" id="certPercentage">0%</div></div>
-                        <div class="score-item"><div class="score-label">Score</div><div class="score-value" id="certScore">0 / 0</div></div>
+                        <div class="score-item">
+                            <div class="score-label">Percentage</div>
+                            <div class="score-value" id="certPercentage">0%</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-label">Score</div>
+                            <div class="score-value" id="certScore">0 / 0</div>
+                        </div>
                     </div>
                     <div class="motivation-text" id="certMotivation">إنجاز رائع! تفانيك في تعلم اللغة الإنجليزية ملهم حقاً.</div>
                 </div>
                 <div class="cert-footer">
-                    <div class="signature-block"><div class="sig-name">Mr Mohamed Karim</div><div class="sig-line">Instructor</div></div>
-                    <div class="seal">ENGLISH<br>MARATHON<br>✓<br><span id="certYear">2026</span></div>
-                    <div class="signature-block"><div class="sig-name" id="certDate">--</div><div class="sig-line">Date</div></div>
+                    <div class="signature-block">
+                        <div class="sig-name">Mr Mohamed Karim</div>
+                        <div class="sig-line">Instructor</div>
+                    </div>
+                    <div class="seal">
+                        ENGLISH<br>MARATHON<br>✓<br><span id="certYear">2026</span>
+                    </div>
+                    <div class="signature-block">
+                        <div class="sig-name" id="certDate">--</div>
+                        <div class="sig-line">Date</div>
+                    </div>
                 </div>
             </div>
             <div class="cert-actions">
@@ -144,299 +824,541 @@
         </div>
     </div>
 
-    <div class="loading-overlay" id="loadingOverlay"><div class="spinner"></div><div>جاري تجهيز الشهادة...</div></div>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div>جاري تجهيز الشهادة...</div>
+    </div>
 
-        <script>
-    // ==========================================
-    // 🧠 المحرك الديناميكي - الإصدار الثاني النهائي
-    // ==========================================
-    const INSTRUCTOR_WHATSAPP = "201149955726";
+    <script>
+        // ==========================================
+        // 🧠 المحرك الديناميكي للامتحانات
+        // ==========================================
+        
+        const INSTRUCTOR_WHATSAPP = "201149955726";
 
-    const i18n = {
-        en: { mainTitle: "English Kingdom", scoreText: "Great Job! Your Score: ", correctAnswerText: "⭐ Correct Answer:", emptySandbox: "Click to generate questions!" },
-        ar: { mainTitle: "مملكة القراءة اللطيفة", scoreText: "ممتاز جداً يا بطل! نتيجتك الجميلة هي: ", correctAnswerText: "⭐ الإجابة الصحيحة هي:", emptySandbox: "اضغط على أزرار التوليد!" }
-    };
-    let currentLang = 'ar';
+        // Global Variables
+        let examData = null;
+        let questionsList = [];
+        let certificateBlob = null;
 
-    let examData = null;
-    let questionsList = [];
-    let certificateBlob = null;
+        // ==========================================
+        // 🔧 Utility Functions
+        // ==========================================
 
-    // 🧹 شبكة الأمان: تنظيف المفاتيح والقيم من أي مسافات زائدة
-    function deepTrim(obj) {
-        if (Array.isArray(obj)) return obj.map(deepTrim);
-        if (obj !== null && typeof obj === 'object') {
-            const out = {};
-            for (const [k, v] of Object.entries(obj)) out[k.trim()] = deepTrim(v);
-            return out;
-        }
-        if (typeof obj === 'string') return obj.trim();
-        return obj;
-    }
-
-    // 📚 مزامنة قاعدة الأسئلة من السيرفر (أونلاين أولاً، ثم حفظ محلي كـ Fallback)
-    async function syncQuestionsDBFromServer() {
-        try {
-            // ✅ المسار الصحيح: ../ لأن هذا الملف داخل مجلد exams/
-            const res = await fetch('../marathonQuestionsDB.json?v=' + Date.now(), { cache: 'no-store' });
-            if (res.ok) {
-                const data = deepTrim(await res.json());
-                if (data && data.activityDatabase) {
-                    localStorage.setItem('marathon_questions_db', JSON.stringify(data));
-                    console.log('✅ تمت مزامنة قاعدة الأسئلة من السيرفر');
+        /**
+         * تنظيف عميق للكائنات من المسافات الزائدة
+         */
+        function deepTrim(obj) {
+            if (Array.isArray(obj)) return obj.map(deepTrim);
+            if (obj !== null && typeof obj === 'object') {
+                const out = {};
+                for (const [k, v] of Object.entries(obj)) {
+                    out[k.trim()] = deepTrim(v);
                 }
+                return out;
             }
-        } catch (e) {
-            console.warn('⚠️ تعذرت مزامنة الأسئلة، سيعتمد النظام على النسخة المحلية المحفوظة:', e.message);
+            if (typeof obj === 'string') return obj.trim();
+            return obj;
         }
-    }
 
-    // 📥 جلب الامتحان: ذكي (السيرفر أولاً، أو المحلي أولاً حسب مصدر الطلب)
-    async function loadExamFromDB(examId, preferLocal = false) {
-        const fromServer = async () => {
+        /**
+         * عرض رسالة خطأ فادحة
+         */
+        function showFatalError(msg) {
+            document.getElementById('exam-container').innerHTML =
+                '<div style="text-align:center; padding:40px; background:rgba(239,68,68,0.1); border:2px solid #ef4444; border-radius:16px; font-size:1.3rem; color: #ef4444;">' + 
+                msg + 
+                '</div>';
+        }
+
+        // ==========================================
+        // 📚 Database Synchronization
+        // ==========================================
+
+        /**
+         * مزامنة قاعدة الأسئلة من السيرفر
+         */
+        async function syncQuestionsDBFromServer() {
             try {
-                // ✅ المسار الصحيح: ../ لأن هذا الملف داخل مجلد exams/
-                const res = await fetch('../marathonExamsDB.json?v=' + Date.now(), { cache: 'no-store' });
+                const res = await fetch('../marathonQuestionsDB.json?v=' + Date.now(), { cache: 'no-store' });
                 if (res.ok) {
-                    const db = deepTrim(await res.json());
-                    return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
+                    const data = deepTrim(await res.json());
+                    if (data && data.activityDatabase) {
+                        localStorage.setItem('marathon_questions_db', JSON.stringify(data));
+                        console.log('✅ تمت مزامنة قاعدة الأسئلة من السيرفر');
+                    }
                 }
-            } catch (e) { console.warn('⚠️ تعذر الوصول للسيرفر:', e.message); }
-            return null;
-        };
-        
-        const fromLocal = () => {
-            try {
-                const db = deepTrim(JSON.parse(localStorage.getItem('marathon_exams_db') || '{"exams": []}'));
-                return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
-            } catch (e) { console.error('❌ خطأ في localStorage:', e); return null; }
-        };
-
-        if (preferLocal) {
-            const local = fromLocal();
-            if (local) { console.log('✅ تم تحميل الامتحان من localStorage (معاينة الأدمن)'); return local; }
-        }
-        
-        const remote = await fromServer();
-        if (remote) { console.log('✅ تم تحميل الامتحان من السيرفر (GitHub)'); return remote; }
-        
-        // Fallback أخير إذا فشل السيرفر
-        return fromLocal();
-    }
-
-    // 📚 تحميل ملفات المنطق المطلوبة فقط (ديناميكياً + شبكة أمان)
-    function loadScript(src) {
-        return new Promise((resolve, reject) => {
-            const s = document.createElement('script');
-            s.src = src;
-            s.onload = resolve;
-            s.onerror = () => reject(new Error('فشل تحميل ' + src));
-            document.body.appendChild(s);
-        });
-    }
-
-    async function loadRequiredLogic(types) {
-        window.activitiesLogic = window.activitiesLogic || {};
-        await Promise.allSettled(types.map(t =>
-            // ✅ المسار الصحيح: ../activities-logic/
-            loadScript('../activities-logic/' + t + '.js').catch(e => console.error('❌ ' + e.message))
-        ));
-        
-        // 🛡️ بعض ملفات المنطق تسجّل نفسها عند حدث DOMContentLoaded فقط
-        const missing = types.filter(t => !window.activitiesLogic[t]);
-        if (missing.length > 0) {
-            console.warn('🛡️ إعادة تهيئة لـ:', missing.join(', '));
-            document.dispatchEvent(new Event('DOMContentLoaded'));
-            await new Promise(r => setTimeout(r, 400));
-            const still = types.filter(t => !window.activitiesLogic[t]);
-            if (still.length > 0) console.error('❌ ما زالت غير مسجلة:', still.join(', '));
-        }
-    }
-
-    function showFatalError(msg) {
-        document.getElementById('exam-container').innerHTML =
-            '<div style="text-align:center; padding:40px; background:rgba(239,68,68,0.1); border:2px solid #ef4444; border-radius:16px; font-size:1.3rem;">' + msg + '</div>';
-    }
-
-    // 🚀 الإقلاع الديناميكي
-    window.onload = async function () {
-        const params = new URLSearchParams(window.location.search);
-        const examId = params.get('examId');
-        if (!examId) { showFatalError('⚠️ لم يتم تحديد امتحان!'); return; }
-
-        // 👁️ معاينة الأدمن تقرأ النسخة المحلية أولاً
-        const preferLocal = params.get('src') === 'local';
-
-        await syncQuestionsDBFromServer();
-        const exam = await loadExamFromDB(examId, preferLocal);
-
-        // 🔄 محولات التوافق مع برنامج إنشاء الامتحانات (بدون كسر أي مفتاح)
-        examData = {
-            id: exam.id,
-            title: exam.quizTitle || exam.title || 'Exam',
-            level: exam.level,
-            grade: exam.grade,
-            curriculum: exam.curriculum,
-            questions: exam.questionsList || exam.questions || []
-        };
-        questionsList = examData.questions;
-        
-        if (questionsList.length === 0) { showFatalError('📭 هذا الامتحان لا يحتوي على أسئلة!'); return; }
-
-        // ترويسة ديناميكية
-        document.title = examData.title;
-        document.getElementById('exam-title-display').textContent = examData.title;
-        document.getElementById('exam-path-display').textContent =
-            'المرحلة: ' + examData.level + ' | الصف: ' + examData.grade + ' | المنهج: ' + examData.curriculum;
-
-        // اسم الطالب من الجلسة المحفوظة
-        try {
-            const sess = JSON.parse(localStorage.getItem('marathon_session') || localStorage.getItem('marathon_remembered') || 'null');
-            if (sess && sess.name) document.getElementById('studentNameInput').value = sess.name;
-        } catch (e) {}
-
-        // 🎯 تحميل منطق الأنشطة الموجودة في الامتحان فقط
-        const neededTypes = [...new Set(questionsList.map(q => q.type))];
-        console.log('🎮 سيتم تحميل منطق:', neededTypes.join(', '));
-        await loadRequiredLogic(neededTypes);
-
-        renderExam();
-    };
-
-    // ==========================================
-    // 📦 محرك العرض (لم يتم التعديل عليه إطلاقاً)
-    // ==========================================
-    function deleteQuestion(id) { console.log('Delete requested for:', id); }
-    
-    function renderExam() {
-        const container = document.getElementById('exam-container');
-        let currentType = '', actContainer = null, subIdx = 0;
-        
-        examData.questions.forEach((q) => {
-            if (q.type !== currentType) {
-                currentType = q.type; subIdx = 0;
-                actContainer = document.createElement('div');
-                actContainer.className = 'activity-container';
-                actContainer.innerHTML = '<h3 class="activity-header">📝 ' + currentType.replace(/_/g, ' ').toUpperCase() + '</h3>';
-                container.appendChild(actContainer);
+            } catch (e) {
+                console.warn('⚠️ تعذرت مزامنة الأسئلة، سيعتمد النظام على النسخة المحلية:', e.message);
             }
-            
-            const row = document.createElement('div');
-            row.className = 'question-row'; row.setAttribute('data-id', q.id);
-            
-            if (typeof window !== 'undefined' && window.activitiesLogic && window.activitiesLogic[q.type]) {
+        }
+
+        /**
+         * جلب الامتحان من قاعدة البيانات
+         */
+        async function loadExamFromDB(examId, preferLocal = false) {
+            // محاولة الجلب من السيرفر
+            const fromServer = async () => {
                 try {
-                    row.innerHTML = window.activitiesLogic[q.type].render(q, subIdx);
-                    actContainer.appendChild(row);
-                    setTimeout(() => { if (window.activitiesLogic[q.type].init) window.activitiesLogic[q.type].init(q.id); }, 100);
-                } catch (e) { 
-                    console.error('Error:', e); 
-                    row.innerHTML = '<p style="color:red;">Error</p>'; 
-                    actContainer.appendChild(row); 
+                    const res = await fetch('../marathonExamsDB.json?v=' + Date.now(), { cache: 'no-store' });
+                    if (res.ok) {
+                        const db = deepTrim(await res.json());
+                        return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
+                    }
+                } catch (e) {
+                    console.warn('⚠️ تعذر الوصول للسيرفر:', e.message);
                 }
-            } else {
-                row.innerHTML = '<p style="color: #ef4444; text-align: center;">⚠️ لم يتم تحميل منطق: ' + q.type + '</p>';
-                actContainer.appendChild(row);
-            }
-            subIdx++;
-        });
-    }
+                return null;
+            };
 
-    // ==========================================
-    // 🏆 التقدير والشهادة (لم يتم التعديل عليه إطلاقاً)
-    // ==========================================
-    function getGrade(percent) {
-        if (percent >= 90) return { en: 'Excellent', emoji: '🌟', motivation: 'إنجاز رائع! تفانيك في تعلم اللغة الإنجليزية ملهم حقاً. استمر في التألق وواصل هذه الرحلة المميزة نحو التميز!' };
-        if (percent >= 80) return { en: 'Very Good', emoji: '👏', motivation: 'عمل ممتاز! لقد أظهرت التزاماً وتقدماً كبيراً. استمر في المضي قدماً، فجهودك تؤتي ثمارها بشكل رائع!' };
-        if (percent >= 70) return { en: 'Good', emoji: '👍', motivation: 'عمل رائع! أنت على الطريق الصحيح نحو الاحتراف. حافظ على تركيزك، وتدرب يومياً، وشاهد مهاراتك تتطور بقوة كل يوم!' };
-        if (percent >= 60) return { en: 'Pass', emoji: '✅', motivation: 'جهد جيد! كل خبير كان مبتدئاً في يوم من الأيام. استمر في التدريب، وحافظ على حماسك، وتذكر: التقدم تقدم، مهما كان صغيراً!' };
-        return { en: 'Needs Improvement', emoji: '💪', motivation: 'لا تستسلم! كل تحدٍ هو فرصة للتعلم. راجع المادة، وتدرب أكثر، وستلاحظ تحسناً مذهلاً!' };
-    }
+            // محاولة الجلب من التخزين المحلي
+            const fromLocal = () => {
+                try {
+                    const db = deepTrim(JSON.parse(localStorage.getItem('marathon_exams_db') || '{"exams": []}'));
+                    return (db.exams || []).find(e => String(e.id) === String(examId)) || null;
+                } catch (e) {
+                    console.error('❌ خطأ في localStorage:', e);
+                    return null;
+                }
+            };
 
-    function finishExam() {
-        const studentName = document.getElementById('studentNameInput').value.trim();
-        if (!studentName) { alert('الرجاء كتابة اسمك في الحقل المخصص أعلى الصفحة!'); document.getElementById('studentNameInput').focus(); return; }
-        
-        let studentFinalScore = 0, totalMaxScore = 0;
-        
-        examData.questions.forEach(q => {
-            let maxScore = 1;
-            if (window.activitiesLogic && window.activitiesLogic[q.type] && typeof window.activitiesLogic[q.type].getMaxScore === 'function') {
-                maxScore = window.activitiesLogic[q.type].getMaxScore(q.id);
+            // إذا كانت المعاينة محلية، نجرب المحلي أولاً
+            if (preferLocal) {
+                const local = fromLocal();
+                if (local) {
+                    console.log('✅ تم تحميل الامتحان من localStorage');
+                    return local;
+                }
             }
-            totalMaxScore += maxScore;
-            
-            if (window.activitiesLogic && window.activitiesLogic[q.type] && typeof window.activitiesLogic[q.type].calculateScore === 'function') {
-                try { studentFinalScore += window.activitiesLogic[q.type].calculateScore(q.id); } catch (e) {}
-            }
-        });
-        
-        const percent = totalMaxScore > 0 ? Math.round((studentFinalScore / totalMaxScore) * 100) : 0;
-        const grade = getGrade(percent);
-        const today = new Date();
-        const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-        const pathString = `${examData.level}_${examData.grade}_${examData.curriculum}_${examData.title}`.toLowerCase().replace(/\s+/g, '_');
-        
-        document.getElementById('certName').textContent = studentName;
-        document.getElementById('certExamTitle').textContent = examData.title;
-        document.getElementById('certPath').textContent = pathString;
-        document.getElementById('certScore').textContent = studentFinalScore + ' / ' + totalMaxScore;
-        document.getElementById('certPercentage').textContent = percent + '%';
-        document.getElementById('certGradeBadge').textContent = grade.emoji + ' ' + grade.en;
-        document.getElementById('certDate').textContent = dateStr;
-        document.getElementById('certYear').textContent = today.getFullYear();
-        document.getElementById('certMotivation').textContent = grade.motivation;
-        document.getElementById('certificateOverlay').classList.add('show');
-    }
-    
-    function closeCertificateModal() { document.getElementById('certificateOverlay').classList.remove('show'); }
 
-    async function generateCertificateBlob() {
-        try {
-            const canvas = await html2canvas(document.getElementById("certificateCard"), { scale: 2, backgroundColor: null, useCORS: true, logging: false });
-            return new Promise((resolve) => { canvas.toBlob((blob) => { certificateBlob = blob; resolve(blob); }, 'image/png', 1.0); });
-        } catch (error) { console.error(error); return null; }
-    }
-    
-    async function saveCertificateAsImage() {
-        const btn = document.getElementById("saveImgBtn");
-        const loading = document.getElementById("loadingOverlay");
-        btn.disabled = true; loading.classList.add("show");
-        try {
-            let blob = certificateBlob; if (!blob) blob = await generateCertificateBlob();
-            if (!blob) { alert("⚠️ حدث خطأ."); return; }
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url; a.download = 'Certificate_' + document.getElementById('studentNameInput').value.replace(/\s+/g, '_') + '.png';
-            document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        } catch (error) {}
-        finally { loading.classList.remove("show"); btn.disabled = false; }
-    }
-    
-    async function sendToWhatsApp() {
-        const btn = document.getElementById("whatsappBtn");
-        const loading = document.getElementById("loadingOverlay");
-        btn.disabled = true; loading.classList.add("show");
-        try {
-            let blob = certificateBlob; if (!blob) blob = await generateCertificateBlob();
-            const percent = document.getElementById('certPercentage').textContent;
-            const gradeText = document.getElementById('certGradeBadge').textContent;
-            const studentName = document.getElementById('studentNameInput').value;
-            const messageText = '🎉 *Certificate of Completion* 🎉\n\n👤 *Student:* ' + studentName + '\n📚 *Exam:* ' + examData.title + '\n *Score:* ' + document.getElementById('certScore').textContent + ' (' + percent + ')\n🏆 *Grade:* ' + gradeText + '\n\n📎 Please find my certificate attached!\n\n🏆 English Marathon Platform ';
-            const whatsappUrl = 'https://wa.me/' + INSTRUCTOR_WHATSAPP + '?text=' + encodeURIComponent(messageText);
-            
-            if (blob && navigator.canShare && navigator.canShare({ files: [new File([blob], 'certificate.png', { type: 'image/png' })] })) {
-                try { await navigator.share({ title: '🏆 English Marathon Certificate', text: messageText, files: [new File([blob], 'Certificate_' + studentName.replace(/\s+/g, '_') + '.png', { type: 'image/png' })] }); loading.classList.remove("show"); btn.disabled = false; return; } catch (e) {}
+            // نجرب السيرفر
+            const remote = await fromServer();
+            if (remote) {
+                console.log('✅ تم تحميل الامتحان من السيرفر');
+                return remote;
             }
+
+            // Fallback للمحلي
+            return fromLocal();
+        }
+
+        // ==========================================
+        // 🎮 Dynamic Script Loading
+        // ==========================================
+
+        /**
+         * تحميل سكريبت ديناميكياً
+         */
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const s = document.createElement('script');
+                s.src = src;
+                s.onload = resolve;
+                s.onerror = () => reject(new Error('فشل تحميل ' + src));
+                document.body.appendChild(s);
+            });
+        }
+
+        /**
+         * تحميل منطق الأنشطة المطلوبة
+         */
+        async function loadRequiredLogic(types) {
+            window.activitiesLogic = window.activitiesLogic || {};
             
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a'); a.href = url; a.download = 'Certificate_' + studentName.replace(/\s+/g, '_') + '.png';
-            document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            setTimeout(() => { URL.revokeObjectURL(url); window.open(whatsappUrl, '_blank'); loading.classList.remove("show"); btn.disabled = false; alert("✅ تم تحميل الصورة وفتح واتساب. الرجاء إرفاق الصورة."); }, 1500);
-        } catch (error) { loading.classList.remove("show"); btn.disabled = false; }
-    }
+            await Promise.allSettled(
+                types.map(t =>
+                    loadScript('../activities-logic/' + t + '.js')
+                        .catch(e => console.error('❌ ' + e.message))
+                )
+            );
+
+            // إعادة تهيئة للأنشطة التي لم تسجل نفسها
+            const missing = types.filter(t => !window.activitiesLogic[t]);
+            if (missing.length > 0) {
+                console.warn('🛡️ إعادة تهيئة لـ:', missing.join(', '));
+                document.dispatchEvent(new Event('DOMContentLoaded'));
+                await new Promise(r => setTimeout(r, 400));
+                
+                const stillMissing = types.filter(t => !window.activitiesLogic[t]);
+                if (stillMissing.length > 0) {
+                    console.error('❌ أنشطة لم يتم تحميلها:', stillMissing.join(', '));
+                }
+            }
+        }
+
+        // ==========================================
+        // 🚀 Application Initialization
+        // ==========================================
+
+        window.onload = async function () {
+            const params = new URLSearchParams(window.location.search);
+            const examId = params.get('examId');
+            
+            if (!examId) {
+                showFatalError('⚠️ لم يتم تحديد امتحان!');
+                return;
+            }
+
+            const preferLocal = params.get('src') === 'local';
+
+            // مزامنة قاعدة الأسئلة
+            await syncQuestionsDBFromServer();
+
+            // تحميل الامتحان
+            const exam = await loadExamFromDB(examId, preferLocal);
+
+            if (!exam) {
+                showFatalError('❌ لم يتم العثور على الامتحان!');
+                return;
+            }
+
+            // تجهيز بيانات الامتحان
+            examData = {
+                id: exam.id,
+                title: exam.quizTitle || exam.title || 'Exam',
+                level: exam.level,
+                grade: exam.grade,
+                curriculum: exam.curriculum,
+                questions: exam.questionsList || exam.questions || []
+            };
+            
+            questionsList = examData.questions;
+
+            if (questionsList.length === 0) {
+                showFatalError('📭 هذا الامتحان لا يحتوي على أسئلة!');
+                return;
+            }
+
+            // تحديث العنوان والمعلومات
+            document.title = examData.title;
+            document.getElementById('exam-title-display').textContent = examData.title;
+            document.getElementById('exam-path-display').textContent =
+                'المرحلة: ' + examData.level + ' | الصف: ' + examData.grade + ' | المنهج: ' + examData.curriculum;
+
+            // تحميل اسم الطالب من الجلسة
+            try {
+                const sess = JSON.parse(
+                    localStorage.getItem('marathon_session') || 
+                    localStorage.getItem('marathon_remembered') || 
+                    'null'
+                );
+                if (sess && sess.name) {
+                    document.getElementById('studentNameInput').value = sess.name;
+                }
+            } catch (e) {
+                console.warn('⚠️ لم يتم تحميل اسم الطالب');
+            }
+
+            // تحميل منطق الأنشطة المطلوبة
+            const neededTypes = [...new Set(questionsList.map(q => q.type))];
+            console.log('🎮 سيتم تحميل منطق:', neededTypes.join(', '));
+            await loadRequiredLogic(neededTypes);
+
+            // عرض الامتحان
+            renderExam();
+        };
+
+        // ==========================================
+        // 📦 Exam Rendering Engine
+        // ==========================================
+
+        function deleteQuestion(id) {
+            console.log('Delete requested for:', id);
+        }
+
+        function renderExam() {
+            const container = document.getElementById('exam-container');
+            let currentType = '';
+            let actContainer = null;
+            let subIdx = 0;
+
+            examData.questions.forEach((q) => {
+                // إنشاء حاوية جديدة لكل نوع نشاط
+                if (q.type !== currentType) {
+                    currentType = q.type;
+                    subIdx = 0;
+                    
+                    actContainer = document.createElement('div');
+                    actContainer.className = 'activity-container';
+                    actContainer.innerHTML = '<h3 class="activity-header">📝 ' + 
+                        currentType.replace(/_/g, ' ').toUpperCase() + '</h3>';
+                    container.appendChild(actContainer);
+                }
+
+                // إنشاء صف السؤال
+                const row = document.createElement('div');
+                row.className = 'question-row';
+                row.setAttribute('data-id', q.id);
+
+                if (window.activitiesLogic && window.activitiesLogic[q.type]) {
+                    try {
+                        row.innerHTML = window.activitiesLogic[q.type].render(q, subIdx);
+                        actContainer.appendChild(row);
+                        
+                        // تهيئة النشاط بعد إضافته للـ DOM
+                        setTimeout(() => {
+                            if (window.activitiesLogic[q.type].init) {
+                                window.activitiesLogic[q.type].init(q.id);
+                            }
+                        }, 100);
+                    } catch (e) {
+                        console.error('خطأ في عرض السؤال:', e);
+                        row.innerHTML = '<p style="color:red; text-align:center;">⚠️ خطأ في عرض السؤال</p>';
+                        actContainer.appendChild(row);
+                    }
+                } else {
+                    row.innerHTML = '<p style="color: #ef4444; text-align: center;">⚠️ لم يتم تحميل منطق: ' + 
+                        q.type + '</p>';
+                    actContainer.appendChild(row);
+                }
+                
+                subIdx++;
+            });
+        }
+
+        // ==========================================
+        // 🏆 Grading & Certificate System
+        // ==========================================
+
+        function getGrade(percent) {
+            if (percent >= 90) {
+                return {
+                    en: 'Excellent',
+                    emoji: '🌟',
+                    motivation: 'إنجاز رائع! تفانيك في تعلم اللغة الإنجليزية ملهم حقاً. استمر في التألق وواصل هذه الرحلة المميزة نحو التميز!'
+                };
+            }
+            if (percent >= 80) {
+                return {
+                    en: 'Very Good',
+                    emoji: '👏',
+                    motivation: 'عمل ممتاز! لقد أظهرت التزاماً وتقدماً كبيراً. استمر في المضي قدماً، فجهودك تؤتي ثمارها بشكل رائع!'
+                };
+            }
+            if (percent >= 70) {
+                return {
+                    en: 'Good',
+                    emoji: '👍',
+                    motivation: 'عمل رائع! أنت على الطريق الصحيح نحو الاحتراف. حافظ على تركيزك، وتدرب يومياً، وشاهد مهاراتك تتطور بقوة كل يوم!'
+                };
+            }
+            if (percent >= 60) {
+                return {
+                    en: 'Pass',
+                    emoji: '✅',
+                    motivation: 'جهد جيد! كل خبير كان مبتدئاً في يوم من الأيام. استمر في التدريب، وحافظ على حماسك، وتذكر: التقدم تقدم، مهما كان صغيراً!'
+                };
+            }
+            return {
+                en: 'Needs Improvement',
+                emoji: '💪',
+                motivation: 'لا تستسلم! كل تحدٍ هو فرصة للتعلم. راجع المادة، وتدرب أكثر، وستلاحظ تحسناً مذهلاً!'
+            };
+        }
+
+        function finishExam() {
+            const studentName = document.getElementById('studentNameInput').value.trim();
+            
+            if (!studentName) {
+                alert('الرجاء كتابة اسمك في الحقل المخصص أعلى الصفحة!');
+                document.getElementById('studentNameInput').focus();
+                return;
+            }
+
+            let studentFinalScore = 0;
+            let totalMaxScore = 0;
+
+            // حساب الدرجة النهائية
+            examData.questions.forEach(q => {
+                let maxScore = 1;
+                
+                if (window.activitiesLogic && 
+                    window.activitiesLogic[q.type] && 
+                    typeof window.activitiesLogic[q.type].getMaxScore === 'function') {
+                    maxScore = window.activitiesLogic[q.type].getMaxScore(q.id);
+                }
+                
+                totalMaxScore += maxScore;
+
+                if (window.activitiesLogic && 
+                    window.activitiesLogic[q.type] && 
+                    typeof window.activitiesLogic[q.type].calculateScore === 'function') {
+                    try {
+                        studentFinalScore += window.activitiesLogic[q.type].calculateScore(q.id);
+                    } catch (e) {
+                        console.error('خطأ في حساب درجة السؤال:', e);
+                    }
+                }
+            });
+
+            // حساب النسبة المئوية
+            const percent = totalMaxScore > 0 ? Math.round((studentFinalScore / totalMaxScore) * 100) : 0;
+            const grade = getGrade(percent);
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            const pathString = `${examData.level}_${examData.grade}_${examData.curriculum}_${examData.title}`
+                .toLowerCase()
+                .replace(/\s+/g, '_');
+
+            // تحديث بيانات الشهادة
+            document.getElementById('certName').textContent = studentName;
+            document.getElementById('certExamTitle').textContent = examData.title;
+            document.getElementById('certPath').textContent = pathString;
+            document.getElementById('certScore').textContent = studentFinalScore + ' / ' + totalMaxScore;
+            document.getElementById('certPercentage').textContent = percent + '%';
+            document.getElementById('certGradeBadge').textContent = grade.emoji + ' ' + grade.en;
+            document.getElementById('certDate').textContent = dateStr;
+            document.getElementById('certYear').textContent = today.getFullYear();
+            document.getElementById('certMotivation').textContent = grade.motivation;
+            
+            // عرض الشهادة
+            document.getElementById('certificateOverlay').classList.add('show');
+        }
+
+        function closeCertificateModal() {
+            document.getElementById('certificateOverlay').classList.remove('show');
+        }
+
+        // ==========================================
+        // 📸 Certificate Export Functions
+        // ==========================================
+
+        async function generateCertificateBlob() {
+            try {
+                const canvas = await html2canvas(document.getElementById("certificateCard"), {
+                    scale: 2,
+                    backgroundColor: null,
+                    useCORS: true,
+                    logging: false
+                });
+                
+                return new Promise((resolve) => {
+                    canvas.toBlob((blob) => {
+                        certificateBlob = blob;
+                        resolve(blob);
+                    }, 'image/png', 1.0);
+                });
+            } catch (error) {
+                console.error('خطأ في إنشاء الشهادة:', error);
+                return null;
+            }
+        }
+
+        async function saveCertificateAsImage() {
+            const btn = document.getElementById("saveImgBtn");
+            const loading = document.getElementById("loadingOverlay");
+            
+            btn.disabled = true;
+            loading.classList.add("show");
+            
+            try {
+                let blob = certificateBlob;
+                if (!blob) {
+                    blob = await generateCertificateBlob();
+                }
+                
+                if (!blob) {
+                    alert("⚠️ حدث خطأ في إنشاء الشهادة.");
+                    return;
+                }
+
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Certificate_' + 
+                    document.getElementById('studentNameInput').value.replace(/\s+/g, '_') + '.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('خطأ في حفظ الشهادة:', error);
+            } finally {
+                loading.classList.remove("show");
+                btn.disabled = false;
+            }
+        }
+
+        async function sendToWhatsApp() {
+            const btn = document.getElementById("whatsappBtn");
+            const loading = document.getElementById("loadingOverlay");
+            
+            btn.disabled = true;
+            loading.classList.add("show");
+            
+            try {
+                let blob = certificateBlob;
+                if (!blob) {
+                    blob = await generateCertificateBlob();
+                }
+
+                const percent = document.getElementById('certPercentage').textContent;
+                const gradeText = document.getElementById('certGradeBadge').textContent;
+                const studentName = document.getElementById('studentNameInput').value;
+                
+                const messageText = '🎉 *Certificate of Completion* 🎉\n\n' +
+                    '👤 *Student:* ' + studentName + '\n' +
+                    '📚 *Exam:* ' + examData.title + '\n' +
+                    '🎯 *Score:* ' + document.getElementById('certScore').textContent + 
+                    ' (' + percent + ')\n' +
+                    '🏆 *Grade:* ' + gradeText + '\n\n' +
+                    '📎 Please find my certificate attached!\n\n' +
+                    '🏆 English Marathon Platform';
+
+                const whatsappUrl = 'https://wa.me/' + INSTRUCTOR_WHATSAPP + 
+                    '?text=' + encodeURIComponent(messageText);
+
+                // محاولة المشاركة المباشرة إذا كانت مدعومة
+                if (blob && navigator.canShare && 
+                    navigator.canShare({ 
+                        files: [new File([blob], 'certificate.png', { type: 'image/png' })] 
+                    })) {
+                    try {
+                        await navigator.share({
+                            title: '🏆 English Marathon Certificate',
+                            text: messageText,
+                            files: [new File(
+                                [blob], 
+                                'Certificate_' + studentName.replace(/\s+/g, '_') + '.png', 
+                                { type: 'image/png' }
+                            )]
+                        });
+                        loading.classList.remove("show");
+                        btn.disabled = false;
+                        return;
+                    } catch (e) {
+                        console.warn('المشاركة المباشرة غير مدعومة');
+                    }
+                }
+
+                // Fallback: تحميل الصورة وفتح واتساب
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Certificate_' + studentName.replace(/\s+/g, '_') + '.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                setTimeout(() => {
+                    URL.revokeObjectURL(url);
+                    window.open(whatsappUrl, '_blank');
+                    loading.classList.remove("show");
+                    btn.disabled = false;
+                    alert("✅ تم تحميل الصورة وفتح واتساب. الرجاء إرفاق الصورة.");
+                }, 1500);
+                
+            } catch (error) {
+                console.error('خطأ في إرسال الشهادة:', error);
+                loading.classList.remove("show");
+                btn.disabled = false;
+            }
+        }
     </script>
-    <!-- ✅ لا توجد وسوم script ثابتة للأنشطة — التحميل ديناميكي بالكامل -->
 </body>
 </html>
