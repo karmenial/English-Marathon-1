@@ -18,7 +18,7 @@ window.activitiesLogic.complete = {
                     (unit === '' || unit === undefined || q.unit === unit)
                 );
                 if (filtered.length > 0) {
-                    console.log(`✅ Complete: تم تحميل ${filtered.length} سؤال من ملف JSON`);
+                    console.log(`✅ complete: تم تحميل ${filtered.length} سؤال من ملف JSON`);
                     return filtered;
                 }
             }
@@ -40,7 +40,7 @@ window.activitiesLogic.complete = {
                     (unit === '' || unit === undefined || q.unit === unit)
                 );
                 if (filtered.length > 0) {
-                    console.log(`✅ Complete: تم تحميل ${filtered.length} سؤال من localStorage (Fallback)`);
+                    console.log(`✅ complete: تم تحميل ${filtered.length} سؤال من localStorage (Fallback)`);
                     return filtered;
                 }
             }
