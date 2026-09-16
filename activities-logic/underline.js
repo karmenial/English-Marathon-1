@@ -1,38 +1,56 @@
 window.activitiesLogic = window.activitiesLogic || {};
 
 window.activitiesLogic.Underline = {
-    // ============ تحميل الأسئلة ============
-    loadQuestions: async function(level, grade, curriculum, unit) {
-        let questions = [];
-        try {
-            const localData = localStorage.getItem('marathon_questions_db');
-            if (localData) {
-                const db = JSON.parse(localData);
-                if (db && db.activityDatabase && db.activityDatabase.Underline) {
-                    const filtered = db.activityDatabase.Underline.filter(q =>
-                        q.level === level && q.grade === grade && q.curriculum === curriculum &&
-                        (unit === '' || unit === undefined || q.unit === unit)
-                    );
-                    if (filtered.length > 0) return filtered;
+    // ============ تحميل الأسئلة من قاعدة البيانات ============
+   loadQuestions: async function(level, grade, curriculum, unit) {
+    let questions = []; 
+    
+    // ✅ 1. المصدر الأساسي: سحب البيانات من ملف JSON (أونلاين)
+    try {
+        const response = await fetch('../marathonQuestionsDB.json?v=' + Date.now());
+        if (response.ok) {
+            const db = await response.json();
+            if (db && db.activityDatabase && db.activityDatabase.Underline) {
+                const filtered = db.activityDatabase.Underline.filter(q =>
+                    q.level === level &&
+                    q.grade === grade &&
+                    q.curriculum === curriculum &&
+                    (unit === '' || unit === undefined || q.unit === unit)
+                );
+                if (filtered.length > 0) {
+                    console.log(`✅ Complete: تم تحميل ${filtered.length} سؤال من ملف JSON`);
+                    return filtered;
                 }
             }
-        } catch (e) { console.warn("⚠️ خطأ في localStorage:", e); }
-        
-        try {
-            const response = await fetch('./marathonQuestionsDB.json');
-            if (response.ok) {
-                const db = await response.json();
-                if (db && db.activityDatabase && db.activityDatabase.Underline) {
-                    const filtered = db.activityDatabase.Underline.filter(q =>
-                        q.level === level && q.grade === grade && q.curriculum === curriculum &&
-                        (unit === '' || unit === undefined || q.unit === unit)
-                    );
-                    if (filtered.length > 0) return filtered;
+        }
+    } catch (error) {
+        console.warn("️ فشل جلب ملف JSON، جاري التحقق من الذاكرة المحلية...", error);
+    }
+
+    // 🛡️ 2. المصدر البديل: الذاكرة المحلية (أوفلاين فقط عند الضرورة)
+    try {
+        const localData = localStorage.getItem('marathon_questions_db');
+        if (localData) {
+            const db = JSON.parse(localData);
+            if (db && db.activityDatabase && db.activityDatabase.Underline) {
+                const filtered = db.activityDatabase.Underline.filter(q =>
+                    q.level === level &&
+                    q.grade === grade &&
+                    q.curriculum === curriculum &&
+                    (unit === '' || unit === undefined || q.unit === unit)
+                );
+                if (filtered.length > 0) {
+                    console.log(`✅ Complete: تم تحميل ${filtered.length} سؤال من localStorage (Fallback)`);
+                    return filtered;
                 }
             }
-        } catch (error) { console.warn("⚠️ خطأ في JSON:", error); }
-        return [];
-    },
+        }
+    } catch (e) {
+        console.warn("️ خطأ في localStorage: ", e);
+    }
+    
+    return [];
+},
 
     // ============ عرض السؤال ============
     render: function(question, questionIndex) {
